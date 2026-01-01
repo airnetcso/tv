@@ -3,61 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kosa Kata Korea - Hard Mode + Toleransi</title>
+    <title>Kosa Kata Korea - Friendly Hard Mode</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #fff3e0; margin: 0; padding: 10px; }
-        .container { max-width: 100%; margin: auto; background: white; border-radius: 15px; padding: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
-        h1 { font-size: 26px; text-align: center; margin: 15px 0; color: #e65100; }
-        input[type="text"] { width: 100%; padding: 20px; margin: 25px 0; font-size: 24px; border-radius: 12px; border: 3px solid #ffcc80; box-sizing: border-box; text-align: center; }
-        button { width: 100%; padding: 20px; margin: 15px 0; font-size: 22px; border-radius: 12px; border: none; color: white; font-weight: bold; }
-        .btn-start { background: #ff9800; }
-        .btn-next { background: #f44336; }
-        .btn-submit { background: #d32f2f; }
+        body { font-family: Arial, sans-serif; background: #e8f5e9; margin: 0; padding: 10px; }
+        .container { max-width: 100%; margin: auto; background: white; border-radius: 15px; padding: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+        h1 { font-size: 26px; text-align: center; margin: 15px 0; color: #2e7d32; }
+        input[type="text"] { width: 100%; padding: 20px; margin: 20px 0; font-size: 24px; border-radius: 12px; border: 3px solid #a5d6a7; box-sizing: border-box; text-align: center; }
+        button { width: 100%; padding: 20px; margin: 15px 0; font-size: 22px; border-radius: 12px; border: none; color: white; font-weight: bold; cursor: pointer; }
+        .btn-start { background: #4caf50; }
+        .btn-next { background: #43a047; }
+        .btn-submit { background: #2e7d32; }
+        .btn-voice { background: #1976d2; font-size: 28px; padding: 18px; }
         .hidden { display: none; }
         #timer { text-align: center; font-size: 28px; color: #d50000; font-weight: bold; margin: 20px 0; background: #ffebee; padding: 10px; border-radius: 10px; }
-        .progress { height: 12px; background: #fff3e0; border-radius: 6px; margin: 20px 0; overflow: hidden; }
-        .progress-bar { height: 100%; background: #ff5722; width: 0%; transition: width 0.4s; }
-        .question strong { font-size: 36px; display: block; margin: 40px 0; color: #e65100; }
-        .hint { font-size: 18px; color: #bf360c; text-align: center; font-weight: bold; margin: 10px 0; }
+        .progress { height: 12px; background: #c8e6c9; border-radius: 6px; margin: 20px 0; overflow: hidden; }
+        .progress-bar { height: 100%; background: #4caf50; width: 0%; transition: width 0.4s; }
+        .question strong { font-size: 36px; display: block; margin: 40px 0; color: #2e7d32; }
+        .hint { font-size: 18px; color: #33691e; text-align: center; font-weight: bold; margin: 15px 0; }
     </style>
 </head>
 <body>
     <div class="container" id="loginPage">
-        <h1>🔥 Kosa Kata Korea<br>Hard Mode + Toleransi Suara</h1>
-        <p style="text-align:center; font-size:18px;">50 soal • 30 menit • Ketik/Bicara • Ada maaf 2 huruf salah!</p>
+        <h1>🌟 Kosa Kata Korea<br>Friendly Hard Mode</h1>
+        <p style="text-align:center; font-size:18px;">50 soal • 30 menit • Bicara/Ketik • Ada toleransi arti & ejaan santai!</p>
         <input type="text" id="username" placeholder="Nama kamu?">
-        <button class="btn-start" onclick="login()">Mulai Tantangan</button>
+        <button class="btn-start" onclick="login()">Mulai Latihan</button>
     </div>
 
     <div class="container hidden" id="menuPage">
-        <h1>Siap, <span id="userName"></span>?</h1>
+        <h1>Halo, <span id="userName"></span>! 💚</h1>
         <button class="btn-start" onclick="startTest('koreaToIndo')">Korea → Indonesia</button>
         <button class="btn-start" onclick="startTest('indoToKorea')">Indonesia → Korea</button>
     </div>
 
     <div class="container hidden" id="quizPage">
-        <h1 id="quizTitle">Tantangan Dimulai!</h1>
+        <h1 id="quizTitle">Semangat Ya!</h1>
         <div id="timer">Waktu: 30:00</div>
         <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
         
         <div style="text-align:center;">
             <div class="question" id="quiz"></div>
-            <p class="hint">Ketik atau bicara jawaban<br>(toleransi 2 huruf salah 🔊)</p>
+            <p class="hint">Bicara atau ketik jawaban<br>(ada toleransi ejaan & variasi arti 😊)</p>
             <input type="text" id="textAnswer" placeholder="Jawab di sini..." autocomplete="off">
+            <button class="btn-voice" onclick="startVoice()">🔊 Bicara Jawaban</button>
         </div>
 
         <button class="btn-next" id="nextBtn" onclick="nextQuestion()">Lanjut →</button>
-        <button class="btn-submit hidden" id="submitBtn" onclick="submitQuiz()">Selesai</button>
+        <button class="btn-submit hidden" id="submitBtn" onclick="submitQuiz()">Lihat Hasil</button>
     </div>
 
     <div class="container hidden" id="resultPage">
-        <h1>💥 Selesai Bro!</h1>
-        <p id="scoreText" style="font-size:28px; text-align:center; margin:30px 0;"></p>
-        <button class="btn-start" onclick="backToMenu()">Main Lagi</button>
+        <h1>🎉 Mantap Bro!</h1>
+        <p id="scoreText" style="font-size:28px; text-align:center; margin:30px 0; line-height:1.6;"></p>
+        <button class="btn-start" onclick="backToMenu()">Latihan Lagi</button>
     </div>
 
     <script>
-        // Fungsi hitung jarak Levenshtein (toleransi ejaan)
+        // Speech Recognition (browser built-in)
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+        if (recognition) {
+            recognition.lang = 'id-ID';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript.trim();
+                document.getElementById('textAnswer').value = transcript;
+            };
+            recognition.onerror = () => alert('Gagal dengar suara, coba lagi ya!');
+        }
+
+        function startVoice() {
+            if (!recognition) return alert('Browser kamu belum support suara bro 😅 Ketik manual aja ya!');
+            recognition.start();
+        }
+
+        // Daftar toleransi sinonim & variasi santai
+        const synonyms = {
+            "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
+            "malam": ["malem"],
+            "satu": ["1", "satu "],
+            "dua": ["2"],
+            "tiga": ["3"],
+            "empat": ["4"],
+            "lima": ["5"],
+            "halo": ["haloo", "hello", "hi"],
+            "nasi": ["beras", "makan"], // toleransi longgar
+            "terima kasih": ["thanks", "makasih", "thank you"],
+            "maaf": ["sorry", "mohon maaf"]
+            // Tambah lagi kalau mau
+        };
+
+        function normalizeAnswer(answer) {
+            let norm = answer.toLowerCase().trim();
+            // Ganti variasi umum
+            for (const [key, vals] of Object.entries(synonyms)) {
+                if (vals.some(v => norm.includes(v.toLowerCase()))) return key;
+            }
+            return norm;
+        }
+
         function levenshtein(a, b) {
             a = a.toLowerCase();
             b = b.toLowerCase();
@@ -66,11 +111,11 @@
             for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
             for (let j = 1; j <= b.length; j++) {
                 for (let i = 1; i <= a.length; i++) {
-                    const indicator = a[i - 1] === b[j - 1] ? 0 : 1;
+                    const ind = a[i - 1] === b[j - 1] ? 0 : 1;
                     matrix[j][i] = Math.min(
                         matrix[j][i - 1] + 1,
                         matrix[j - 1][i] + 1,
-                        matrix[j - 1][i - 1] + indicator
+                        matrix[j - 1][i - 1] + ind
                     );
                 }
             }
@@ -140,7 +185,7 @@
 
         function login() {
             const user = document.getElementById('username').value.trim();
-            if (!user) return alert('Isi nama dulu!');
+            if (!user) return alert('Isi nama dulu ya!');
             currentUser = user;
             document.getElementById('loginPage').classList.add('hidden');
             document.getElementById('menuPage').classList.remove('hidden');
@@ -179,7 +224,7 @@
 
         function nextQuestion() {
             const answer = document.getElementById('textAnswer').value.trim();
-            if (!answer) return alert('Jawab dulu bro!');
+            if (!answer) return alert('Jawab dulu ya, semangat! 💪');
 
             userAnswers.push(answer);
             currentQuestion++;
@@ -209,16 +254,23 @@
             let score = 0;
             questions.forEach((q, i) => {
                 const correct = (mode === 'koreaToIndo' ? q.indo : q.korea);
-                const userAns = userAnswers[i] || '';
-                const distance = levenshtein(userAns, correct);
-                if (distance <= 2) score++; // Toleransi maks 2 huruf beda
+                const userAns = normalizeAnswer(userAnswers[i] || '');
+                const distance = levenshtein(userAns, correct.toLowerCase());
+                if (userAns === correct.toLowerCase() || distance <= 2) score++;
             });
 
             document.getElementById('quizPage').classList.add('hidden');
             document.getElementById('resultPage').classList.remove('hidden');
-            document.getElementById('scoreText').innerText = `${currentUser}!\nKamu benar ${score} dari 50 soal!\n\n(with toleransi suara 🔥)`;
 
-            console.log(`HASIL | User: ${currentUser} | Mode: ${mode} | Skor: ${score}/50 (toleransi ≤2)`);
+            let message = `${currentUser}!\nKamu berhasil ${score} dari 50 soal! 🌟\n\n`;
+            if (score >= 40) message += "Wah hebat banget! Kamu sudah jago nih! 🚀";
+            else if (score >= 30) message += "Bagus sekali! Tingkatkan lagi ya, pasti bisa! 💚";
+            else if (score >= 20) message += "Lumayan bro! Latihan terus, kamu pasti naik skornya 😊";
+            else message += "Tenang aja, ini baru awal! Besok coba lagi, pasti lebih baik 💪 Kamu sudah keren berani tantang 50 soal!";
+
+            document.getElementById('scoreText').innerText = message;
+
+            console.log(`HASIL | User: ${currentUser} | Skor: ${score}/50`);
         }
 
         function backToMenu() {
