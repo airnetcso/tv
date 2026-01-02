@@ -3,69 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADMIN - Hasil Test Kosa Kata</title>
+  <title>Admin - Hasil CBT & Latihan Kosa Kata</title>
   <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #333; padding: 40px; }
-    h1 { text-align: center; color: #10b981; }
-    table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-    th { background: #10b981; color: white; }
-    tr:hover { background: #f1f1f1; }
-    .kode-group { margin-bottom: 40px; }
-    .no-data { text-align: center; color: #999; font-style: italic; padding: 40px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; background: #f0f9ff; }
+    h2 { text-align: center; color: #0369a1; margin-bottom: 30px; }
+    iframe { width: 100%; height: 80vh; border: 1px solid #ccc; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .info { text-align: center; margin-top: 20px; color: #666; font-size: 14px; }
   </style>
 </head>
 <body>
-  <h1>ADMIN - HASIL TEST KOSA KATA</h1>
-  <div id="resultsContainer"></div>
-
-  <script>
-    const results = JSON.parse(localStorage.getItem("testResults") || "[]");
-    const container = document.getElementById("resultsContainer");
-
-    if (results.length === 0) {
-      container.innerHTML = '<p class="no-data">Belum ada data hasil test.</p>';
-    } else {
-      const grouped = results.reduce((acc, curr) => {
-        if (!acc[curr.kode]) acc[curr.kode] = [];
-        acc[curr.kode].push(curr);
-        return acc;
-      }, {});
-
-      for (const kode in grouped) {
-        const div = document.createElement("div");
-        div.className = "kode-group";
-        div.innerHTML = `<h2 style="color:#059669;">Kode Test: ${kode}</h2>`;
-        
-        let table = `<table>
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Username</th>
-              <th>Skor</th>
-              <th>Persentase</th>
-              <th>Tanggal</th>
-            </tr>
-          </thead>
-          <tbody>`;
-
-        grouped[kode].sort((a,b) => b.percent - a.percent); // urutkan dari tertinggi
-
-        grouped[kode].forEach((res, i) => {
-          table += `<tr>
-            <td>${i+1}</td>
-            <td>${res.username}</td>
-            <td>${res.score}/${res.total}</td>
-            <td>${res.percent}%</td>
-            <td>${res.date}</td>
-          </tr>`;
-        });
-
-        table += `</tbody></table>`;
-        div.innerHTML += table;
-        container.appendChild(div);
-      }
-    }
-  </script>
+  <h2>ADMIN - HASIL SEMUA TEST & LATIHAN KOSA KATA</h2>
+  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRA5_l5eZwb1JDfUqyHrl9ePxDVM5a6HbVl8qthVwowIGFIQqBkoSU29VSJBsAqoVshvSf1VqCjVlqL/pubhtml?widget=true&headers=false"></iframe>
+  <p class="info">Data update real-time dari semua aplikasi (CBT & Latihan Kosa Kata)</p>
 </body>
 </html>
