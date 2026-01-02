@@ -6,15 +6,11 @@
   <title>TEST KOSA KATA</title>
   <style>
     @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    html, body {
-      height: 100%; margin: 0; padding: 0; overflow: hidden;
-    }
+    html, body { height: 100%; margin: 0; padding: 0; overflow: hidden; }
     body {
-      font-family: 'Segoe UI', system-ui, Arial, sans-serif;
-      min-height: 100vh;
+      font-family: 'Segoe UI', system-ui, Arial, sans-serif; min-height: 100vh;
       background: url('https://images.pexels.com/photos/30811794/pexels-photo-30811794/free-photo-of-cherry-blossoms-in-full-bloom-in-tokyo.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center;
       padding: 20px; color: #fff; position: relative;
     }
     body::before { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.3); z-index: 1; }
@@ -75,7 +71,7 @@
     const kodeMapping = {
       "H29976": "soal1.json",
       "R43213": "soal2.json"
-      // tambah kode lain kalau perlu
+      // tambah kode baru kalau perlu, misal "B200987": "soal1.json"
     };
 
     let questions = [];
@@ -100,7 +96,6 @@
       "penyedot debu": ["vakum", "vacuum cleaner"],
       "setrika": ["gosokan"],
       "gorden": ["tirai", "curtain"]
-      // tambah lagi kalau mau
     };
 
     function normalizeAnswer(answer) {
@@ -206,7 +201,11 @@
       const isCorrect = (normUser === normCorrect) || (distance <= 2);
 
       if (!isCorrect) {
-        wrongList.push({ word: q.korea, correct: q.indo, your: userAnswer });
+        wrongList.push({
+          word: questions[currentIndex].korea,  // tampilan soal
+          correct: q.indo,
+          your: userAnswer
+        });
       } else {
         score++;
       }
