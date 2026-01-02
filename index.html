@@ -71,7 +71,6 @@
     const kodeMapping = {
       "H29976": "soal1.json",
       "R43213": "soal2.json"
-      // tambah kode baru kalau perlu, misal "B200987": "soal1.json"
     };
 
     let questions = [];
@@ -82,18 +81,18 @@
     let timeLeft = 1800; // 30 menit
 
     const synonyms = {
-      "kulkas": ["lemari es", "refrigerator"],
+      "penyedot debu": ["vakum", "vacum", "vacuum", "vacuum cleaner", "pengisap debu", "penghisap debu"],
+      "kulkas": ["lemari es", "refrigerator", "pendingin"],
       "televisi": ["tv", "tivi"],
-      "tempat tidur": ["kasur", "dipan"],
+      "tempat tidur": ["kasur", "dipan", "bed"],
       "mesin cuci": ["sewatki"],
       "sofa": ["kursi sofa"],
       "meja belajar": ["meja kerja", "desk"],
-      "lemari pakaian": ["wardrobe", "almari baju"],
+      "lemari pakaian": ["wardrobe", "almari baju", "closet"],
       "kipas angin": ["fan"],
       "ac": ["air conditioner", "pendingin ruangan"],
-      "rice cooker": ["penanak nasi", "magic com", "magic jar"],
+      "rice cooker": ["penanak nasi", "magic com", "magic jar", "magicom"],
       "kompor gas": ["kompor"],
-      "penyedot debu": ["vakum", "vacuum cleaner"],
       "setrika": ["gosokan"],
       "gorden": ["tirai", "curtain"]
     };
@@ -202,7 +201,7 @@
 
       if (!isCorrect) {
         wrongList.push({
-          word: questions[currentIndex].korea,  // tampilan soal
+          word: questions[currentIndex].korea,
           correct: q.indo,
           your: userAnswer
         });
@@ -219,6 +218,29 @@
       document.getElementById("resultArea").classList.remove("hidden");
       const percent = Math.round((score / questions.length) * 100);
       document.getElementById("scoreText").textContent = `Skor: ${score}/${questions.length} (${percent}%)`;
+
+      // Pesan motivasi
+      let motivasi = "";
+      if (percent > 90) {
+        motivasi = "MANTAP SEKALI! Kamu luar biasa!";
+      } else if (percent >= 80) {
+        motivasi = "Bagus sekali! Tetap semangat belajar ya!";
+      } else if (percent >= 60) {
+        motivasi = "Ayo semangat lagi! Kamu pasti bisa lebih baik!";
+      } else {
+        motivasi = "Jangan menyerah ya! Terus latihan, pasti naik kok!";
+      }
+
+      const motivasiEl = document.createElement("p");
+      motivasiEl.textContent = motivasi;
+      motivasiEl.style.fontSize = "24px";
+      motivasiEl.style.fontWeight = "bold";
+      motivasiEl.style.color = "#d1fae5";
+      motivasiEl.style.marginTop = "20px";
+      motivasiEl.style.textAlign = "center";
+      document.getElementById("resultArea").insertBefore(motivasiEl, document.getElementById("wrongWords"));
+
+      // Wrong list
       const wrongDiv = document.getElementById("wrongWords");
       wrongDiv.innerHTML = "";
       if (wrongList.length > 0) {
