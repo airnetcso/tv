@@ -11,8 +11,9 @@
             margin: 0; 
             min-height: 100vh; 
             display: flex; 
-            align-items: center; 
+            flex-direction: column; 
             justify-content: center; 
+            align-items: center; 
             padding: 15px; 
         }
         .container { 
@@ -41,6 +42,17 @@
         .progress-bar { height: 100%; background: #4caf50; width: 0%; transition: width 0.5s; }
         .question strong { font-size: 38px; display: block; margin: 35px 0 20px; color: #2e7d32; text-align: center; }
         .wrong-list { font-size: 17px; line-height: 1.7; margin: 25px 0; background: #fff3e0; padding: 18px; border-radius: 10px; }
+        
+        /* Footer Copyright */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+            opacity: 0.8;
+            width: 100%;
+            max-width: 420px;
+        }
     </style>
 </head>
 <body>
@@ -74,6 +86,10 @@
     </div>
 </div>
 
+<div class="footer">
+    © Denzuka 2026
+</div>
+
 <script>
 // ── DATA LOGIN & MAPPING KODE ─────────────────────────────────────────────────
 const validUsers = {
@@ -82,13 +98,10 @@ const validUsers = {
     "guru": "guru456"
 };
 
-// Mapping kode akses → nama file soal (tanpa .json)
 const kodeMapping = {
-    "H29976": "soal1",     // ← kode ini buka soal1.json
-    "R43213": "soal2"      // ← kode ini buka soal2.json
-    // Tambah sendiri nanti, contoh:
-    // "P56789": "soal3",
-    // "T13579": "soal4",
+    "H29976": "soal1",
+    "R43213": "soal2"
+    // Tambah sendiri nanti
 };
 
 let questions = [];
@@ -98,7 +111,6 @@ let wrongList = [];
 let timerInterval;
 let timeLeft = 0;
 
-// Sinonim & toleransi jawaban
 const synonyms = {
     "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
     "ngantuk": ["mengantuk", "kantuk", "mengantuk banget"],
@@ -139,7 +151,6 @@ function levenshtein(a, b) {
     return matrix[b.length][a.length];
 }
 
-// ── LOGIN ─────────────────────────────────────────────────────────────────────
 function login() {
     const user = document.getElementById("username").value.trim();
     const pass = document.getElementById("password").value.trim();
@@ -185,12 +196,11 @@ async function loadQuestions(fileName) {
     }
 }
 
-// ── QUIZ FUNCTIONS ────────────────────────────────────────────────────────────
 function startQuiz() {
     currentIndex = 0;
     score = 0;
     wrongList = [];
-    timeLeft = questions.length * 30; // 30 detik per soal (bisa diubah)
+    timeLeft = questions.length * 30;
     document.getElementById("progressBar").style.width = "0%";
     nextQuestion();
     startTimer();
@@ -203,7 +213,7 @@ function nextQuestion() {
     }
 
     const q = questions[currentIndex];
-    document.getElementById("currentWord").textContent = q.korea; // default: Korea → Indo
+    document.getElementById("currentWord").textContent = q.korea;
     document.getElementById("answerInput").value = "";
     document.getElementById("answerInput").focus();
 
@@ -280,7 +290,6 @@ function restartQuiz() {
     document.getElementById("errorMsg").textContent = "";
 }
 
-// ── VOICE RECOGNITION (opsional) ──────────────────────────────────────────────
 function startVoiceRecognition() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
