@@ -23,52 +23,23 @@
             padding: 30px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
         }
-        h1 { 
-            font-size: 28px; 
-            text-align: center; 
-            margin: 0 0 25px; 
-            color: #2e7d32; 
-        }
+        h1 { font-size: 28px; text-align: center; margin: 0 0 25px; color: #2e7d32; }
         input[type="text"], input[type="password"] { 
-            width: 100%; 
-            padding: 14px; 
-            margin: 12px 0; 
-            font-size: 18px; 
-            border: 2px solid #a5d6a7; 
-            border-radius: 10px; 
-            box-sizing: border-box; 
-            text-align: center; 
+            width: 100%; padding: 14px; margin: 12px 0; font-size: 18px; 
+            border: 2px solid #a5d6a7; border-radius: 10px; box-sizing: border-box; text-align: center; 
         }
         button { 
-            width: 100%; 
-            padding: 16px; 
-            margin: 15px 0 10px; 
-            font-size: 20px; 
-            border: none; 
-            border-radius: 10px; 
-            color: white; 
-            font-weight: bold; 
-            cursor: pointer; 
+            width: 100%; padding: 16px; margin: 15px 0 10px; font-size: 20px; 
+            border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; 
         }
         .btn-login { background: #4caf50; }
         .btn-login:hover { background: #43a047; }
-        .btn-voice { background: #1976d2; font-size: 28px; padding: 25px; }
         .error { color: #d32f2f; text-align: center; margin: 10px 0; font-weight: bold; }
         .hidden { display: none; }
-        #timer { 
-            text-align: center; 
-            font-size: 26px; 
-            color: #d50000; 
-            font-weight: bold; 
-            margin: 20px 0; 
-            background: #ffebee; 
-            padding: 12px; 
-            border-radius: 10px; 
-        }
+        #timer { text-align: center; font-size: 26px; color: #d50000; font-weight: bold; margin: 20px 0; background: #ffebee; padding: 12px; border-radius: 10px; }
         .progress { height: 10px; background: #c8e6c9; border-radius: 5px; margin: 20px 0; overflow: hidden; }
         .progress-bar { height: 100%; background: #4caf50; width: 0%; transition: width 0.5s; }
         .question strong { font-size: 38px; display: block; margin: 35px 0 20px; color: #2e7d32; text-align: center; }
-        .hint { font-size: 18px; color: #33691e; text-align: center; margin: 15px 0; }
         .wrong-list { font-size: 17px; line-height: 1.7; margin: 25px 0; background: #fff3e0; padding: 18px; border-radius: 10px; }
     </style>
 </head>
@@ -78,7 +49,7 @@
     <h1>Login Kosa Kata Korea</h1>
     <input type="text" id="username" placeholder="Nama / Username" autocomplete="off">
     <input type="password" id="password" placeholder="Password" autocomplete="off">
-    <input type="text" id="kodeSoal" placeholder="Kode Soal (contoh: A, B, C)" autocomplete="off" style="text-transform:uppercase;">
+    <input type="text" id="kodeSoal" placeholder="Masukkan Kode Akses" autocomplete="off" style="text-transform:uppercase;">
     <div class="error" id="errorMsg"></div>
     <button class="btn-login" onclick="login()">MULAI BELAJAR</button>
 </div>
@@ -104,11 +75,20 @@
 </div>
 
 <script>
-// ── DATA LOGIN & SOAL ────────────────────────────────────────────────────────
+// ── DATA LOGIN & MAPPING KODE ─────────────────────────────────────────────────
 const validUsers = {
     "siswa01": "12345",
     "siswa02": "abc123",
     "guru": "guru456"
+};
+
+// Mapping kode akses → nama file soal (tanpa .json)
+const kodeMapping = {
+    "H29976": "soal1",     // ← kode ini buka soal1.json
+    "R43213": "soal2"      // ← kode ini buka soal2.json
+    // Tambah sendiri nanti, contoh:
+    // "P56789": "soal3",
+    // "T13579": "soal4",
 };
 
 let questions = [];
@@ -117,7 +97,6 @@ let score = 0;
 let wrongList = [];
 let timerInterval;
 let timeLeft = 0;
-let mode = 'indoToKorea'; // default, bisa diganti nanti
 
 // Sinonim & toleransi jawaban
 const synonyms = {
@@ -177,23 +156,28 @@ function login() {
         return;
     }
 
-    // Load soal berdasarkan kode
-    loadQuestions(kode)
+    const fileName = kodeMapping[kode];
+    if (!fileName) {
+        error.textContent = "Kode akses tidak valid!";
+        return;
+    }
+
+    loadQuestions(fileName)
         .then(() => {
             document.getElementById("loginPage").classList.add("hidden");
             document.getElementById("quizPage").classList.remove("hidden");
             startQuiz();
         })
         .catch(err => {
-            error.textContent = "Kode soal tidak ditemukan atau gagal dimuat!";
+            error.textContent = "Gagal memuat soal. Hubungi admin.";
             console.error(err);
         });
 }
 
-async function loadQuestions(kode) {
+async function loadQuestions(fileName) {
     try {
-        const response = await fetch(`soal${kode}.json`);
-        if (!response.ok) throw new Error("File soal tidak ditemukan");
+        const response = await fetch(`${fileName}.json`);
+        if (!response.ok) throw new Error(`File ${fileName}.json tidak ditemukan`);
         questions = await response.json();
         if (questions.length === 0) throw new Error("Soal kosong");
     } catch (e) {
@@ -201,12 +185,12 @@ async function loadQuestions(kode) {
     }
 }
 
-// ── QUIZ LOGIC ────────────────────────────────────────────────────────────────
+// ── QUIZ FUNCTIONS ────────────────────────────────────────────────────────────
 function startQuiz() {
     currentIndex = 0;
     score = 0;
     wrongList = [];
-    timeLeft = questions.length * 30; // 30 detik per soal contoh
+    timeLeft = questions.length * 30; // 30 detik per soal (bisa diubah)
     document.getElementById("progressBar").style.width = "0%";
     nextQuestion();
     startTimer();
@@ -219,13 +203,10 @@ function nextQuestion() {
     }
 
     const q = questions[currentIndex];
-    document.getElementById("currentWord").textContent = 
-        mode === 'koreaToIndo' ? q.korea : q.indo;
-    
+    document.getElementById("currentWord").textContent = q.korea; // default: Korea → Indo
     document.getElementById("answerInput").value = "";
     document.getElementById("answerInput").focus();
 
-    // Update progress
     const progress = ((currentIndex + 1) / questions.length) * 100;
     document.getElementById("progressBar").style.width = `${progress}%`;
 }
@@ -239,7 +220,7 @@ function submitAnswer() {
 
 function checkAnswer(answer) {
     const q = questions[currentIndex];
-    const correct = (mode === 'koreaToIndo' ? q.indo : q.korea).toLowerCase();
+    const correct = q.indo.toLowerCase();
     const normAns = normalizeAnswer(answer);
     const distance = levenshtein(normAns, correct);
 
@@ -248,7 +229,7 @@ function checkAnswer(answer) {
     } else if (answer.trim()) {
         wrongList.push({
             word: q.korea,
-            correct: correct,
+            correct: q.indo,
             your: answer.trim()
         });
     }
@@ -299,16 +280,16 @@ function restartQuiz() {
     document.getElementById("errorMsg").textContent = "";
 }
 
-// ── VOICE RECOGNITION (opsional, tetap) ───────────────────────────────────────
+// ── VOICE RECOGNITION (opsional) ──────────────────────────────────────────────
 function startVoiceRecognition() {
-    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        alert("Browser kamu tidak support voice recognition.");
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+        alert("Browser tidak support voice recognition.");
         return;
     }
 
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
-    recognition.lang = 'id-ID'; // atau 'ko-KR' kalau mau Korea
+    recognition.lang = 'id-ID';
     recognition.interimResults = false;
 
     recognition.onresult = (event) => {
