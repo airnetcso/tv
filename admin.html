@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Hasil Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .admin-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 { text-align: center; color: #2c3e50; }
+        input { width: 100%; padding: 12px; margin: 10px 0; font-size: 16px; }
+        button { width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        button:hover { background: #2980b9; }
+        .results { margin-top: 30px; }
+        .result-item { border-bottom: 1px solid #eee; padding: 15px 0; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="admin-box" id="loginAdmin">
+    <h1>Admin Login</h1>
+    <input type="text" id="adminUser" placeholder="Username">
+    <input type="password" id="adminPass" placeholder="Password">
+    <button onclick="adminLogin()">LOGIN</button>
+    <div id="adminError" style="color:red; text-align:center; margin-top:10px;"></div>
+</div>
+
+<div class="admin-box hidden" id="adminResults">
+    <h1>Hasil Test Siswa</h1>
+    <div id="resultsList"></div>
+    <button onclick="backToLogin()" style="margin-top:20px; background:#e74c3c;">Kembali</button>
+</div>
+
+<script>
+const adminValid = {
+    "admin": "admin123"  // ganti sesuai keinginan
+};
+
+function adminLogin() {
+    const user = document.getElementById("adminUser").value.trim();
+    const pass = document.getElementById("adminPass").value.trim();
+    const error = document.getElementById("adminError");
+
+    if (!user || !pass) {
+        error.textContent = "Lengkapi username & password!";
+        return;
+    }
+
+    if (adminValid[user] !== pass) {
+        error.textContent = "Login gagal!";
+        return;
+    }
+
+    document.getElementById("loginAdmin").classList.add("hidden");
+    document.getElementById("adminResults").classList.remove("hidden");
+    showResults();
+}
+
+function showResults() {
+    const results = JSON.parse(localStorage.getItem("testResults") || "[]");
+    const list = document.getElementById("resultsList");
+    list.innerHTML = "";
+
+    if (results.length === 0) {
+        list.innerHTML = "<p>Belum ada hasil test.</p>";
+        return;
+    }
+
+    results.forEach((r, i) => {
+        let html = `<div class="result-item">
+            <strong>User: ${r.username}</strong><br>
+            Skor: ${r.score}/${r.total} (${r.percent}%)<br>
+            Tanggal: ${r.date}<br>`;
+        if (r.wrongList && r.wrongList.length > 0) {
+            html += "<strong>Salah:</strong><ul>";
+            r.wrongList.forEach(w => {
+                html += `<li>${w.word} → ${w.correct} (jawaban: ${w.your})</li>`;
+            });
+            html += "</ul>";
+        }
+        html += "</div>";
+        list.innerHTML += html;
+    });
+}
+
+function backToLogin() {
+    document.getElementById("adminResults").classList.add("hidden");
+    document.getElementById("loginAdmin").classList.remove("hidden");
+    document.getElementById("adminError").textContent = "";
+}
+</script>
+</body>
+</html>
