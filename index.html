@@ -1,318 +1,104 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kosa Kata Korea - Login</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9); 
-            margin: 0; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            padding: 15px; 
-        }
-        .container { 
-            max-width: 420px; 
-            width: 100%; 
-            background: white; 
-            border-radius: 16px; 
-            padding: 30px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-        }
-        h1 { font-size: 28px; text-align: center; margin: 0 0 25px; color: #2e7d32; }
-        input[type="text"], input[type="password"] { 
-            width: 100%; padding: 14px; margin: 12px 0; font-size: 18px; 
-            border: 2px solid #a5d6a7; border-radius: 10px; box-sizing: border-box; text-align: center; 
-        }
-        button { 
-            width: 100%; padding: 16px; margin: 15px 0 10px; font-size: 20px; 
-            border: none; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; 
-        }
-        .btn-login { background: #4caf50; }
-        .btn-login:hover { background: #43a047; }
-        .error { color: #d32f2f; text-align: center; margin: 10px 0; font-weight: bold; }
-        .hidden { display: none; }
-        #timer { text-align: center; font-size: 26px; color: #d50000; font-weight: bold; margin: 20px 0; background: #ffebee; padding: 12px; border-radius: 10px; }
-        .progress { height: 10px; background: #c8e6c9; border-radius: 5px; margin: 20px 0; overflow: hidden; }
-        .progress-bar { height: 100%; background: #4caf50; width: 0%; transition: width 0.5s; }
-        .question strong { font-size: 38px; display: block; margin: 35px 0 20px; color: #2e7d32; text-align: center; }
-        .wrong-list { font-size: 17px; line-height: 1.7; margin: 25px 0; background: #fff3e0; padding: 18px; border-radius: 10px; }
-        
-        /* Footer Copyright */
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 14px;
-            color: #555;
-            opacity: 0.8;
-            width: 100%;
-            max-width: 420px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container" id="loginPage">
-    <h1>Login Kosa Kata Korea</h1>
-    <input type="text" id="username" placeholder="Nama / Username" autocomplete="off">
-    <input type="password" id="password" placeholder="Password" autocomplete="off">
-    <input type="text" id="kodeSoal" placeholder="Masukkan Kode Akses" autocomplete="off" style="text-transform:uppercase;">
-    <div class="error" id="errorMsg"></div>
-    <button class="btn-login" onclick="login()">MULAI BELAJAR</button>
-</div>
-
-<div class="container hidden" id="quizPage">
-    <h1>Kosa Kata Korea</h1>
-    <div id="timer">00:00</div>
-    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-    
-    <div id="questionArea">
-        <div class="question"><strong id="currentWord"></strong></div>
-        <input type="text" id="answerInput" placeholder="Jawab di sini (bisa pakai suara)" autocomplete="off">
-        <button class="btn-voice" onclick="startVoiceRecognition()">🎤</button>
-        <button onclick="submitAnswer()">KIRIM JAWABAN</button>
-    </div>
-
-    <div id="resultArea" class="hidden">
-        <h2 style="color:#2e7d32">Hasil Latihan</h2>
-        <p id="scoreText" style="font-size:24px; font-weight:bold;"></p>
-        <div id="wrongWords" class="wrong-list hidden"></div>
-        <button onclick="restartQuiz()">ULANGI LAGI</button>
-    </div>
-</div>
-
-<div class="footer">
-    <div class="footer">
-    © 2026 Denzuka - Kim Jongun. All rights reserved.
-</div>
-</div>
-
-<script>
-// ── DATA LOGIN & MAPPING KODE ─────────────────────────────────────────────────
-const validUsers = {
-    "siswa01": "12345",
-    "siswa02": "abc123",
-    "guru": "guru456"
-};
-
-const kodeMapping = {
-    "H29976": "soal1",
-    "R43213": "soal2"
-    // Tambah sendiri nanti
-};
-
-let questions = [];
-let currentIndex = 0;
-let score = 0;
-let wrongList = [];
-let timerInterval;
-let timeLeft = 0;
-
-const synonyms = {
-    "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
-    "ngantuk": ["mengantuk", "kantuk", "mengantuk banget"],
-    "senang": ["bahagia", "gembira", "seneng", "senamg", "happy"],
-    "lapar": ["kelaperan", "laper"],
-    "haus": ["kehausan"],
-    "malam": ["malem"],
-    "satu": ["1"], "dua": ["2"], "tiga": ["3"], "empat": ["4"], "lima": ["5"],
-    "halo": ["haloo", "hello", "hi", "helo"],
-    "terima kasih": ["thanks", "makasih", "thank you", "trims"],
-    "maaf": ["sorry", "mohon maaf", "maap"]
-};
-
-function normalizeAnswer(answer) {
-    let norm = answer.toLowerCase().trim().replace(/[^a-z0-9\s]/g, '');
-    for (const [key, vals] of Object.entries(synonyms)) {
-        if (vals.some(v => norm.includes(v.toLowerCase())) || norm.includes(key)) {
-            return key;
-        }
-    }
-    return norm;
+body { 
+    font-family: 'Segoe UI', Arial, sans-serif; 
+    margin: 0; 
+    min-height: 100vh; 
+    background: url('https://airnetcso.github.io/eps/image/bg.jpg') no-repeat center center fixed; 
+    background-size: cover; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    color: #fff; /* biar teks putih kontras sama bg */
+    position: relative;
 }
 
-function levenshtein(a, b) {
-    const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
-    for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
-    for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
-    for (let j = 1; j <= b.length; j++) {
-        for (let i = 1; i <= a.length; i++) {
-            const indicator = a[i-1] === b[j-1] ? 0 : 1;
-            matrix[j][i] = Math.min(
-                matrix[j][i-1] + 1,
-                matrix[j-1][i] + 1,
-                matrix[j-1][i-1] + indicator
-            );
-        }
-    }
-    return matrix[b.length][a.length];
+/* Overlay gelap supaya teks tetap terbaca */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.45); /* gelap 45% */
+    z-index: 1;
 }
 
-function login() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value.trim();
-    const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
-    const error = document.getElementById("errorMsg");
-
-    if (!user || !pass || !kode) {
-        error.textContent = "Lengkapi semua kolom!";
-        return;
-    }
-
-    if (!validUsers[user] || validUsers[user] !== pass) {
-        error.textContent = "Username atau password salah!";
-        return;
-    }
-
-    const fileName = kodeMapping[kode];
-    if (!fileName) {
-        error.textContent = "Kode akses tidak valid!";
-        return;
-    }
-
-    loadQuestions(fileName)
-        .then(() => {
-            document.getElementById("loginPage").classList.add("hidden");
-            document.getElementById("quizPage").classList.remove("hidden");
-            startQuiz();
-        })
-        .catch(err => {
-            error.textContent = "Gagal memuat soal. Hubungi admin.";
-            console.error(err);
-        });
+.container { 
+    position: relative;
+    z-index: 2; /* di atas overlay */
+    max-width: 420px; 
+    width: 90%; /* biar ada sela kiri-kanan di layar besar */
+    background: rgba(255, 255, 255, 0.18); /* transparan */
+    backdrop-filter: blur(12px); /* efek kaca buram */
+    -webkit-backdrop-filter: blur(12px); /* support Safari */
+    border-radius: 24px; 
+    padding: 40px 30px; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: fadeIn 0.8s ease-out;
 }
 
-async function loadQuestions(fileName) {
-    try {
-        const response = await fetch(`${fileName}.json`);
-        if (!response.ok) throw new Error(`File ${fileName}.json tidak ditemukan`);
-        questions = await response.json();
-        if (questions.length === 0) throw new Error("Soal kosong");
-    } catch (e) {
-        throw e;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-function startQuiz() {
-    currentIndex = 0;
-    score = 0;
-    wrongList = [];
-    timeLeft = questions.length * 30;
-    document.getElementById("progressBar").style.width = "0%";
-    nextQuestion();
-    startTimer();
+h1 { 
+    font-size: 32px; 
+    text-align: center; 
+    margin: 0 0 30px; 
+    color: #fff; 
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
-function nextQuestion() {
-    if (currentIndex >= questions.length) {
-        finishQuiz();
-        return;
-    }
-
-    const q = questions[currentIndex];
-    document.getElementById("currentWord").textContent = q.korea;
-    document.getElementById("answerInput").value = "";
-    document.getElementById("answerInput").focus();
-
-    const progress = ((currentIndex + 1) / questions.length) * 100;
-    document.getElementById("progressBar").style.width = `${progress}%`;
+input[type="text"], input[type="password"] { 
+    width: 100%; 
+    padding: 16px; 
+    margin: 14px 0; 
+    font-size: 18px; 
+    border: 2px solid rgba(255,255,255,0.4); 
+    border-radius: 12px; 
+    box-sizing: border-box; 
+    text-align: center; 
+    background: rgba(255,255,255,0.15); 
+    color: white; 
+    transition: all 0.3s;
 }
 
-function submitAnswer() {
-    const userAns = document.getElementById("answerInput").value;
-    checkAnswer(userAns);
-    currentIndex++;
-    nextQuestion();
+input::placeholder { color: rgba(255,255,255,0.7); }
+
+input:focus {
+    border-color: #fff;
+    background: rgba(255,255,255,0.25);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
 }
 
-function checkAnswer(answer) {
-    const q = questions[currentIndex];
-    const correct = q.indo.toLowerCase();
-    const normAns = normalizeAnswer(answer);
-    const distance = levenshtein(normAns, correct);
-
-    if (normAns === correct || distance <= 3) {
-        score++;
-    } else if (answer.trim()) {
-        wrongList.push({
-            word: q.korea,
-            correct: q.indo,
-            your: answer.trim()
-        });
-    }
+button { 
+    width: 100%; 
+    padding: 16px; 
+    margin: 16px 0 8px; 
+    font-size: 20px; 
+    font-weight: bold; 
+    border: none; 
+    border-radius: 12px; 
+    color: white; 
+    cursor: pointer; 
+    background: linear-gradient(90deg, #10b981, #059669);
+    transition: all 0.3s;
 }
 
-function startTimer() {
-    clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-        const s = (timeLeft % 60).toString().padStart(2, '0');
-        document.getElementById("timer").textContent = `${m}:${s}`;
-
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            finishQuiz();
-        }
-    }, 1000);
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(16,185,129,0.4);
 }
 
-function finishQuiz() {
-    clearInterval(timerInterval);
-    document.getElementById("questionArea").classList.add("hidden");
-    document.getElementById("resultArea").classList.remove("hidden");
+.error { color: #ff6b6b; text-align: center; margin: 12px 0; font-weight: 600; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 8px; }
 
-    const percent = Math.round((score / questions.length) * 100);
-    document.getElementById("scoreText").textContent = 
-        `Skor: ${score}/${questions.length} (${percent}%)`;
-
-    const wrongDiv = document.getElementById("wrongWords");
-    wrongDiv.innerHTML = "";
-    if (wrongList.length > 0) {
-        wrongDiv.classList.remove("hidden");
-        wrongDiv.innerHTML = "<strong>Kata yang perlu diperbaiki:</strong><br>";
-        wrongList.forEach(item => {
-            wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (kamu: ${item.your})<br>`;
-        });
-    } else {
-        wrongDiv.classList.add("hidden");
-    }
+.footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 40px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
-
-function restartQuiz() {
-    document.getElementById("resultArea").classList.add("hidden");
-    document.getElementById("questionArea").classList.remove("hidden");
-    document.getElementById("loginPage").classList.remove("hidden");
-    document.getElementById("quizPage").classList.add("hidden");
-    document.getElementById("errorMsg").textContent = "";
-}
-
-function startVoiceRecognition() {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-        alert("Browser tidak support voice recognition.");
-        return;
-    }
-
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'id-ID';
-    recognition.interimResults = false;
-
-    recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript.trim();
-        document.getElementById("answerInput").value = transcript;
-    };
-
-    recognition.onerror = () => alert("Gagal mendengar suara. Coba lagi.");
-    recognition.start();
-}
-</script>
-</body>
-</html>
-
-
