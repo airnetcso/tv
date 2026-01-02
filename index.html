@@ -32,14 +32,14 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.40); /* overlay gelap untuk kontras */
+            background: rgba(0, 0, 0, 0.40);
             z-index: 1;
         }
 
         .login-container, .quiz-container {
             position: relative;
             z-index: 2;
-            width: 80%; /* lebar box lebih ramping seperti requestmu */
+            width: 80%; /* ramping, sesuai requestmu */
             max-width: 440px;
             background: rgba(255, 255, 255, 0.40); /* transparan tapi box menonjol */
             border-radius: 24px;
@@ -68,7 +68,7 @@
             border-radius: 12px;
             box-sizing: border-box;
             text-align: center;
-            background: rgba(255,255,255,0.45); /* lebih solid biar input jelas */
+            background: rgba(255,255,255,0.45);
             color: white;
             transition: all 0.3s ease;
         }
@@ -179,6 +179,18 @@
             color: rgba(255,255,255,0.85);
             text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
+
+        /* Responsif HP */
+        @media (max-width: 768px) {
+            .login-container, .quiz-container {
+                width: 95%;
+                padding: 30px 20px;
+            }
+            h1 { font-size: 28px; margin-bottom: 25px; }
+            input { padding: 15px 18px; margin: 12px 0; font-size: 17px; }
+            button { padding: 16px; font-size: 18px; }
+            .footer { margin-top: 30px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
@@ -217,7 +229,7 @@
 </div>
 
 <script>
-// Script lengkap (validUsers, kodeMapping, login, dll)
+// Script lengkap
 const validUsers = {
     "siswa01": "12345",
     "siswa02": "abc123",
