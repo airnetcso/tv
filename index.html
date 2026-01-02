@@ -1,439 +1,301 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kosa Kata Korea - Denzuka</title>
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        body {
-            font-family: 'Segoe UI', system-ui, Arial, sans-serif;
-            margin: 0;
-            min-height: 100vh;
-            background: url('https://airnetcso.github.io/eps/image/bg1.jpg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #fff;
-            position: relative;
-        }
-
-        /* Overlay gelap untuk kontras teks */
-        body::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 1;
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-            width: 90%;
-            max-width: 440px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
-            border: 1px solid rgba(255,255,255,0.18);
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        h1 {
-            font-size: 32px;
-            text-align: center;
-            margin: 0 0 30px;
-            color: #fff;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 16px;
-            margin: 14px 0;
-            font-size: 18px;
-            border: 2px solid rgba(255,255,255,0.4);
-            border-radius: 12px;
-            box-sizing: border-box;
-            text-align: center;
-            background: rgba(255,255,255,0.12);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        input::placeholder { color: rgba(255,255,255,0.7); }
-
-        input:focus {
-            border-color: #fff;
-            background: rgba(255,255,255,0.22);
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
-        }
-
-        button {
-            width: 100%;
-            padding: 16px;
-            margin: 16px 0 8px;
-            font-size: 20px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            color: white;
-            cursor: pointer;
-            background: linear-gradient(90deg, #10b981, #059669);
-            transition: all 0.3s ease;
-        }
-
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(16,185,129,0.4);
-        }
-
-        .btn-voice {
-            background: #3b82f6;
-            font-size: 28px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin: 20px auto;
-            display: block;
-        }
-
-        .error {
-            color: #ff6b6b;
-            text-align: center;
-            margin: 12px 0;
-            font-weight: 600;
-            background: rgba(0,0,0,0.4);
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .hidden { display: none; }
-
-        #timer {
-            text-align: center;
-            font-size: 28px;
-            color: #fee2e2;
-            font-weight: bold;
-            margin: 20px 0;
-            background: rgba(220,38,38,0.25);
-            padding: 12px;
-            border-radius: 12px;
-        }
-
-        .progress {
-            height: 12px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 6px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #10b981, #059669);
-            width: 0%;
-            transition: width 0.6s ease;
-        }
-
-        .question strong {
-            font-size: 42px;
-            display: block;
-            margin: 40px 0 25px;
-            color: #fff;
-            text-align: center;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .wrong-list {
-            font-size: 17px;
-            line-height: 1.8;
-            margin: 25px 0;
-            background: rgba(254,243,199,0.9);
-            color: #92400e;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid #ca8a04;
-        }
-
-        .footer {
-            position: relative;
-            z-index: 2;
-            margin-top: 40px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.85);
-            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST KOSA KATA</title>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background: url('https://images.pexels.com/photos/30811794/pexels-photo-30811794/free-photo-of-cherry-blossoms-in-full-bloom-in-tokyo.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #fff;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 80%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 40px 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.18);
+      animation: fadeIn 0.8s ease-out;
+    }
+    h1 { font-size: 32px; text-align: center; margin: 0 0 30px; color: #fff; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+    input[type="text"], input[type="password"] {
+      width: 100%; padding: 16px; margin: 14px 0; font-size: 18px; border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 12px; box-sizing: border-box; background: rgba(255,255,255,0.12); color: white; transition: all 0.3s ease;
+    }
+    input::placeholder { color: rgba(255,255,255,0.7); }
+    input:focus { border-color: #fff; background: rgba(255,255,255,0.22); outline: none; box-shadow: 0 0 0 4px rgba(255,255,255,0.15); }
+    button {
+      width: 100%; padding: 16px; margin: 16px 0 8px; font-size: 20px; font-weight: bold; border: none;
+      border-radius: 12px; color: white; cursor: pointer; background: linear-gradient(90deg, #10b981, #059669);
+      transition: all 0.3s ease;
+    }
+    button:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(16,185,129,0.4); }
+    .error { color: #ff6b6b; text-align: center; margin: 12px 0; font-weight: 600; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 10px; }
+    .hidden { display: none !important; }
+    #timer { text-align: center; font-size: 28px; color: #fee2e2; font-weight: bold; margin: 20px 0; background: rgba(220,38,38,0.25); padding: 12px; border-radius: 12px; }
+    .progress { height: 12px; background: rgba(255,255,255,0.15); border-radius: 6px; margin: 20px 0; overflow: hidden; }
+    .progress-bar { height: 100%; background: linear-gradient(90deg, #10b981, #059669); width: 0%; transition: width 0.6s ease; }
+    .question strong { font-size: 42px; display: block; margin: 40px 0 25px; color: #fff; text-align: center; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+    .wrong-list { font-size: 17px; line-height: 1.8; margin: 25px 0; background: rgba(254,243,199,0.9); color: #92400e; padding: 20px; border-radius: 12px; border-left: 5px solid #ca8a04; }
+    .footer { position: relative; z-index: 2; margin-top: 40px; font-size: 14px; color: rgba(255,255,255,0.85); text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+  </style>
 </head>
 <body>
-
-<div class="container" id="loginPage">
-    <h1>Kosa Kata Korea</h1>
-    <input type="text" id="username" placeholder="Nama / Username" autocomplete="off">
-    <input type="password" id="password" placeholder="Password" autocomplete="off">
-    <input type="text" id="kodeSoal" placeholder="Kode Akses Soal" autocomplete="off" style="text-transform:uppercase;">
+  <!-- LOGIN PAGE -->
+  <div class="container" id="loginPage">
+    <h1>TEST KOSA KATA</h1>
+    <input type="text" id="username" placeholder="Username / 이름" autocomplete="off">
+    <input type="password" id="password" placeholder="Password / 비밀번호" autocomplete="off">
+    <input type="text" id="kodeSoal" placeholder="Kode Test / 시험코드" autocomplete="off" style="text-transform:uppercase;">
     <div class="error" id="errorMsg"></div>
-    <button class="btn-login" onclick="login()">MULAI BELAJAR</button>
-</div>
+    <button onclick="login()">MULAI TEST / 시작</button>
+  </div>
 
-<div class="container hidden" id="quizPage">
-    <h1>Kosa Kata Korea</h1>
-    <div id="timer">00:00</div>
+  <!-- QUIZ PAGE -->
+  <div class="container hidden" id="quizPage">
+    <h1>TEST KOSA KATA</h1>
+    <div id="timer">05:00</div>
     <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-    
     <div id="questionArea">
-        <div class="question"><strong id="currentWord"></strong></div>
-        <input type="text" id="answerInput" placeholder="Ketik jawabanmu di sini" autocomplete="off">
-        <button class="btn-voice" onclick="startVoiceRecognition()">🎤</button>
-        <button onclick="submitAnswer()">KIRIM JAWABAN</button>
+      <div class="question"><strong id="currentWord"></strong></div>
+      <input type="text" id="answerInput" placeholder="Ketik jawaban di sini" autocomplete="off">
+      <button onclick="submitAnswer()">SUBMIT</button>
     </div>
-
     <div id="resultArea" class="hidden">
-        <h2 style="color:#fff; margin-bottom:20px;">Hasil Latihan</h2>
-        <p id="scoreText" style="font-size:28px; font-weight:bold; color:#d1fae5;"></p>
-        <div id="wrongWords" class="wrong-list hidden"></div>
-        <button onclick="restartQuiz()" style="background:linear-gradient(90deg, #3b82f6, #2563eb);">ULANGI LAGI</button>
+      <h2 style="color:#fff; margin-bottom:20px;">Hasil Test</h2>
+      <p id="scoreText" style="font-size:28px; font-weight:bold; color:#d1fae5;"></p>
+      <div id="wrongWords" class="wrong-list hidden"></div>
+      <button onclick="restartQuiz()" style="background:linear-gradient(90deg, #3b82f6, #2563eb);">ULANGI LAGI</button>
     </div>
-</div>
+  </div>
 
-<div class="footer">
-    © 2026 Denzuka. Hak cipta dilindungi undang-undang.
-</div>
+  <div class="footer">
+    © 2026 Denzuka - Kim Jongun. All rights reserved.
+  </div>
 
-<script>
-// Script tetap sama seperti versi sebelumnya (validUsers, kodeMapping, login, quiz logic, dll)
-const validUsers = {
-    "siswa01": "12345",
-    "siswa02": "abc123",
-    "guru": "guru456"
-};
+  <script>
+    const validUsers = {
+      "siswa01": "12345",
+      "siswa02": "abc123",
+      "guru": "guru456",
+      "admin": "admin123"
+    };
+    const kodeMapping = {
+      "H29976": "soal1.json",
+      "R43213": "soal2.json"
+    };
+    let questions = [];
+    let currentIndex = 0;
+    let score = 0;
+    let wrongList = [];
+    let timerInterval;
+    let timeLeft = 300; // 5 menit
 
-const kodeMapping = {
-    "H29976": "soal1",
-    "R43213": "soal2"
-    // Tambah sendiri nanti
-};
-
-let questions = [];
-let currentIndex = 0;
-let score = 0;
-let wrongList = [];
-let timerInterval;
-let timeLeft = 0;
-
-const synonyms = {
-    "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
-    "ngantuk": ["mengantuk", "kantuk", "mengantuk banget"],
-    "senang": ["bahagia", "gembira", "seneng", "senamg", "happy"],
-    "lapar": ["kelaperan", "laper"],
-    "haus": ["kehausan"],
-    "malam": ["malem"],
-    "satu": ["1"], "dua": ["2"], "tiga": ["3"], "empat": ["4"], "lima": ["5"],
-    "halo": ["haloo", "hello", "hi", "helo"],
-    "terima kasih": ["thanks", "makasih", "thank you", "trims"],
-    "maaf": ["sorry", "mohon maaf", "maap"]
-};
-
-function normalizeAnswer(answer) {
-    let norm = answer.toLowerCase().trim().replace(/[^a-z0-9\s]/g, '');
-    for (const [key, vals] of Object.entries(synonyms)) {
-        if (vals.some(v => norm.includes(v.toLowerCase())) || norm.includes(key)) {
-            return key;
-        }
-    }
-    return norm;
-}
-
-function levenshtein(a, b) {
-    const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
-    for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
-    for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
-    for (let j = 1; j <= b.length; j++) {
-        for (let i = 1; i <= a.length; i++) {
-            const indicator = a[i-1] === b[j-1] ? 0 : 1;
-            matrix[j][i] = Math.min(
-                matrix[j][i-1] + 1,
-                matrix[j-1][i] + 1,
-                matrix[j-1][i-1] + indicator
-            );
-        }
-    }
-    return matrix[b.length][a.length];
-}
-
-function login() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value.trim();
-    const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
-    const error = document.getElementById("errorMsg");
-
-    if (!user || !pass || !kode) {
-        error.textContent = "Lengkapi semua kolom!";
-        return;
-    }
-
-    if (!validUsers[user] || validUsers[user] !== pass) {
-        error.textContent = "Username atau password salah!";
-        return;
-    }
-
-    const fileName = kodeMapping[kode];
-    if (!fileName) {
-        error.textContent = "Kode akses tidak valid!";
-        return;
-    }
-
-    loadQuestions(fileName)
-        .then(() => {
-            document.getElementById("loginPage").classList.add("hidden");
-            document.getElementById("quizPage").classList.remove("hidden");
-            startQuiz();
-        })
-        .catch(err => {
-            error.textContent = "Gagal memuat soal. Hubungi admin.";
-            console.error(err);
-        });
-}
-
-async function loadQuestions(fileName) {
-    try {
-        const response = await fetch(`${fileName}.json`);
-        if (!response.ok) throw new Error(`File ${fileName}.json tidak ditemukan`);
-        questions = await response.json();
-        if (questions.length === 0) throw new Error("Soal kosong");
-    } catch (e) {
-        throw e;
-    }
-}
-
-function startQuiz() {
-    currentIndex = 0;
-    score = 0;
-    wrongList = [];
-    timeLeft = questions.length * 30;
-    document.getElementById("progressBar").style.width = "0%";
-    nextQuestion();
-    startTimer();
-}
-
-function nextQuestion() {
-    if (currentIndex >= questions.length) {
-        finishQuiz();
-        return;
-    }
-
-    const q = questions[currentIndex];
-    document.getElementById("currentWord").textContent = q.korea;
-    document.getElementById("answerInput").value = "";
-    document.getElementById("answerInput").focus();
-
-    const progress = ((currentIndex + 1) / questions.length) * 100;
-    document.getElementById("progressBar").style.width = `${progress}%`;
-}
-
-function submitAnswer() {
-    const userAns = document.getElementById("answerInput").value;
-    checkAnswer(userAns);
-    currentIndex++;
-    nextQuestion();
-}
-
-function checkAnswer(answer) {
-    const q = questions[currentIndex];
-    const correct = q.indo.toLowerCase();
-    const normAns = normalizeAnswer(answer);
-    const distance = levenshtein(normAns, correct);
-
-    if (normAns === correct || distance <= 3) {
-        score++;
-    } else if (answer.trim()) {
-        wrongList.push({
-            word: q.korea,
-            correct: q.indo,
-            your: answer.trim()
-        });
-    }
-}
-
-function startTimer() {
-    clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
-        const s = (timeLeft % 60).toString().padStart(2, '0');
-        document.getElementById("timer").textContent = `${m}:${s}`;
-
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            finishQuiz();
-        }
-    }, 1000);
-}
-
-function finishQuiz() {
-    clearInterval(timerInterval);
-    document.getElementById("questionArea").classList.add("hidden");
-    document.getElementById("resultArea").classList.remove("hidden");
-
-    const percent = Math.round((score / questions.length) * 100);
-    document.getElementById("scoreText").textContent = 
-        `Skor: ${score}/${questions.length} (${percent}%)`;
-
-    const wrongDiv = document.getElementById("wrongWords");
-    wrongDiv.innerHTML = "";
-    if (wrongList.length > 0) {
-        wrongDiv.classList.remove("hidden");
-        wrongDiv.innerHTML = "<strong>Kata yang perlu diperbaiki:</strong><br>";
-        wrongList.forEach(item => {
-            wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (kamu: ${item.your})<br>`;
-        });
-    } else {
-        wrongDiv.classList.add("hidden");
-    }
-}
-
-function restartQuiz() {
-    document.getElementById("resultArea").classList.add("hidden");
-    document.getElementById("questionArea").classList.remove("hidden");
-    document.getElementById("loginPage").classList.remove("hidden");
-    document.getElementById("quizPage").classList.add("hidden");
-    document.getElementById("errorMsg").textContent = "";
-}
-
-function startVoiceRecognition() {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-        alert("Browser tidak support voice recognition.");
-        return;
-    }
-
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'id-ID';
-    recognition.interimResults = false;
-
-    recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript.trim();
-        document.getElementById("answerInput").value = transcript;
+    const synonyms = {
+      "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
+      "ngantuk": ["mengantuk", "kantuk"],
+      "senang": ["bahagia", "gembira", "seneng", "happy"],
+      "lapar": ["kelaperan", "laper"],
+      "haus": ["kehausan"],
+      "malam": ["malem"],
+      "satu": ["1"], "dua": ["2"], "tiga": ["3"], "empat": ["4"], "lima": ["5"],
+      "halo": ["haloo", "hello", "hi"],
+      "terima kasih": ["thanks", "makasih", "thank you"],
+      "maaf": ["sorry", "mohon maaf", "maap"],
+      "kulkas": ["lemari es"],
+      "televisi": ["tv"],
+      "tempat tidur": ["kasur"]
     };
 
-    recognition.onerror = () => alert("Gagal mendengar suara. Coba lagi.");
-    recognition.start();
-}
-</script>
+    function normalizeAnswer(answer) {
+      let norm = answer.toLowerCase().trim().replace(/[^a-z0-9\s]/g, '');
+      for (const [key, vals] of Object.entries(synonyms)) {
+        if (vals.some(v => norm.includes(v.toLowerCase())) || norm.includes(key)) {
+          return key;
+        }
+      }
+      return norm;
+    }
+
+    function levenshtein(a, b) {
+      const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
+      for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+      for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+      for (let j = 1; j <= b.length; j++) {
+        for (let i = 1; i <= a.length; i++) {
+          const indicator = a[i-1] === b[j-1] ? 0 : 1;
+          matrix[j][i] = Math.min(
+            matrix[j][i-1] + 1,
+            matrix[j-1][i] + 1,
+            matrix[j-1][i-1] + indicator
+          );
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    async function loadQuestions(fileName) {
+      const response = await fetch(fileName);
+      if (!response.ok) throw new Error("File soal tidak ditemukan atau error");
+      const data = await response.json();
+      questions = data.sort(() => 0.5 - Math.random());
+    }
+
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
+      const error = document.getElementById("errorMsg");
+      error.textContent = "";
+      if (!user || !pass || !kode) return error.textContent = "Lengkapi semua kolom!";
+      if (!validUsers[user] || validUsers[user] !== pass) return error.textContent = "Username atau password salah!";
+      const fileName = kodeMapping[kode];
+      if (!fileName) return error.textContent = "Kode akses tidak valid!";
+
+      loadQuestions(fileName)
+        .then(() => {
+          document.getElementById("loginPage").classList.add("hidden");
+          document.getElementById("quizPage").classList.remove("hidden");
+          startQuiz();
+        })
+        .catch(err => {
+          error.textContent = "Gagal memuat soal: " + err.message;
+          console.error(err);
+        });
+    }
+
+    function startQuiz() {
+      currentIndex = 0;
+      score = 0;
+      wrongList = [];
+      timeLeft = 300;
+      updateTimer();
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) finishQuiz();
+      }, 1000);
+      nextQuestion();
+    }
+
+    function updateTimer() {
+      const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+      const s = String(timeLeft % 60).padStart(2, '0');
+      document.getElementById("timer").textContent = `${m}:${s}`;
+    }
+
+    function updateProgress() {
+      const percent = ((currentIndex) / questions.length) * 100;
+      document.getElementById("progressBar").style.width = percent + "%";
+    }
+
+    function nextQuestion() {
+      if (currentIndex >= questions.length) {
+        finishQuiz();
+        return;
+      }
+      document.getElementById("currentWord").textContent = questions[currentIndex].korea;
+      document.getElementById("answerInput").value = "";
+      document.getElementById("answerInput").focus();
+      updateProgress();
+    }
+
+    function submitAnswer() {
+      const answer = document.getElementById("answerInput").value.trim();
+      if (!answer) return;
+      checkAnswer(answer);
+    }
+
+    function checkAnswer(userAnswer) {
+      const q = questions[currentIndex];
+      const correct = q.indo.toLowerCase().trim();
+      const normUser = normalizeAnswer(userAnswer);
+      const normCorrect = normalizeAnswer(correct);
+      const distance = levenshtein(normUser, normCorrect);
+      const isCorrect = (normUser === normCorrect) || (distance <= 2) || correct.includes(normUser) || normUser.includes(correct);
+
+      if (!isCorrect) {
+        wrongList.push({ word: q.korea, correct: q.indo, your: userAnswer });
+      } else {
+        score++;
+      }
+      currentIndex++;
+      nextQuestion();
+    }
+
+    function finishQuiz() {
+      clearInterval(timerInterval);
+      document.getElementById("questionArea").classList.add("hidden");
+      document.getElementById("resultArea").classList.remove("hidden");
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").textContent = `Skor: ${score}/${questions.length} (${percent}%)`;
+
+      const wrongDiv = document.getElementById("wrongWords");
+      wrongDiv.innerHTML = "";
+      if (wrongList.length > 0) {
+        wrongDiv.classList.remove("hidden");
+        wrongDiv.innerHTML = "<strong>Kata yang salah:</strong><br>";
+        wrongList.forEach(item => {
+          wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (jawaban kamu: ${item.your})<br>`;
+        });
+      } else {
+        wrongDiv.classList.add("hidden");
+      }
+
+      // Simpan hasil ke localStorage
+      const username = document.getElementById("username").value.trim();
+      const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
+      const result = {
+        username,
+        kode,
+        score,
+        total: questions.length,
+        percent,
+        wrongList,
+        date: new Date().toLocaleString('id-ID')
+      };
+      let results = JSON.parse(localStorage.getItem("testResults") || "[]");
+      results.push(result);
+      localStorage.setItem("testResults", JSON.stringify(results));
+    }
+
+    function restartQuiz() {
+      document.getElementById("resultArea").classList.add("hidden");
+      document.getElementById("questionArea").classList.remove("hidden");
+      document.getElementById("quizPage").classList.add("hidden");
+      document.getElementById("loginPage").classList.remove("hidden");
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("kodeSoal").value = "";
+      document.getElementById("errorMsg").textContent = "";
+    }
+  </script>
 </body>
 </html>
