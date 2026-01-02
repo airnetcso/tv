@@ -47,7 +47,6 @@
     <div class="error" id="errorMsg"></div>
     <button onclick="login()">MULAI TEST / 시작</button>
   </div>
-
   <div class="container hidden" id="quizPage">
     <h1>TEST KOSA KATA</h1>
     <div id="timer">30:00</div>
@@ -64,7 +63,6 @@
       <button onclick="restartQuiz()" style="background:linear-gradient(90deg, #3b82f6, #2563eb);">ULANGI LAGI</button>
     </div>
   </div>
-
   <div class="footer">© 2026 Denzuka - Kim Jongun. All rights reserved.</div>
 
   <script>
@@ -73,13 +71,14 @@
       "R43213": "soal2.json",
       "Z21985": "soal3.json"
     };
-
     let questions = [];
     let currentIndex = 0;
     let score = 0;
     let wrongList = [];
     let timerInterval;
     let timeLeft = 1800; // 30 menit
+    let username = "";
+    let kodeSoal = "";
 
     const synonyms = {
       "penyedot debu": ["vakum", "vacum", "vacuum", "vacuum cleaner", "pengisap debu", "penghisap debu"],
@@ -129,15 +128,14 @@
     }
 
     function login() {
-      const user = document.getElementById("username").value.trim();
+      username = document.getElementById("username").value.trim();
       const pass = document.getElementById("password").value.trim();
-      const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
+      kodeSoal = document.getElementById("kodeSoal").value.trim().toUpperCase();
       const error = document.getElementById("errorMsg");
       error.textContent = "";
-      if (!user || !pass || !kode) return error.textContent = "Lengkapi semua kolom!";
-      const fileName = kodeMapping[kode];
+      if (!username || !pass || !kodeSoal) return error.textContent = "Lengkapi semua kolom!";
+      const fileName = kodeMapping[kodeSoal];
       if (!fileName) return error.textContent = "Kode akses tidak valid!";
-
       loadQuestions(fileName)
         .then(() => {
           document.getElementById("loginPage").classList.add("hidden");
@@ -199,7 +197,6 @@
       const normCorrect = normalizeAnswer(correct);
       const distance = levenshtein(normUser, normCorrect);
       const isCorrect = (normUser === normCorrect) || (distance <= 2);
-
       if (!isCorrect) {
         wrongList.push({
           word: questions[currentIndex].korea,
@@ -231,7 +228,6 @@
       } else {
         motivasi = "Jangan menyerah ya! Terus latihan, pasti naik kok!";
       }
-
       const motivasiEl = document.createElement("p");
       motivasiEl.textContent = motivasi;
       motivasiEl.style.fontSize = "24px";
@@ -251,6 +247,25 @@
           wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (jawaban kamu: ${item.your})<br>`;
         });
       }
+
+      // === KIRIM HASIL KE GOOGLE SHEETS ===
+      // Ganti FORM_ID dan entry.ID dengan yang asli dari form kamu
+      const postUrl = "https://docs.google.com/forms/d/e/[GANTI_DENGAN_FORM_ID_KAMU]/formResponse";
+
+      const params = new URLSearchParams();
+      params.append("entry.[GANTI1]", username);                 // Username
+      params.append("entry.[GANTI2]", kodeSoal || "Tidak ada");  // Kode Test
+      params.append("entry.[GANTI3]", `${score}/${questions.length}`); // Skor
+      params.append("entry.[GANTI4]", "Latihan Kosa Kata");      // Jenis aplikasi
+      params.append("entry.[GANTI5]", `${percent}%`);            // Persentase
+
+      fetch(postUrl, {
+        method: "POST",
+        mode: "no-cors",
+        body: params
+      }).catch(() => {
+        // Kalau gagal kirim, tetap lanjut (silent)
+      });
     }
 
     function restartQuiz() {
@@ -266,4 +281,3 @@
   </script>
 </body>
 </html>
-
