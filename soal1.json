@@ -1,9 +1,202 @@
 [
-    {"korea": "야채", "indo": "sayur"},
-    {"korea": "졸리다", "indo": "ngantuk"},
-    {"korea": "배고프다", "indo": "lapar"},
-    {"korea": "배부르다", "indo": "kenyang"},
-    {"korea": "목마르다", "indo": "haus"},
-    {"korea": "안녕하세요", "indo": "halo"},
-    {"korea": "감사합니다", "indo": "terima kasih"}
+  {
+    "korea": "집",
+    "indo": "rumah"
+  },
+  {
+    "korea": "문",
+    "indo": "pintu"
+  },
+  {
+    "korea": "창문",
+    "indo": "jendela"
+  },
+  {
+    "korea": "침대",
+    "indo": "tempat tidur"
+  },
+  {
+    "korea": "소파",
+    "indo": "sofa"
+  },
+  {
+    "korea": "테이블",
+    "indo": "meja"
+  },
+  {
+    "korea": "의자",
+    "indo": "kursi"
+  },
+  {
+    "korea": "냉장고",
+    "indo": "kulkas / lemari es"
+  },
+  {
+    "korea": "텔레비전",
+    "indo": "televisi / TV"
+  },
+  {
+    "korea": "책",
+    "indo": "buku"
+  },
+  {
+    "korea": "옷",
+    "indo": "pakaian / baju"
+  },
+  {
+    "korea": "셔츠",
+    "indo": "kemeja"
+  },
+  {
+    "korea": "바지",
+    "indo": "celana panjang"
+  },
+  {
+    "korea": "치마",
+    "indo": "rok"
+  },
+  {
+    "korea": "자켓",
+    "indo": "jaket"
+  },
+  {
+    "korea": "신발",
+    "indo": "sepatu"
+  },
+  {
+    "korea": "모자",
+    "indo": "topi"
+  },
+  {
+    "korea": "양말",
+    "indo": "kaos kaki"
+  },
+  {
+    "korea": "코트",
+    "indo": "mantel / jas hujan"
+  },
+  {
+    "korea": "스웨터",
+    "indo": "sweater"
+  },
+  {
+    "korea": "칼",
+    "indo": "pisau"
+  },
+  {
+    "korea": "가위",
+    "indo": "gunting"
+  },
+  {
+    "korea": "망치",
+    "indo": "palu"
+  },
+  {
+    "korea": "드라이버",
+    "indo": "obeng / screwdriver"
+  },
+  {
+    "korea": "열쇠",
+    "indo": "kunci"
+  },
+  {
+    "korea": "전화기",
+    "indo": "telepon"
+  },
+  {
+    "korea": "시계",
+    "indo": "jam"
+  },
+  {
+    "korea": "빗",
+    "indo": "sisir"
+  },
+  {
+    "korea": "우산",
+    "indo": "payung"
+  },
+  {
+    "korea": "배",
+    "indo": "perut / perahu / kapal / pir (buah)"
+  },
+  {
+    "korea": "자전거",
+    "indo": "sepeda"
+  },
+  {
+    "korea": "자동차",
+    "indo": "mobil"
+  },
+  {
+    "korea": "버스",
+    "indo": "bus"
+  },
+  {
+    "korea": "택시",
+    "indo": "taksi"
+  },
+  {
+    "korea": "기차",
+    "indo": "kereta api"
+  },
+  {
+    "korea": "비행기",
+    "indo": "pesawat terbang"
+  },
+  {
+    "korea": "오토바이",
+    "indo": "sepeda motor"
+  },
+  {
+    "korea": "트럭",
+    "indo": "truk"
+  },
+  {
+    "korea": "배",
+    "indo": "perut / perahu / kapal / pir"
+  },
+  {
+    "korea": "빛",
+    "indo": "cahaya / lampu"
+  },
+  {
+    "korea": "물",
+    "indo": "air"
+  },
+  {
+    "korea": "불",
+    "indo": "api"
+  },
+  {
+    "korea": "눈",
+    "indo": "mata / salju"
+  },
+  {
+    "korea": "손",
+    "indo": "tangan"
+  },
+  {
+    "korea": "발",
+    "indo": "kaki"
+  },
+  {
+    "korea": "머리",
+    "indo": "kepala / rambut"
+  },
+  {
+    "korea": "귀",
+    "indo": "telinga"
+  },
+  {
+    "korea": "입",
+    "indo": "mulut"
+  },
+  {
+    "korea": "코",
+    "indo": "hidung"
+  },
+  {
+    "korea": "눈",
+    "indo": "mata / salju"
+  }
 ]
