@@ -3,80 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kosa Kata Korea - Super Longgar</title>
+    <title>Kosa Kata Korea - Login</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #e8f5e9; margin: 0; padding: 10px; }
-        .container { max-width: 100%; margin: auto; background: white; border-radius: 15px; padding: 25px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
-        h1 { font-size: 26px; text-align: center; margin: 15px 0; color: #2e7d32; }
-        input[type="text"] { width: 100%; padding: 20px; margin: 20px 0; font-size: 24px; border-radius: 12px; border: 3px solid #a5d6a7; box-sizing: border-box; text-align: center; }
-        button { width: 100%; padding: 20px; margin: 12px 0; font-size: 22px; border-radius: 12px; border: none; color: white; font-weight: bold; cursor: pointer; }
-        .btn-start { background: #4caf50; }
-        .btn-next { background: #43a047; }
-        .btn-submit { background: #2e7d32; }
-        .btn-voice { background: #1976d2; font-size: 32px; padding: 30px; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9); 
+            margin: 0; 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 15px; 
+        }
+        .container { 
+            max-width: 420px; 
+            width: 100%; 
+            background: white; 
+            border-radius: 16px; 
+            padding: 30px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+        }
+        h1 { 
+            font-size: 28px; 
+            text-align: center; 
+            margin: 0 0 25px; 
+            color: #2e7d32; 
+        }
+        input[type="text"], input[type="password"] { 
+            width: 100%; 
+            padding: 14px; 
+            margin: 12px 0; 
+            font-size: 18px; 
+            border: 2px solid #a5d6a7; 
+            border-radius: 10px; 
+            box-sizing: border-box; 
+            text-align: center; 
+        }
+        button { 
+            width: 100%; 
+            padding: 16px; 
+            margin: 15px 0 10px; 
+            font-size: 20px; 
+            border: none; 
+            border-radius: 10px; 
+            color: white; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+        .btn-login { background: #4caf50; }
+        .btn-login:hover { background: #43a047; }
+        .btn-voice { background: #1976d2; font-size: 28px; padding: 25px; }
+        .error { color: #d32f2f; text-align: center; margin: 10px 0; font-weight: bold; }
         .hidden { display: none; }
-        #timer { text-align: center; font-size: 28px; color: #d50000; font-weight: bold; margin: 20px 0; background: #ffebee; padding: 10px; border-radius: 10px; }
-        .progress { height: 12px; background: #c8e6c9; border-radius: 6px; margin: 20px 0; overflow: hidden; }
-        .progress-bar { height: 100%; background: #4caf50; width: 0%; transition: width 0.4s; }
-        .question strong { font-size: 36px; display: block; margin: 40px 0; color: #2e7d32; }
-        .hint { font-size: 18px; color: #33691e; text-align: center; font-weight: bold; margin: 15px 0; }
-        .wrong-list { font-size: 18px; line-height: 1.8; margin: 20px 0; background: #fff3e0; padding: 15px; border-radius: 10px; }
-        .wrong-item { margin: 10px 0; }
+        #timer { 
+            text-align: center; 
+            font-size: 26px; 
+            color: #d50000; 
+            font-weight: bold; 
+            margin: 20px 0; 
+            background: #ffebee; 
+            padding: 12px; 
+            border-radius: 10px; 
+        }
+        .progress { height: 10px; background: #c8e6c9; border-radius: 5px; margin: 20px 0; overflow: hidden; }
+        .progress-bar { height: 100%; background: #4caf50; width: 0%; transition: width 0.5s; }
+        .question strong { font-size: 38px; display: block; margin: 35px 0 20px; color: #2e7d32; text-align: center; }
+        .hint { font-size: 18px; color: #33691e; text-align: center; margin: 15px 0; }
+        .wrong-list { font-size: 17px; line-height: 1.7; margin: 25px 0; background: #fff3e0; padding: 18px; border-radius: 10px; }
     </style>
 </head>
 <body>
-    <!-- Halaman sama seperti sebelumnya, aku skip biar nggak panjang, tapi script di bawah sudah diupdate -->
-    <!-- ... (copy dari versi sebelumnya untuk HTML body) ... -->
 
-    <script>
-        // ... (speech recognition & variabel sama) ...
+<div class="container" id="loginPage">
+    <h1>Login Kosa Kata Korea</h1>
+    <input type="text" id="username" placeholder="Nama / Username" autocomplete="off">
+    <input type="password" id="password" placeholder="Password" autocomplete="off">
+    <input type="text" id="kodeSoal" placeholder="Kode Soal (contoh: A, B, C)" autocomplete="off" style="text-transform:uppercase;">
+    <div class="error" id="errorMsg"></div>
+    <button class="btn-login" onclick="login()">MULAI BELAJAR</button>
+</div>
 
-        // Sinonim diperluas banget!
-        const synonyms = {
-            "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
-            "ngantuk": ["mengantuk", "kantuk", "mengantuk banget"],
-            "senang": ["bahagia", "gembira", "seneng", "senamg", "happy"],
-            "lapar": ["kelaperan", "laper"],
-            "haus": ["kehausan"],
-            "malam": ["malem"],
-            "satu": ["1"], "dua": ["2"], "tiga": ["3"], "empat": ["4"], "lima": ["5"],
-            "halo": ["haloo", "hello", "hi", "helo"],
-            "terima kasih": ["thanks", "makasih", "thank you", "trims"],
-            "maaf": ["sorry", "mohon maaf", "maap"]
-            // Tambah lagi kalau mau
-        };
+<div class="container hidden" id="quizPage">
+    <h1>Kosa Kata Korea</h1>
+    <div id="timer">00:00</div>
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+    
+    <div id="questionArea">
+        <div class="question"><strong id="currentWord"></strong></div>
+        <input type="text" id="answerInput" placeholder="Jawab di sini (bisa pakai suara)" autocomplete="off">
+        <button class="btn-voice" onclick="startVoiceRecognition()">🎤</button>
+        <button onclick="submitAnswer()">KIRIM JAWABAN</button>
+    </div>
 
-        function normalizeAnswer(answer) {
-            let norm = answer.toLowerCase().trim().replace(/[^a-z0-9\s]/g, ''); // hapus tanda baca
-            // Ganti sinonim
-            for (const [key, vals] of Object.entries(synonyms)) {
-                if (vals.some(v => norm.includes(v.toLowerCase()))) return key;
-                if (norm.includes(key)) return key;
-            }
-            return norm;
+    <div id="resultArea" class="hidden">
+        <h2 style="color:#2e7d32">Hasil Latihan</h2>
+        <p id="scoreText" style="font-size:24px; font-weight:bold;"></p>
+        <div id="wrongWords" class="wrong-list hidden"></div>
+        <button onclick="restartQuiz()">ULANGI LAGI</button>
+    </div>
+</div>
+
+<script>
+// ── DATA LOGIN & SOAL ────────────────────────────────────────────────────────
+const validUsers = {
+    "siswa01": "12345",
+    "siswa02": "abc123",
+    "guru": "guru456"
+};
+
+let questions = [];
+let currentIndex = 0;
+let score = 0;
+let wrongList = [];
+let timerInterval;
+let timeLeft = 0;
+let mode = 'indoToKorea'; // default, bisa diganti nanti
+
+// Sinonim & toleransi jawaban
+const synonyms = {
+    "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
+    "ngantuk": ["mengantuk", "kantuk", "mengantuk banget"],
+    "senang": ["bahagia", "gembira", "seneng", "senamg", "happy"],
+    "lapar": ["kelaperan", "laper"],
+    "haus": ["kehausan"],
+    "malam": ["malem"],
+    "satu": ["1"], "dua": ["2"], "tiga": ["3"], "empat": ["4"], "lima": ["5"],
+    "halo": ["haloo", "hello", "hi", "helo"],
+    "terima kasih": ["thanks", "makasih", "thank you", "trims"],
+    "maaf": ["sorry", "mohon maaf", "maap"]
+};
+
+function normalizeAnswer(answer) {
+    let norm = answer.toLowerCase().trim().replace(/[^a-z0-9\s]/g, '');
+    for (const [key, vals] of Object.entries(synonyms)) {
+        if (vals.some(v => norm.includes(v.toLowerCase())) || norm.includes(key)) {
+            return key;
         }
+    }
+    return norm;
+}
 
-        function levenshtein(a, b) {
-            // ... (sama seperti sebelumnya) ...
+function levenshtein(a, b) {
+    const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
+    for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+    for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+    for (let j = 1; j <= b.length; j++) {
+        for (let i = 1; i <= a.length; i++) {
+            const indicator = a[i-1] === b[j-1] ? 0 : 1;
+            matrix[j][i] = Math.min(
+                matrix[j][i-1] + 1,
+                matrix[j-1][i] + 1,
+                matrix[j-1][i-1] + indicator
+            );
         }
+    }
+    return matrix[b.length][a.length];
+}
 
-        // Di submitQuiz, ganti toleransi jadi <= 3
-        function submitQuiz() {
-            // ... (sama) ...
-            questions.forEach((q, i) => {
-                const correct = (mode === 'koreaToIndo' ? q.indo : q.korea);
-                const userAns = normalizeAnswer(userAnswers[i] || '');
-                const distance = levenshtein(userAns, correct.toLowerCase());
-                if (userAns && (userAns === correct.toLowerCase() || distance <= 3)) { // <= 3 huruf beda
-                    score++;
-                } else if (userAnswers[i]) {
-                    // ... tambah ke wrongList ...
-                }
-            });
-            // ... (sisa sama) ...
+// ── LOGIN ─────────────────────────────────────────────────────────────────────
+function login() {
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+    const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
+    const error = document.getElementById("errorMsg");
+
+    if (!user || !pass || !kode) {
+        error.textContent = "Lengkapi semua kolom!";
+        return;
+    }
+
+    if (!validUsers[user] || validUsers[user] !== pass) {
+        error.textContent = "Username atau password salah!";
+        return;
+    }
+
+    // Load soal berdasarkan kode
+    loadQuestions(kode)
+        .then(() => {
+            document.getElementById("loginPage").classList.add("hidden");
+            document.getElementById("quizPage").classList.remove("hidden");
+            startQuiz();
+        })
+        .catch(err => {
+            error.textContent = "Kode soal tidak ditemukan atau gagal dimuat!";
+            console.error(err);
+        });
+}
+
+async function loadQuestions(kode) {
+    try {
+        const response = await fetch(`soal${kode}.json`);
+        if (!response.ok) throw new Error("File soal tidak ditemukan");
+        questions = await response.json();
+        if (questions.length === 0) throw new Error("Soal kosong");
+    } catch (e) {
+        throw e;
+    }
+}
+
+// ── QUIZ LOGIC ────────────────────────────────────────────────────────────────
+function startQuiz() {
+    currentIndex = 0;
+    score = 0;
+    wrongList = [];
+    timeLeft = questions.length * 30; // 30 detik per soal contoh
+    document.getElementById("progressBar").style.width = "0%";
+    nextQuestion();
+    startTimer();
+}
+
+function nextQuestion() {
+    if (currentIndex >= questions.length) {
+        finishQuiz();
+        return;
+    }
+
+    const q = questions[currentIndex];
+    document.getElementById("currentWord").textContent = 
+        mode === 'koreaToIndo' ? q.korea : q.indo;
+    
+    document.getElementById("answerInput").value = "";
+    document.getElementById("answerInput").focus();
+
+    // Update progress
+    const progress = ((currentIndex + 1) / questions.length) * 100;
+    document.getElementById("progressBar").style.width = `${progress}%`;
+}
+
+function submitAnswer() {
+    const userAns = document.getElementById("answerInput").value;
+    checkAnswer(userAns);
+    currentIndex++;
+    nextQuestion();
+}
+
+function checkAnswer(answer) {
+    const q = questions[currentIndex];
+    const correct = (mode === 'koreaToIndo' ? q.indo : q.korea).toLowerCase();
+    const normAns = normalizeAnswer(answer);
+    const distance = levenshtein(normAns, correct);
+
+    if (normAns === correct || distance <= 3) {
+        score++;
+    } else if (answer.trim()) {
+        wrongList.push({
+            word: q.korea,
+            correct: correct,
+            your: answer.trim()
+        });
+    }
+}
+
+function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+        const s = (timeLeft % 60).toString().padStart(2, '0');
+        document.getElementById("timer").textContent = `${m}:${s}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            finishQuiz();
         }
+    }, 1000);
+}
 
-        // ... (sisa script sama seperti versi sebelumnya) ...
-    </script>
+function finishQuiz() {
+    clearInterval(timerInterval);
+    document.getElementById("questionArea").classList.add("hidden");
+    document.getElementById("resultArea").classList.remove("hidden");
+
+    const percent = Math.round((score / questions.length) * 100);
+    document.getElementById("scoreText").textContent = 
+        `Skor: ${score}/${questions.length} (${percent}%)`;
+
+    const wrongDiv = document.getElementById("wrongWords");
+    wrongDiv.innerHTML = "";
+    if (wrongList.length > 0) {
+        wrongDiv.classList.remove("hidden");
+        wrongDiv.innerHTML = "<strong>Kata yang perlu diperbaiki:</strong><br>";
+        wrongList.forEach(item => {
+            wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (kamu: ${item.your})<br>`;
+        });
+    } else {
+        wrongDiv.classList.add("hidden");
+    }
+}
+
+function restartQuiz() {
+    document.getElementById("resultArea").classList.add("hidden");
+    document.getElementById("questionArea").classList.remove("hidden");
+    document.getElementById("loginPage").classList.remove("hidden");
+    document.getElementById("quizPage").classList.add("hidden");
+    document.getElementById("errorMsg").textContent = "";
+}
+
+// ── VOICE RECOGNITION (opsional, tetap) ───────────────────────────────────────
+function startVoiceRecognition() {
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        alert("Browser kamu tidak support voice recognition.");
+        return;
+    }
+
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'id-ID'; // atau 'ko-KR' kalau mau Korea
+    recognition.interimResults = false;
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript.trim();
+        document.getElementById("answerInput").value = transcript;
+    };
+
+    recognition.onerror = () => alert("Gagal mendengar suara. Coba lagi.");
+    recognition.start();
+}
+</script>
 </body>
 </html>
