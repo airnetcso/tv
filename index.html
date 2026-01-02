@@ -190,7 +190,7 @@
 </head>
 <body>
 
-  <!-- LOGIN PAGE: MUNCUL PERTAMA (NO HIDDEN) -->
+  <!-- LOGIN PAGE -->
   <div class="container" id="loginPage">
     <h1>TEST KOSA KATA</h1>
     <input type="text" id="username" placeholder="Username / 이름" autocomplete="off">
@@ -200,10 +200,10 @@
     <button onclick="login()">MULAI TEST / 시작</button>
   </div>
 
-  <!-- QUIZ PAGE: HIDDEN DARI AWAL -->
+  <!-- QUIZ PAGE -->
   <div class="container hidden" id="quizPage">
     <h1>TEST KOSA KATA</h1>
-    <div id="timer">00:00</div>
+    <div id="timer">05:00</div>
     <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
 
     <div id="questionArea">
@@ -225,7 +225,7 @@
     © 2026 Denzuka - Kim Jongun. All rights reserved.
   </div>
 
-  <!-- MODAL PILIH MODE: HIDDEN DARI AWAL -->
+  <!-- MODAL MODE -->
   <div id="modeModal" class="hidden">
     <div class="modal-box">
       <h2>Pilih Cara Jawab</h2>
@@ -236,8 +236,6 @@
   </div>
 
   <script>
-    // ... (script lengkap sama seperti yang gue kasih sebelumnya, gue ulang full biar aman)
-
     const validUsers = {
       "siswa01": "12345",
       "siswa02": "abc123",
@@ -257,19 +255,57 @@
     let timerInterval;
     let timeLeft = 300; // 5 menit
     let answerMode = 'text';
-    let recognition;
+    let recognition = null;
 
-    const synonyms = { /* sama seperti sebelumnya */ };
+    const synonyms = {
+      "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
+      "ngantuk": ["mengantuk", "kantuk"],
+      "senang": ["bahagia", "gembira", "seneng", "happy"],
+      "lapar": ["kelaperan", "laper"],
+      "haus": ["kehausan"],
+      "malam": ["malem"],
+      "satu": ["1"], "dua": ["2"], "tiga": ["3"], "empat": ["4"], "lima": ["5"],
+      "halo": ["haloo", "hello", "hi"],
+      "terima kasih": ["thanks", "makasih", "thank you"],
+      "maaf": ["sorry", "mohon maaf", "maap"],
+      "kulkas": ["lemari es"],
+      "televisi": ["tv"],
+      "tempat tidur": ["kasur"]
+      // tambah kalau perlu
+    };
 
-    function normalizeAnswer(answer) { /* sama */ }
+    function normalizeAnswer(answer) {
+      let norm = answer.toLowerCase().trim().replace(/[^a-z0-9\s]/g, '');
+      for (const [key, vals] of Object.entries(synonyms)) {
+        if (vals.some(v => norm.includes(v.toLowerCase())) || norm.includes(key)) {
+          return key;
+        }
+      }
+      return norm;
+    }
 
-    function levenshtein(a, b) { /* sama */ }
+    function levenshtein(a, b) {
+      const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
+      for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+      for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+      for (let j = 1; j <= b.length; j++) {
+        for (let i = 1; i <= a.length; i++) {
+          const indicator = a[i-1] === b[j-1] ? 0 : 1;
+          matrix[j][i] = Math.min(
+            matrix[j][i-1] + 1,
+            matrix[j-1][i] + 1,
+            matrix[j-1][i-1] + indicator
+          );
+        }
+      }
+      return matrix[b.length][a.length];
+    }
 
     async function loadQuestions(fileName) {
       const response = await fetch(fileName);
-      if (!response.ok) throw new Error("File soal tidak ditemukan");
-      questions = await response.json();
-      questions = questions.sort(() => 0.5 - Math.random());
+      if (!response.ok) throw new Error("File soal tidak ditemukan atau error");
+      const data = await response.json();
+      questions = data.sort(() => 0.5 - Math.random());
     }
 
     function login() {
@@ -277,8 +313,8 @@
       const pass = document.getElementById("password").value.trim();
       const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
       const error = document.getElementById("errorMsg");
-
       error.textContent = "";
+
       if (!user || !pass || !kode) return error.textContent = "Lengkapi semua kolom!";
       if (!validUsers[user] || validUsers[user] !== pass) return error.textContent = "Username atau password salah!";
       const fileName = kodeMapping[kode];
@@ -287,10 +323,13 @@
       loadQuestions(fileName)
         .then(() => {
           document.getElementById("loginPage").classList.add("hidden");
-          document.getElementById("quizPage").classList.add("hidden"); // extra safety
+          document.getElementById("quizPage").classList.add("hidden");
           document.getElementById("modeModal").classList.remove("hidden");
         })
-        .catch(() => error.textContent = "Gagal memuat soal. Hubungi admin.");
+        .catch(err => {
+          error.textContent = "Gagal memuat soal: " + err.message;
+          console.error(err);
+        });
     }
 
     function startQuizWithMode(mode) {
@@ -301,6 +340,7 @@
       if (mode === 'voice') {
         document.getElementById("answerInput").classList.add("hidden");
         document.querySelector(".btn-voice").classList.remove("hidden");
+        startVoiceRecognition();
       } else {
         document.getElementById("answerInput").classList.remove("hidden");
         document.querySelector(".btn-voice").classList.add("hidden");
@@ -309,18 +349,113 @@
       startQuiz();
     }
 
-    // Sisa fungsi (startQuiz, updateTimer, updateProgress, nextQuestion, submitAnswer, checkAnswer, finishQuiz, restartQuiz, startVoiceRecognition) 
-    // copy dari kode gue sebelumnya, semua sama persis.
+    function startQuiz() {
+      currentIndex = 0;
+      score = 0;
+      wrongList = [];
+      timeLeft = 300;
+      updateTimer();
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) finishQuiz();
+      }, 1000);
+      nextQuestion();
+    }
 
-    // Contoh singkat finishQuiz & restartQuiz:
+    function updateTimer() {
+      const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+      const s = String(timeLeft % 60).padStart(2, '0');
+      document.getElementById("timer").textContent = `${m}:${s}`;
+    }
+
+    function updateProgress() {
+      const percent = ((currentIndex) / questions.length) * 100;
+      document.getElementById("progressBar").style.width = percent + "%";
+    }
+
+    function nextQuestion() {
+      if (currentIndex >= questions.length) {
+        finishQuiz();
+        return;
+      }
+      document.getElementById("currentWord").textContent = questions[currentIndex].korea;
+      document.getElementById("answerInput").value = "";
+      updateProgress();
+    }
+
+    function submitAnswer() {
+      const answer = document.getElementById("answerInput").value.trim();
+      if (!answer) return;
+      checkAnswer(answer);
+    }
+
+    function checkAnswer(userAnswer) {
+      const q = questions[currentIndex];
+      const correct = q.indo.toLowerCase().trim();
+      const normUser = normalizeAnswer(userAnswer);
+      const normCorrect = normalizeAnswer(correct);
+
+      const distance = levenshtein(normUser, normCorrect);
+      const isCorrect = (normUser === normCorrect) || (distance <= 2) || correct.includes(normUser) || normUser.includes(correct);
+
+      if (!isCorrect) {
+        wrongList.push({
+          word: q.korea,
+          correct: q.indo,
+          your: userAnswer
+        });
+      } else {
+        score++;
+      }
+
+      currentIndex++;
+      nextQuestion();
+
+      if (answerMode === 'voice') {
+        setTimeout(startVoiceRecognition, 500);
+      }
+    }
+
     function finishQuiz() {
       clearInterval(timerInterval);
+      if (recognition) recognition.stop();
+
       document.getElementById("questionArea").classList.add("hidden");
       document.getElementById("resultArea").classList.remove("hidden");
-      // ... (sisa kode score, wrong list, localStorage)
+
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").textContent = `Skor: ${score}/${questions.length} (${percent}%)`;
+
+      const wrongDiv = document.getElementById("wrongWords");
+      wrongDiv.innerHTML = "";
+      if (wrongList.length > 0) {
+        wrongDiv.classList.remove("hidden");
+        wrongDiv.innerHTML = "<strong>Kata yang salah:</strong><br>";
+        wrongList.forEach(item => {
+          wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (jawaban kamu: ${item.your})<br>`;
+        });
+      } else {
+        wrongDiv.classList.add("hidden");
+      }
+
+      // SIMPAN KE LOCALSTORAGE UNTUK ADMIN
+      const username = document.getElementById("username").value.trim();
+      const result = {
+        username,
+        score,
+        total: questions.length,
+        percent,
+        wrongList,
+        date: new Date().toLocaleString('id-ID')
+      };
+      let results = JSON.parse(localStorage.getItem("testResults") || "[]");
+      results.push(result);
+      localStorage.setItem("testResults", JSON.stringify(results));
     }
 
     function restartQuiz() {
+      if (recognition) recognition.stop();
       document.getElementById("resultArea").classList.add("hidden");
       document.getElementById("questionArea").classList.remove("hidden");
       document.getElementById("quizPage").classList.add("hidden");
@@ -331,8 +466,35 @@
       document.getElementById("errorMsg").textContent = "";
     }
 
-    // Voice recognition full seperti sebelumnya
+    function startVoiceRecognition() {
+      if (!('webkitSpeechRecognition' in window)) {
+        alert("Browser tidak support voice. Gunakan Chrome desktop/mobile!");
+        return;
+      }
+      recognition = new webkitSpeechRecognition();
+      recognition.lang = 'id-ID';
+      recognition.continuous = false;
+      recognition.interimResults = false;
 
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript.trim();
+        document.getElementById("answerInput").value = transcript;
+        checkAnswer(transcript);
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Voice error:", event.error);
+        if (event.error !== 'aborted') startVoiceRecognition();
+      };
+
+      recognition.onend = () => {
+        if (answerMode === 'voice' && currentIndex < questions.length) {
+          setTimeout(startVoiceRecognition, 300);
+        }
+      };
+
+      recognition.start();
+    }
   </script>
 </body>
 </html>
