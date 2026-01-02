@@ -10,51 +10,49 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* halaman statik, tidak bisa scroll */
-        }
-
         body {
             font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
             background: url('https://airnetcso.github.io/eps/image/bg1.jpg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 20px;
             color: #fff;
             position: relative;
         }
 
+        /* Overlay gelap untuk kontras teks */
         body::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.40);
+            background: rgba(0, 0, 0, 0.45);
             z-index: 1;
         }
 
-        .login-container, .quiz-container {
+        .container {
             position: relative;
             z-index: 2;
-            width: 80%;
+            width: 90%;
             max-width: 440px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-radius: 24px;
-            padding: 35px 25px; /* padding lebih kecil biar tidak terlalu tinggi di HP */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.3);
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+            border: 1px solid rgba(255,255,255,0.18);
             animation: fadeIn 0.8s ease-out;
-            box-sizing: border-box;
         }
 
         h1 {
             font-size: 32px;
             text-align: center;
-            margin: 0 0 25px;
+            margin: 0 0 30px;
             color: #fff;
             font-weight: 700;
             text-shadow: 0 2px 8px rgba(0,0,0,0.6);
@@ -63,32 +61,32 @@
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 16px 18px;
+            padding: 16px;
             margin: 14px 0;
             font-size: 18px;
-            border: 2px solid rgba(255,255,255,0.6);
+            border: 2px solid rgba(255,255,255,0.4);
             border-radius: 12px;
             box-sizing: border-box;
             text-align: center;
-            background: rgba(255,255,255,0.45);
+            background: rgba(255,255,255,0.12);
             color: white;
             transition: all 0.3s ease;
         }
 
-        input::placeholder { color: rgba(255,255,255,0.85); }
+        input::placeholder { color: rgba(255,255,255,0.7); }
 
         input:focus {
-            border-color: #ffffff;
-            background: rgba(255,255,255,0.55);
+            border-color: #fff;
+            background: rgba(255,255,255,0.22);
             outline: none;
-            box-shadow: 0 0 0 4px rgba(255,255,255,0.2);
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
         }
 
         button {
             width: 100%;
             padding: 16px;
-            margin: 18px 0 10px;
-            font-size: 19px;
+            margin: 16px 0 8px;
+            font-size: 20px;
             font-weight: bold;
             border: none;
             border-radius: 12px;
@@ -100,14 +98,14 @@
 
         button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(16,185,129,0.4);
+            box-shadow: 0 12px 25px rgba(16,185,129,0.4);
         }
 
         .btn-voice {
             background: #3b82f6;
-            font-size: 26px;
-            width: 65px;
-            height: 65px;
+            font-size: 28px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             margin: 20px auto;
             display: block;
@@ -123,24 +121,24 @@
             border-radius: 10px;
         }
 
-        .hidden { display: none !important; }
+        .hidden { display: none; }
 
         #timer {
             text-align: center;
-            font-size: 26px;
+            font-size: 28px;
             color: #fee2e2;
             font-weight: bold;
-            margin: 18px 0;
+            margin: 20px 0;
             background: rgba(220,38,38,0.25);
-            padding: 10px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 12px;
         }
 
         .progress {
-            height: 10px;
+            height: 12px;
             background: rgba(255,255,255,0.15);
-            border-radius: 5px;
-            margin: 18px 0;
+            border-radius: 6px;
+            margin: 20px 0;
             overflow: hidden;
         }
 
@@ -152,66 +150,48 @@
         }
 
         .question strong {
-            font-size: 38px;
+            font-size: 42px;
             display: block;
-            margin: 35px 0 20px;
+            margin: 40px 0 25px;
             color: #fff;
             text-align: center;
             font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .wrong-list {
-            font-size: 16px;
-            line-height: 1.7;
-            margin: 20px 0;
+            font-size: 17px;
+            line-height: 1.8;
+            margin: 25px 0;
             background: rgba(254,243,199,0.9);
             color: #92400e;
-            padding: 18px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 12px;
             border-left: 5px solid #ca8a04;
         }
 
         .footer {
             position: relative;
             z-index: 2;
-            margin-top: 30px;
+            margin-top: 40px;
             font-size: 14px;
             color: rgba(255,255,255,0.85);
             text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-            text-align: center;
-        }
-
-        /* Responsif khusus HP (fix box ke kiri & tinggi berlebih) */
-        @media (max-width: 768px) {
-            .login-container, .quiz-container {
-                width: 95%; /* hampir full lebar biar center & tidak ke kiri */
-                padding: 30px 20px; /* lebih pendek vertikal */
-                margin: 0 auto;
-            }
-
-            h1 { font-size: 28px; margin-bottom: 20px; }
-
-            input { padding: 15px 18px; margin: 12px 0; font-size: 17px; }
-
-            button { padding: 16px; font-size: 18px; }
-
-            .footer { margin-top: 25px; font-size: 13px; }
         }
     </style>
 </head>
 <body>
 
-<div class="login-container" id="loginPage">
+<div class="container" id="loginPage">
     <h1>Kosa Kata Korea</h1>
     <input type="text" id="username" placeholder="Nama / Username" autocomplete="off">
     <input type="password" id="password" placeholder="Password" autocomplete="off">
-    <input type="text" id="kodeSoal" placeholder="시험 코드 (Kode Akses)" autocomplete="off" style="text-transform:uppercase;">
+    <input type="text" id="kodeSoal" placeholder="Kode Akses Soal" autocomplete="off" style="text-transform:uppercase;">
     <div class="error" id="errorMsg"></div>
     <button class="btn-login" onclick="login()">MULAI BELAJAR</button>
 </div>
 
-<div class="quiz-container hidden" id="quizPage">
+<div class="container hidden" id="quizPage">
     <h1>Kosa Kata Korea</h1>
     <div id="timer">00:00</div>
     <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
@@ -232,11 +212,11 @@
 </div>
 
 <div class="footer">
-    © 2026 Denzuka - Kim Jongun. All rights reserved.
+    © 2026 Denzuka. Hak cipta dilindungi undang-undang.
 </div>
 
 <script>
-// Script lengkap (sama seperti sebelumnya)
+// Script tetap sama seperti versi sebelumnya (validUsers, kodeMapping, login, quiz logic, dll)
 const validUsers = {
     "siswa01": "12345",
     "siswa02": "abc123",
@@ -246,6 +226,7 @@ const validUsers = {
 const kodeMapping = {
     "H29976": "soal1",
     "R43213": "soal2"
+    // Tambah sendiri nanti
 };
 
 let questions = [];
@@ -456,6 +437,3 @@ function startVoiceRecognition() {
 </script>
 </body>
 </html>
-
-
-
