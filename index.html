@@ -22,6 +22,7 @@
             background: url('https://airnetcso.github.io/eps/image/bg1.jpg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: #fff;
@@ -39,20 +40,21 @@
         .login-container, .quiz-container {
             position: relative;
             z-index: 2;
-            width: 80%; /* ramping, sesuai requestmu */
+            width: 80%;
             max-width: 440px;
-            background: rgba(255, 255, 255, 0.40); /* transparan tapi box menonjol */
+            background: rgba(255, 255, 255, 0.40);
             border-radius: 24px;
-            padding: 40px 30px;
+            padding: 35px 25px; /* padding lebih kecil biar tidak terlalu tinggi di HP */
             box-shadow: 0 15px 40px rgba(0,0,0,0.35);
             border: 1px solid rgba(255,255,255,0.3);
             animation: fadeIn 0.8s ease-out;
+            box-sizing: border-box;
         }
 
         h1 {
             font-size: 32px;
             text-align: center;
-            margin: 0 0 30px;
+            margin: 0 0 25px;
             color: #fff;
             font-weight: 700;
             text-shadow: 0 2px 8px rgba(0,0,0,0.6);
@@ -61,8 +63,8 @@
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 18px 20px;
-            margin: 16px 0;
+            padding: 16px 18px;
+            margin: 14px 0;
             font-size: 18px;
             border: 2px solid rgba(255,255,255,0.6);
             border-radius: 12px;
@@ -84,9 +86,9 @@
 
         button {
             width: 100%;
-            padding: 18px;
-            margin: 20px 0 10px;
-            font-size: 20px;
+            padding: 16px;
+            margin: 18px 0 10px;
+            font-size: 19px;
             font-weight: bold;
             border: none;
             border-radius: 12px;
@@ -94,19 +96,18 @@
             cursor: pointer;
             background: linear-gradient(90deg, #10b981, #059669);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(16,185,129,0.3);
         }
 
         button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(16,185,129,0.5);
+            box-shadow: 0 10px 20px rgba(16,185,129,0.4);
         }
 
         .btn-voice {
             background: #3b82f6;
-            font-size: 28px;
-            width: 70px;
-            height: 70px;
+            font-size: 26px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             margin: 20px auto;
             display: block;
@@ -126,20 +127,20 @@
 
         #timer {
             text-align: center;
-            font-size: 28px;
+            font-size: 26px;
             color: #fee2e2;
             font-weight: bold;
-            margin: 20px 0;
+            margin: 18px 0;
             background: rgba(220,38,38,0.25);
-            padding: 12px;
-            border-radius: 12px;
+            padding: 10px;
+            border-radius: 10px;
         }
 
         .progress {
-            height: 12px;
+            height: 10px;
             background: rgba(255,255,255,0.15);
-            border-radius: 6px;
-            margin: 20px 0;
+            border-radius: 5px;
+            margin: 18px 0;
             overflow: hidden;
         }
 
@@ -151,51 +152,58 @@
         }
 
         .question strong {
-            font-size: 42px;
+            font-size: 38px;
             display: block;
-            margin: 40px 0 25px;
+            margin: 35px 0 20px;
             color: #fff;
             text-align: center;
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         }
 
         .wrong-list {
-            font-size: 17px;
-            line-height: 1.8;
-            margin: 25px 0;
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 20px 0;
             background: rgba(254,243,199,0.9);
             color: #92400e;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 18px;
+            border-radius: 10px;
             border-left: 5px solid #ca8a04;
         }
 
         .footer {
             position: relative;
             z-index: 2;
-            margin-top: 40px;
+            margin-top: 30px;
             font-size: 14px;
             color: rgba(255,255,255,0.85);
             text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+            text-align: center;
         }
 
-        /* Responsif HP */
+        /* Responsif khusus HP (fix box ke kiri & tinggi berlebih) */
         @media (max-width: 768px) {
             .login-container, .quiz-container {
-                width: 95%;
-                padding: 30px 20px;
+                width: 95%; /* hampir full lebar biar center & tidak ke kiri */
+                padding: 30px 20px; /* lebih pendek vertikal */
+                margin: 0 auto;
             }
-            h1 { font-size: 28px; margin-bottom: 25px; }
+
+            h1 { font-size: 28px; margin-bottom: 20px; }
+
             input { padding: 15px 18px; margin: 12px 0; font-size: 17px; }
+
             button { padding: 16px; font-size: 18px; }
-            .footer { margin-top: 30px; font-size: 13px; }
+
+            .footer { margin-top: 25px; font-size: 13px; }
         }
     </style>
 </head>
 <body>
 
 <div class="login-container" id="loginPage">
+    <h1>Kosa Kata Korea</h1>
     <input type="text" id="username" placeholder="Nama / Username" autocomplete="off">
     <input type="password" id="password" placeholder="Password" autocomplete="off">
     <input type="text" id="kodeSoal" placeholder="시험 코드 (Kode Akses)" autocomplete="off" style="text-transform:uppercase;">
@@ -228,7 +236,7 @@
 </div>
 
 <script>
-// Script lengkap
+// Script lengkap (sama seperti sebelumnya)
 const validUsers = {
     "siswa01": "12345",
     "siswa02": "abc123",
@@ -448,4 +456,3 @@ function startVoiceRecognition() {
 </script>
 </body>
 </html>
-
