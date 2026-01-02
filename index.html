@@ -33,12 +33,12 @@
             z-index: 1;
         }
 
-        .login-container {
+        .login-container, .quiz-container {
             position: relative;
             z-index: 2;
             width: 90%;
             max-width: 440px;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.25); /* transparan murni tanpa blur */
             border-radius: 24px;
             padding: 40px 30px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.35);
@@ -46,22 +46,137 @@
             animation: fadeIn 0.8s ease-out;
         }
 
-        .quiz-container {
-            position: relative;
-            z-index: 2;
-            width: 90%;
-            max-width: 440px;
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
-            border: 1px solid rgba(255,255,255,0.3);
-            animation: fadeIn 0.8s ease-out;
+        h1 {
+            font-size: 32px;
+            text-align: center;
+            margin: 0 0 30px;
+            color: #fff;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
         }
 
-        /* ... (sisa CSS seperti input, button, timer, dll tetap sama, copy dari versi sebelumnya) ... */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 16px;
+            margin: 14px 0;
+            font-size: 18px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-radius: 12px;
+            box-sizing: border-box;
+            text-align: center;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transition: all 0.3s ease;
+        }
 
-        .hidden { display: none !important; } /* tambah !important biar lebih kuat */
+        input::placeholder { color: rgba(255,255,255,0.7); }
+
+        input:focus {
+            border-color: #fff;
+            background: rgba(255,255,255,0.25);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            margin: 16px 0 8px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            background: linear-gradient(90deg, #10b981, #059669);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(16,185,129,0.4);
+        }
+
+        .btn-voice {
+            background: #3b82f6;
+            font-size: 28px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .error {
+            color: #ff6b6b;
+            text-align: center;
+            margin: 12px 0;
+            font-weight: 600;
+            background: rgba(0,0,0,0.4);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        #timer {
+            text-align: center;
+            font-size: 28px;
+            color: #fee2e2;
+            font-weight: bold;
+            margin: 20px 0;
+            background: rgba(220,38,38,0.25);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .progress {
+            height: 12px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #059669);
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        .question strong {
+            font-size: 42px;
+            display: block;
+            margin: 40px 0 25px;
+            color: #fff;
+            text-align: center;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .wrong-list {
+            font-size: 17px;
+            line-height: 1.8;
+            margin: 25px 0;
+            background: rgba(254,243,199,0.9);
+            color: #92400e;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #ca8a04;
+        }
+
+        .footer {
+            position: relative;
+            z-index: 2;
+            margin-top: 40px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
     </style>
 </head>
 <body>
@@ -100,7 +215,7 @@
 </div>
 
 <script>
-// Script tetap sama (login, quiz logic, dll) seperti versi sebelumnya
+// Script lengkap (sama seperti sebelumnya)
 const validUsers = {
     "siswa01": "12345",
     "siswa02": "abc123",
@@ -110,6 +225,7 @@ const validUsers = {
 const kodeMapping = {
     "H29976": "soal1",
     "R43213": "soal2"
+    // Tambah sendiri sesuai kebutuhan
 };
 
 let questions = [];
