@@ -5,65 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TEST KOSA KATA</title>
   <style>
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden; /* Matikan scroll total halaman */
+      height: 100%; margin: 0; padding: 0; overflow: hidden;
     }
     body {
       font-family: 'Segoe UI', system-ui, Arial, sans-serif;
       min-height: 100vh;
       background: url('https://images.pexels.com/photos/30811794/pexels-photo-30811794/free-photo-of-cherry-blossoms-in-full-bloom-in-tokyo.jpeg') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      color: #fff;
-      position: relative;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 20px; color: #fff; position: relative;
     }
-    body::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.3);
-      z-index: 1;
-    }
+    body::before { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.3); z-index: 1; }
     .container {
-      position: relative;
-      z-index: 2;
-      width: 80%;
-      max-width: 440px;
-      max-height: 90vh; /* Biar muat di layar kecil */
-      overflow-y: auto; /* Scroll cuma di dalam box kalau kepanjangan */
-      -webkit-overflow-scrolling: touch; /* Smooth scroll di iOS */
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-radius: 24px;
-      padding: 40px 30px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
-      border: 1px solid rgba(255,255,255,0.18);
-      animation: fadeIn 0.8s ease-out;
+      position: relative; z-index: 2; width: 80%; max-width: 440px; max-height: 90vh; overflow-y: auto;
+      -webkit-overflow-scrolling: touch; background: rgba(255,255,255,0.15); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px); border-radius: 24px; padding: 40px 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.18); animation: fadeIn 0.8s ease-out;
     }
     h1 { font-size: 32px; text-align: center; margin: 0 0 30px; color: #fff; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
-    input[type="text"], input[type="password"] {
-      width: 100%; padding: 16px; margin: 14px 0; font-size: 18px; border: 2px solid rgba(255,255,255,0.4);
-      border-radius: 12px; box-sizing: border-box; background: rgba(255,255,255,0.12); color: white; transition: all 0.3s ease;
-    }
+    input[type="text"], input[type="password"] { width: 100%; padding: 16px; margin: 14px 0; font-size: 18px; border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 12px; box-sizing: border-box; background: rgba(255,255,255,0.12); color: white; transition: all 0.3s ease; }
     input::placeholder { color: rgba(255,255,255,0.7); }
     input:focus { border-color: #fff; background: rgba(255,255,255,0.22); outline: none; box-shadow: 0 0 0 4px rgba(255,255,255,0.15); }
-    button {
-      width: 100%; padding: 16px; margin: 16px 0 8px; font-size: 20px; font-weight: bold; border: none;
-      border-radius: 12px; color: white; cursor: pointer; background: linear-gradient(90deg, #10b981, #059669);
-      transition: all 0.3s ease;
-    }
+    button { width: 100%; padding: 16px; margin: 16px 0 8px; font-size: 20px; font-weight: bold; border: none;
+      border-radius: 12px; color: white; cursor: pointer; background: linear-gradient(90deg, #10b981, #059669); transition: all 0.3s ease; }
     button:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(16,185,129,0.4); }
     .error { color: #ff6b6b; text-align: center; margin: 12px 0; font-weight: 600; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 10px; }
     .hidden { display: none !important; }
@@ -76,7 +43,6 @@
   </style>
 </head>
 <body>
-  <!-- LOGIN PAGE -->
   <div class="container" id="loginPage">
     <h1>TEST KOSA KATA</h1>
     <input type="text" id="username" placeholder="Username / 이름" autocomplete="off">
@@ -86,7 +52,6 @@
     <button onclick="login()">MULAI TEST / 시작</button>
   </div>
 
-  <!-- QUIZ PAGE -->
   <div class="container hidden" id="quizPage">
     <h1>TEST KOSA KATA</h1>
     <div id="timer">30:00</div>
@@ -104,14 +69,178 @@
     </div>
   </div>
 
-  <div class="footer">
-    © 2026 Denzuka - Kim Jongun. All rights reserved.
-  </div>
+  <div class="footer">© 2026 Denzuka - Kim Jongun. All rights reserved.</div>
 
-  <!-- Script kamu yang sudah ada tetap di sini (nggak aku ubah) -->
   <script>
-    // ... (script JavaScript kamu yang sudah jalan mantap tetap copy-paste di sini)
-    // Nggak perlu diubah apa-apa, karena fix scroll cuma di CSS
+    const kodeMapping = {
+      "H29976": "soal1.json",
+      "R43213": "soal2.json"
+      // tambah kode lain kalau perlu
+    };
+
+    let questions = [];
+    let currentIndex = 0;
+    let score = 0;
+    let wrongList = [];
+    let timerInterval;
+    let timeLeft = 1800; // 30 menit
+
+    const synonyms = {
+      "kulkas": ["lemari es", "refrigerator"],
+      "televisi": ["tv", "tivi"],
+      "tempat tidur": ["kasur", "dipan"],
+      "mesin cuci": ["sewatki"],
+      "sofa": ["kursi sofa"],
+      "meja belajar": ["meja kerja", "desk"],
+      "lemari pakaian": ["wardrobe", "almari baju"],
+      "kipas angin": ["fan"],
+      "ac": ["air conditioner", "pendingin ruangan"],
+      "rice cooker": ["penanak nasi", "magic com", "magic jar"],
+      "kompor gas": ["kompor"],
+      "penyedot debu": ["vakum", "vacuum cleaner"],
+      "setrika": ["gosokan"],
+      "gorden": ["tirai", "curtain"]
+      // tambah lagi kalau mau
+    };
+
+    function normalizeAnswer(answer) {
+      let norm = answer.toLowerCase().trim().replace(/[^a-z0-9\s]/g, '');
+      for (const [key, vals] of Object.entries(synonyms)) {
+        if (norm === key || vals.some(v => norm.includes(v.toLowerCase()) || v.toLowerCase().includes(norm))) {
+          return key;
+        }
+      }
+      return norm;
+    }
+
+    function levenshtein(a, b) {
+      const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
+      for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+      for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+      for (let j = 1; j <= b.length; j++) {
+        for (let i = 1; i <= a.length; i++) {
+          const indicator = a[i-1] === b[j-1] ? 0 : 1;
+          matrix[j][i] = Math.min(matrix[j][i-1] + 1, matrix[j-1][i] + 1, matrix[j-1][i-1] + indicator);
+        }
+      }
+      return matrix[b.length][a.length];
+    }
+
+    async function loadQuestions(fileName) {
+      const response = await fetch(fileName);
+      if (!response.ok) throw new Error("File soal tidak ditemukan atau error");
+      const data = await response.json();
+      questions = data.sort(() => 0.5 - Math.random());
+    }
+
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
+      const error = document.getElementById("errorMsg");
+      error.textContent = "";
+      if (!user || !pass || !kode) return error.textContent = "Lengkapi semua kolom!";
+      const fileName = kodeMapping[kode];
+      if (!fileName) return error.textContent = "Kode akses tidak valid!";
+
+      loadQuestions(fileName)
+        .then(() => {
+          document.getElementById("loginPage").classList.add("hidden");
+          document.getElementById("quizPage").classList.remove("hidden");
+          startQuiz();
+        })
+        .catch(err => {
+          error.textContent = "Gagal memuat soal: " + err.message;
+          console.error(err);
+        });
+    }
+
+    function startQuiz() {
+      currentIndex = 0;
+      score = 0;
+      wrongList = [];
+      timeLeft = 1800;
+      updateTimer();
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) finishQuiz();
+      }, 1000);
+      nextQuestion();
+    }
+
+    function updateTimer() {
+      const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+      const s = String(timeLeft % 60).padStart(2, '0');
+      document.getElementById("timer").textContent = `${m}:${s}`;
+    }
+
+    function updateProgress() {
+      const percent = ((currentIndex) / questions.length) * 100;
+      document.getElementById("progressBar").style.width = percent + "%";
+    }
+
+    function nextQuestion() {
+      if (currentIndex >= questions.length) {
+        finishQuiz();
+        return;
+      }
+      document.getElementById("currentWord").textContent = questions[currentIndex].korea;
+      document.getElementById("answerInput").value = "";
+      document.getElementById("answerInput").focus();
+      updateProgress();
+    }
+
+    function submitAnswer() {
+      const answer = document.getElementById("answerInput").value.trim();
+      if (!answer) return;
+      checkAnswer(answer);
+    }
+
+    function checkAnswer(userAnswer) {
+      const q = questions[currentIndex];
+      const correct = q.indo.toLowerCase().trim();
+      const normUser = normalizeAnswer(userAnswer);
+      const normCorrect = normalizeAnswer(correct);
+      const distance = levenshtein(normUser, normCorrect);
+      const isCorrect = (normUser === normCorrect) || (distance <= 2);
+
+      if (!isCorrect) {
+        wrongList.push({ word: q.korea, correct: q.indo, your: userAnswer });
+      } else {
+        score++;
+      }
+      currentIndex++;
+      nextQuestion();
+    }
+
+    function finishQuiz() {
+      clearInterval(timerInterval);
+      document.getElementById("questionArea").classList.add("hidden");
+      document.getElementById("resultArea").classList.remove("hidden");
+      const percent = Math.round((score / questions.length) * 100);
+      document.getElementById("scoreText").textContent = `Skor: ${score}/${questions.length} (${percent}%)`;
+      const wrongDiv = document.getElementById("wrongWords");
+      wrongDiv.innerHTML = "";
+      if (wrongList.length > 0) {
+        wrongDiv.classList.remove("hidden");
+        wrongDiv.innerHTML = "<strong>Kata yang salah:</strong><br>";
+        wrongList.forEach(item => {
+          wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (jawaban kamu: ${item.your})<br>`;
+        });
+      }
+    }
+
+    function restartQuiz() {
+      document.getElementById("resultArea").classList.add("hidden");
+      document.getElementById("questionArea").classList.remove("hidden");
+      document.getElementById("quizPage").classList.add("hidden");
+      document.getElementById("loginPage").classList.remove("hidden");
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+      document.getElementById("kodeSoal").value = "";
+      document.getElementById("errorMsg").textContent = "";
+    }
   </script>
 </body>
 </html>
