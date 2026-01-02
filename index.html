@@ -1,266 +1,263 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEST KOSA KATA</title>
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        body {
-            font-family: 'Segoe UI', system-ui, Arial, sans-serif;
-            margin: 0;
-            min-height: 100vh;
-            background: url('https://airnetcso.github.io/eps/image/bg1.jpg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #fff;
-            position: relative;
-        }
-        /* Overlay gelap untuk kontras teks */
-        body::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 1;
-        }
-        .container {
-            position: relative;
-            z-index: 2;
-            width: 70%;
-            max-width: 440px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
-            border: 1px solid rgba(255,255,255,0.18);
-            animation: fadeIn 0.8s ease-out;
-        }
-        h1 {
-            font-size: 32px;
-            text-align: center;
-            margin: 0 0 30px;
-            color: #fff;
-            font-weight: 700;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-        }
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 16px;
-            margin: 14px 0;
-            font-size: 18px;
-            border: 2px solid rgba(255,255,255,0.4);
-            border-radius: 12px;
-            box-sizing: border-box;
-            text-align: left;
-            background: rgba(255,255,255,0.12);
-            color: white;
-            transition: all 0.3s ease;
-        }
-        input::placeholder { color: rgba(255,255,255,0.7); }
-        input:focus {
-            border-color: #fff;
-            background: rgba(255,255,255,0.22);
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
-        }
-        button {
-            width: 100%;
-            padding: 16px;
-            margin: 16px 0 8px;
-            font-size: 20px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            color: white;
-            cursor: pointer;
-            background: linear-gradient(90deg, #10b981, #059669);
-            transition: all 0.3s ease;
-            text-align: center; /* tombol tetap tengah */
-        }
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(16,185,129,0.4);
-        }
-        .btn-voice {
-            background: #3b82f6;
-            font-size: 28px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin: 20px auto;
-            display: block;
-        }
-        .error {
-            color: #ff6b6b;
-            text-align: center;
-            margin: 12px 0;
-            font-weight: 600;
-            background: rgba(0,0,0,0.4);
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .hidden { display: none; }
-        #timer {
-            text-align: center;
-            font-size: 28px;
-            color: #fee2e2;
-            font-weight: bold;
-            margin: 20px 0;
-            background: rgba(220,38,38,0.25);
-            padding: 12px;
-            border-radius: 12px;
-        }
-        .progress {
-            height: 12px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 6px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #10b981, #059669);
-            width: 0%;
-            transition: width 0.6s ease;
-        }
-        .question strong {
-            font-size: 42px;
-            display: block;
-            margin: 40px 0 25px;
-            color: #fff;
-            text-align: center;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-        .wrong-list {
-            font-size: 17px;
-            line-height: 1.8;
-            margin: 25px 0;
-            background: rgba(254,243,199,0.9);
-            color: #92400e;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 5px solid #ca8a04;
-        }
-        .footer {
-            position: relative;
-            z-index: 2;
-            margin-top: 40px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.85);
-            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-        }
-
-        /* MODAL PILIHAN MODE JAWAB */
-        #modeModal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-box {
-            background: white;
-            color: #000;
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-        .modal-btn {
-            width: 100%;
-            padding: 15px;
-            margin: 12px 0;
-            font-size: 18px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        .text-btn { background: #10b981; color: white; }
-        .voice-btn { background: #3b82f6; color: white; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST KOSA KATA</title>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1920') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #fff;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 70%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 40px 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.18);
+      animation: fadeIn 0.8s ease-out;
+    }
+    h1 {
+      font-size: 32px;
+      text-align: center;
+      margin: 0 0 30px;
+      color: #fff;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 16px;
+      margin: 14px 0;
+      font-size: 18px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 12px;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    input::placeholder { color: rgba(255,255,255,0.7); }
+    input:focus {
+      border-color: #fff;
+      background: rgba(255,255,255,0.22);
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.15);
+    }
+    button {
+      width: 100%;
+      padding: 16px;
+      margin: 16px 0 8px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+      background: linear-gradient(90deg, #10b981, #059669);
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(16,185,129,0.4);
+    }
+    .btn-voice {
+      background: #3b82f6;
+      font-size: 28px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin: 20px auto;
+      display: block;
+    }
+    .error {
+      color: #ff6b6b;
+      text-align: center;
+      margin: 12px 0;
+      font-weight: 600;
+      background: rgba(0,0,0,0.4);
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .hidden { display: none; }
+    #timer {
+      text-align: center;
+      font-size: 28px;
+      color: #fee2e2;
+      font-weight: bold;
+      margin: 20px 0;
+      background: rgba(220,38,38,0.25);
+      padding: 12px;
+      border-radius: 12px;
+    }
+    .progress {
+      height: 12px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 6px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #059669);
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+    .question strong {
+      font-size: 42px;
+      display: block;
+      margin: 40px 0 25px;
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .wrong-list {
+      font-size: 17px;
+      line-height: 1.8;
+      margin: 25px 0;
+      background: rgba(254,243,199,0.9);
+      color: #92400e;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 5px solid #ca8a04;
+    }
+    .footer {
+      position: relative;
+      z-index: 2;
+      margin-top: 40px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+    #modeModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-box {
+      background: white;
+      color: #000;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    .modal-btn {
+      width: 100%;
+      padding: 15px;
+      margin: 12px 0;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .text-btn { background: #10b981; color: white; }
+    .voice-btn { background: #3b82f6; color: white; }
+  </style>
 </head>
 <body>
 
+<!-- LOGIN PAGE (MUNGUL DULU) -->
 <div class="container" id="loginPage">
-    <h1>TEST KOSA KATA</h1>
-    <input type="text" id="username" placeholder="Username / 이름" autocomplete="off">
-    <input type="password" id="password" placeholder="Password / 비밀번호" autocomplete="off">
-    <input type="text" id="kodeSoal" placeholder="Kode Test / 시험코드" autocomplete="off" style="text-transform:uppercase;">
-    <div class="error" id="errorMsg"></div>
-    <button class="btn-login" onclick="login()">MULAI TEST / 사작</button>
+  <h1>TEST KOSA KATA</h1>
+  <input type="text" id="username" placeholder="Username / 이름" autocomplete="off">
+  <input type="password" id="password" placeholder="Password / 비밀번호" autocomplete="off">
+  <input type="text" id="kodeSoal" placeholder="Kode Test / 시험코드" autocomplete="off" style="text-transform:uppercase;">
+  <div class="error" id="errorMsg"></div>
+  <button onclick="login()">MULAI TEST / 시작</button>
 </div>
 
+<!-- QUIZ PAGE (HIDDEN DULU) -->
 <div class="container hidden" id="quizPage">
-    <h1>TEST KOSA KATA</h1>
-    <div id="timer">00:00</div>
-    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-   
-    <div id="questionArea">
-        <div class="question"><strong id="currentWord"></strong></div>
-        <input type="text" id="answerInput" placeholder="Ketik jawaban di sini" autocomplete="off">
-        <button class="btn-voice" onclick="startVoiceRecognition()">🎤</button>
-        <button onclick="submitAnswer()">SUBMIT</button>
-    </div>
-    <div id="resultArea" class="hidden">
-        <h2 style="color:#fff; margin-bottom:20px;">Hasil Test</h2>
-        <p id="scoreText" style="font-size:28px; font-weight:bold; color:#d1fae5;"></p>
-        <div id="wrongWords" class="wrong-list hidden"></div>
-        <button onclick="restartQuiz()" style="background:linear-gradient(90deg, #3b82f6, #2563eb);">ULANGI LAGI</button>
-    </div>
+  <h1>TEST KOSA KATA</h1>
+  <div id="timer">00:00</div>
+  <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+  <div id="questionArea">
+    <div class="question"><strong id="currentWord"></strong></div>
+    <input type="text" id="answerInput" placeholder="Ketik jawaban di sini" autocomplete="off">
+    <button class="btn-voice" onclick="startVoiceRecognition()">🎤</button>
+    <button onclick="submitAnswer()">SUBMIT</button>
+  </div>
+
+  <div id="resultArea" class="hidden">
+    <h2 style="color:#fff; margin-bottom:20px;">Hasil Test</h2>
+    <p id="scoreText" style="font-size:28px; font-weight:bold; color:#d1fae5;"></p>
+    <div id="wrongWords" class="wrong-list hidden"></div>
+    <button onclick="restartQuiz()" style="background:linear-gradient(90deg, #3b82f6, #2563eb);">ULANGI LAGI</button>
+  </div>
 </div>
 
 <div class="footer">
-    © 2026 Denzuka - Kim Jongun. All rights reserved.
+  © 2026 Denzuka - Kim Jongun. All rights reserved.
 </div>
 
-<!-- MODAL PILIHAN MODE JAWAB (muncul setelah login) -->
+<!-- MODAL PILIH MODE (HIDDEN DULU) -->
 <div id="modeModal" class="hidden">
-    <div class="modal-box">
-        <h2>Pilih Cara Jawab</h2>
-        <p>Pilih mode jawaban untuk test ini:</p>
-        <button class="modal-btn text-btn" onclick="startQuizWithMode('text')">Jawab dengan Text</button>
-        <button class="modal-btn voice-btn" onclick="startQuizWithMode('voice')">Jawab dengan Suara</button>
-    </div>
+  <div class="modal-box">
+    <h2>Pilih Cara Jawab</h2>
+    <p>Pilih mode jawaban untuk test ini:</p>
+    <button class="modal-btn text-btn" onclick="startQuizWithMode('text')">Jawab dengan Text</button>
+    <button class="modal-btn voice-btn" onclick="startQuizWithMode('voice')">Jawab dengan Suara</button>
+  </div>
 </div>
 
 <script>
-// Script dengan tambahan pilihan mode
-const validUsers = {
+  const validUsers = {
     "siswa01": "12345",
     "siswa02": "abc123",
     "guru": "guru456",
-    "admin": "admin123"  // untuk admin.html nanti
-};
+    "admin": "admin123"
+  };
 
-const kodeMapping = {
-    "H29976": "soal1",
-    "R43213": "soal2"
-};
+  const kodeMapping = {
+    "H29976": "soal1.json",
+    "R43213": "soal2.json"
+  };
 
-let questions = [];
-let currentIndex = 0;
-let score = 0;
-let wrongList = [];
-let timerInterval;
-let timeLeft = 0;
-let answerMode = 'text'; // default text, bisa 'voice'
+  let questions = [];
+  let currentIndex = 0;
+  let score = 0;
+  let wrongList = [];
+  let timerInterval;
+  let timeLeft = 300; // 5 menit, ubah sesuka
+  let answerMode = 'text';
+  let recognition;
 
-const synonyms = {
+  const synonyms = {
     "sayur": ["sayuran", "sayur-sayuran", "vegetable"],
     "ngantuk": ["mengantuk", "kantuk", "mengantuk banget"],
     "senang": ["bahagia", "gembira", "seneng", "senamg", "happy"],
@@ -271,116 +268,221 @@ const synonyms = {
     "halo": ["haloo", "hello", "hi", "helo"],
     "terima kasih": ["thanks", "makasih", "thank you", "trims"],
     "maaf": ["sorry", "mohon maaf", "maap"]
-};
+  };
 
-function normalizeAnswer(answer) {
+  function normalizeAnswer(answer) {
     let norm = answer.toLowerCase().trim().replace(/[^a-z0-9\s]/g, '');
     for (const [key, vals] of Object.entries(synonyms)) {
-        if (vals.some(v => norm.includes(v.toLowerCase())) || norm.includes(key)) {
-            return key;
-        }
+      if (vals.some(v => norm.includes(v.toLowerCase())) || norm.includes(key)) {
+        return key;
+      }
     }
     return norm;
-}
+  }
 
-function levenshtein(a, b) {
-    const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
-    for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
-    for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
-    for (let j = 1; j <= b.length; j++) {
-        for (let i = 1; i <= a.length; i++) {
-            const indicator = a[i-1] === b[j-1] ? 0 : 1;
-            matrix[j][i] = Math.min(
-                matrix[j][i-1] + 1,
-                matrix[j-1][i] + 1,
-                matrix[j-1][i-1] + indicator
-            );
-        }
-    }
-    return matrix[b.length][a.length];
-}
+  async function loadQuestions(fileName) {
+    const response = await fetch(fileName);
+    if (!response.ok) throw new Error("File soal tidak ditemukan");
+    questions = await response.json();
+    questions = questions.sort(() => 0.5 - Math.random()); // acak soal
+  }
 
-function login() {
+  function login() {
     const user = document.getElementById("username").value.trim();
     const pass = document.getElementById("password").value.trim();
     const kode = document.getElementById("kodeSoal").value.trim().toUpperCase();
     const error = document.getElementById("errorMsg");
 
+    error.textContent = "";
     if (!user || !pass || !kode) {
-        error.textContent = "Lengkapi semua kolom!";
-        return;
+      error.textContent = "Lengkapi semua kolom!";
+      return;
     }
-
     if (!validUsers[user] || validUsers[user] !== pass) {
-        error.textContent = "Username atau password salah!";
-        return;
+      error.textContent = "Username atau password salah!";
+      return;
     }
-
     const fileName = kodeMapping[kode];
     if (!fileName) {
-        error.textContent = "Kode akses tidak valid!";
-        return;
+      error.textContent = "Kode akses tidak valid!";
+      return;
     }
 
     loadQuestions(fileName)
-        .then(() => {
-            document.getElementById("loginPage").classList.add("hidden");
-            // Tampilkan modal pilihan mode jawab
-            document.getElementById("modeModal").classList.remove("hidden");
-        })
-        .catch(err => {
-            error.textContent = "Gagal memuat soal. Hubungi admin.";
-            console.error(err);
-        });
-}
+      .then(() => {
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("quizPage").classList.add("hidden"); // safety
+        document.getElementById("modeModal").classList.remove("hidden");
+      })
+      .catch(err => {
+        error.textContent = "Gagal memuat soal. Hubungi admin.";
+        console.error(err);
+      });
+  }
 
-// Fungsi baru: mulai quiz setelah pilih mode
-function startQuizWithMode(mode) {
-    answerMode = mode; // simpan mode yang dipilih
+  function startQuizWithMode(mode) {
+    answerMode = mode;
     document.getElementById("modeModal").classList.add("hidden");
     document.getElementById("quizPage").classList.remove("hidden");
+
+    if (mode === 'voice') {
+      document.getElementById("answerInput").classList.add("hidden");
+      document.querySelector(".btn-voice").classList.remove("hidden");
+      startVoiceRecognition(); // langsung mulai dengerin
+    } else {
+      document.getElementById("answerInput").classList.remove("hidden");
+    }
+
     startQuiz();
-}
+  }
 
-// ... (sisa script tetap sama seperti sebelumnya: loadQuestions, startQuiz, nextQuestion, dll) ...
+  function startQuiz() {
+    currentIndex = 0;
+    score = 0;
+    wrongList = [];
+    timeLeft = 300; // reset timer
+    updateTimer();
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      updateTimer();
+      if (timeLeft <= 0) finishQuiz();
+    }, 1000);
+    nextQuestion();
+    updateProgress();
+  }
 
-// Contoh: di finishQuiz, simpan hasil ke localStorage untuk admin
-function finishQuiz() {
+  function updateTimer() {
+    const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+    const s = String(timeLeft % 60).padStart(2, '0');
+    document.getElementById("timer").textContent = `${m}:${s}`;
+  }
+
+  function updateProgress() {
+    const percent = ((currentIndex + 1) / questions.length) * 100;
+    document.getElementById("progressBar").style.width = percent + "%";
+  }
+
+  function nextQuestion() {
+    if (currentIndex >= questions.length) {
+      finishQuiz();
+      return;
+    }
+    const q = questions[currentIndex];
+    document.getElementById("currentWord").textContent = q.korea;
+    document.getElementById("answerInput").value = "";
+    updateProgress();
+  }
+
+  function submitAnswer() {
+    const userAnswer = document.getElementById("answerInput").value.trim();
+    checkAnswer(userAnswer);
+  }
+
+  function checkAnswer(answer) {
+    if (!answer) return;
+    const q = questions[currentIndex];
+    const correct = q.indo.toLowerCase().trim();
+    const normUser = normalizeAnswer(answer);
+    const normCorrect = normalizeAnswer(correct);
+
+    // Toleransi typo kecil pake Levenshtein (max beda 2 huruf)
+    const distance = levenshtein(normUser, normCorrect);
+    const isCorrect = normUser === normCorrect || distance <= 2 || correct.includes(normUser) || normUser.includes(normCorrect);
+
+    if (isCorrect) {
+      score++;
+    } else {
+      wrongList.push({ word: q.korea, correct: q.indo, your: answer });
+    }
+
+    currentIndex++;
+    nextQuestion();
+
+    if (answerMode === 'voice') startVoiceRecognition(); // langsung denger lagi
+  }
+
+  function levenshtein(a, b) {
+    const matrix = Array(b.length + 1).fill().map(() => Array(a.length + 1).fill(0));
+    for (let i = 0; i <= a.length; i++) matrix[0][i] = i;
+    for (let j = 0; j <= b.length; j++) matrix[j][0] = j;
+    for (let j = 1; j <= b.length; j++) {
+      for (let i = 1; i <= a.length; i++) {
+        const indicator = a[i-1] === b[j-1] ? 0 : 1;
+        matrix[j][i] = Math.min(
+          matrix[j][i-1] + 1,
+          matrix[j-1][i] + 1,
+          matrix[j-1][i-1] + indicator
+        );
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+
+  function finishQuiz() {
     clearInterval(timerInterval);
     document.getElementById("questionArea").classList.add("hidden");
     document.getElementById("resultArea").classList.remove("hidden");
 
     const percent = Math.round((score / questions.length) * 100);
-    document.getElementById("scoreText").textContent = 
-        `Skor: ${score}/${questions.length} (${percent}%)`;
+    document.getElementById("scoreText").textContent = `Skor: ${score}/${questions.length} (${percent}%)`;
 
     const wrongDiv = document.getElementById("wrongWords");
     wrongDiv.innerHTML = "";
     if (wrongList.length > 0) {
-        wrongDiv.classList.remove("hidden");
-        wrongDiv.innerHTML = "<strong>Kata yang perlu diperbaiki:</strong><br>";
-        wrongList.forEach(item => {
-            wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (kamu: ${item.your})<br>`;
-        });
-    } else {
-        wrongDiv.classList.add("hidden");
+      wrongDiv.classList.remove("hidden");
+      wrongDiv.innerHTML = "<strong>Kata yang perlu diperbaiki:</strong><br>";
+      wrongList.forEach(item => {
+        wrongDiv.innerHTML += `• ${item.word} → ${item.correct} (kamu: ${item.your})<br>`;
+      });
     }
 
-    // SIMPAN HASIL KE LOCALSTORAGE UNTUK ADMIN
+    // Simpan hasil
     const result = {
-        username: document.getElementById("username").value.trim(),
-        score: score,
-        total: questions.length,
-        percent: percent,
-        wrongList: wrongList,
-        date: new Date().toLocaleString()
+      username: document.getElementById("username").value.trim(),
+      score, total: questions.length, percent,
+      wrongList, date: new Date().toLocaleString()
     };
     let results = JSON.parse(localStorage.getItem("testResults") || "[]");
     results.push(result);
     localStorage.setItem("testResults", JSON.stringify(results));
-}
+  }
 
-// ... (restartQuiz, startVoiceRecognition, dll tetap sama) ...
+  function restartQuiz() {
+    document.getElementById("resultArea").classList.add("hidden");
+    document.getElementById("questionArea").classList.remove("hidden");
+    document.getElementById("quizPage").classList.add("hidden");
+    document.getElementById("loginPage").classList.remove("hidden");
+    document.getElementById("errorMsg").textContent = "";
+  }
+
+  // Voice Recognition
+  function startVoiceRecognition() {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert("Browser tidak support voice recognition. Gunakan Chrome!");
+      return;
+    }
+    recognition = new webkitSpeechRecognition();
+    recognition.lang = 'id-ID';
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onresult = (event) => {
+      let final = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) {
+          final += event.results[i][0].transcript;
+        }
+      }
+      if (final) {
+        document.getElementById("answerInput").value = final.trim();
+        checkAnswer(final.trim());
+      }
+    };
+
+    recognition.onerror = (event) => console.error(event);
+    recognition.start();
+  }
+
 </script>
 </body>
 </html>
