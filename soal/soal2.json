@@ -1,0 +1,12 @@
+{
+  "passage": "Look at the image below. It shows a breathtaking mountain landscape with a waterfall cascading down rocky cliffs surrounded by lush green forests.",
+  "image": "https://thumbs.dreamstime.com/b/watercolor-painting-mountain-landscape-waterfall-cascading-river-coniferous-forest-snow-peaks-clear-sky-fresh-scenery-367440237.jpg",
+  "question": "What is the main feature visible in the image?",
+  "options": {
+    "A": "A desert",
+    "B": "A waterfall and mountains",
+    "C": "A city",
+    "D": "An ocean"
+  },
+  "correct": "B"
+}
