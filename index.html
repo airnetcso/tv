@@ -1,220 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latihan Reading - 40 Soal</title>
+    <title>Kelas Online Sederhana</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-        }
-        .progress {
-            width: 100%;
-            background: #ddd;
-            height: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: #3498db;
-            border-radius: 10px;
-            transition: width 0.3s;
-        }
-        .question {
-            margin-bottom: 40px;
-            padding: 20px;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            background: #fafafa;
-            display: none;
-        }
-        .question.active {
-            display: block;
-        }
-        .question img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 15px 0;
-            display: block;
-        }
-        .options label {
-            display: block;
-            margin: 12px 0;
-            padding: 12px;
-            background: #ecf0f1;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1em;
-        }
-        .options input[type="radio"] {
-            margin-right: 10px;
-            transform: scale(1.3);
-        }
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        button {
-            padding: 12px 24px;
-            font-size: 1.1em;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        button:disabled {
-            background: #bdc3c7;
-            cursor: not-allowed;
-        }
-        #result {
-            text-align: center;
-            font-size: 1.5em;
-            margin-top: 50px;
-            display: none;
-        }
-        #loading {
-            text-align: center;
-            font-size: 1.2em;
-            color: #7f8c8d;
-        }
+        body { margin: 0; font-family: Arial, sans-serif; background: #f0f0f0; }
+        h1 { text-align: center; padding: 20px; background: #4CAF50; color: white; margin: 0; }
+        #meet { width: 100%; height: 90vh; border: none; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Latihan Reading Comprehension - 40 Soal</h1>
-        <div class="progress"><div class="progress-bar" id="progress"></div></div>
-        
-        <div id="loading">Loading soal... sabar ya bro 😎</div>
-        
-        <form id="quiz-form"></form>
+    <h1>Kelas Matematika IPA 3 - Live Screen Guru</h1>
+    <div id="meet"></div>
 
-        <div class="nav-buttons">
-            <button id="prev" disabled>Previous</button>
-            <button id="next">Next</button>
-            <button id="submit" style="display:none;">Submit & Lihat Skor</button>
-        </div>
-
-        <div id="result"></div>
-    </div>
-
+    <script src="https://meet.jit.si/external_api.js"></script>
     <script>
-        const totalQuestions = 40;
-        let questions = [];
-        let current = 0;
+        const domain = 'meet.jit.si';
+        const options = {
+            roomName: 'KelasMatematikaIPA3_' + Math.random().toString(36).substring(7), // Ganti nama room unik
+            width: '100%',
+            height: '100%',
+            parentNode: document.querySelector('#meet'),
+            userInfo: { displayName: 'Guru/Siswa' }, // Bisa custom per user
+            configOverwrite: { startWithAudioMuted: false, startWithVideoMuted: true }, // Opsional
+            interfaceConfigOverwrite: { TOOLBAR_BUTTONS: ['microphone', 'camera', 'desktop', 'chat'] } // Tampilkan tombol penting
+        };
+        const api = new JitsiMeetExternalAPI(domain, options);
 
-        // Load semua soal
-        async function loadQuestions() {
-            for (let i = 1; i <= totalQuestions; i++) {
-                try {
-                    const response = await fetch(`soal/soal${i}.json`);
-                    if (!response.ok) throw new Error("File not found");
-                    const data = await response.json();
-                    questions.push(data);
-                } catch (err) {
-                    console.error(`Gagal load soal${i}.json`, err);
-                    // Fallback soal dummy kalau file hilang
-                    questions.push({
-                        passage: `Passage ${i}: (Soal ini belum dibuat)`,
-                        image: null,
-                        question: `Ini adalah soal nomor ${i}. Jawab apa saja untuk lanjut.`,
-                        options: { A: "Pilihan A", B: "Pilihan B", C: "Pilihan C", D: "Pilihan D" },
-                        correct: "B"
-                    });
-                }
-            }
-
-            renderQuestions();
-            document.getElementById('loading').style.display = 'none';
-            showQuestion(0);
-        }
-
-        function renderQuestions() {
-            const form = document.getElementById('quiz-form');
-            form.innerHTML = '';
-
-            questions.forEach((q, index) => {
-                const div = document.createElement('div');
-                div.className = 'question';
-                div.dataset.index = index;
-
-                let html = `<p><strong>Passage ${index + 1}:</strong> ${q.passage}</p>`;
-                
-                if (q.image) {
-                    html += `<img src="${q.image}" alt="Gambar soal ${index + 1}">`;
-                }
-
-                html += `<p><strong>Question ${index + 1}:</strong> ${q.question}</p>
-                         <div class="options">`;
-
-                for (const [key, value] of Object.entries(q.options)) {
-                    html += `<label><input type="radio" name="q${index + 1}" value="${key}"> ${key}. ${value}</label>`;
-                }
-
-                html += `</div></div>`;
-                div.innerHTML = html;
-                form.appendChild(div);
-            });
-        }
-
-        function showQuestion(n) {
-            document.querySelectorAll('.question').forEach((q, i) => {
-                q.classList.toggle('active', i === n);
-            });
-
-            document.getElementById('prev').disabled = n === 0;
-            document.getElementById('next').style.display = n === totalQuestions - 1 ? 'none' : 'inline-block';
-            document.getElementById('submit').style.display = n === totalQuestions - 1 ? 'inline-block' : 'none';
-
-            document.getElementById('progress').style.width = ((n + 1) / totalQuestions * 100) + '%';
-            current = n;
-        }
-
-        document.getElementById('next').addEventListener('click', () => {
-            if (current < totalQuestions - 1) showQuestion(current + 1);
-        });
-
-        document.getElementById('prev').addEventListener('click', () => {
-            if (current > 0) showQuestion(current - 1);
-        });
-
-        document.getElementById('submit').addEventListener('click', () => {
-            let score = 0;
-            questions.forEach((q, i) => {
-                const selected = document.querySelector(`input[name="q${i + 1}"]:checked`);
-                if (selected && selected.value === q.correct) score++;
-            });
-
-            document.getElementById('result').style.display = 'block';
-            document.getElementById('result').innerHTML = `
-                <strong>Skor Kamu: ${score}/${totalQuestions}</strong><br>
-                Persentase: ${Math.round(score / totalQuestions * 100)}%<br><br>
-                Kerja bagus bro! 💪
-            `;
-            document.querySelector('.nav-buttons').style.display = 'none';
-        });
-
-        // Start loading
-        loadQuestions();
+        // Opsional: kalau guru, auto share screen setelah join (butuh trigger manual biasanya)
     </script>
 </body>
 </html>
