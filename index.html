@@ -3,57 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelas Matematika IPA 3 - Live Screen Guru</title>
+    <title>Kelas Matematika IPA 3 - Live Guru</title>
     <style>
-        body { margin: 0; padding: 0; font-family: Arial, sans-serif; background: #111; color: white; }
-        header { background: #1e3a8a; padding: 15px; text-align: center; }
-        h1 { margin: 0; font-size: 2em; }
-        #meet-container { width: 100vw; height: 90vh; }
-        .info { text-align: center; padding: 10px; background: rgba(0,0,0,0.5); }
+        body { margin: 0; font-family: Arial, sans-serif; background: #0f172a; color: white; }
+        header { background: #1e40af; padding: 15px; text-align: center; }
+        h1 { margin: 0; }
+        #whereby-container { width: 100vw; height: 92vh; border: none; }
+        .tips { text-align: center; padding: 10px; background: rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
     <header>
-        <h1>Kelas Matematika IPA 3 - Live Screen Guru</h1>
-        <p>Jam pelajaran: Senin-Jumat 08.00-12.00 | Masuk pakai nama asli ya!</p>
+        <h1>Kelas Matematika IPA 3 - Live Screen & Gambar Guru</h1>
+        <p>Masuk jam pelajaran | Pakai nama asli & unmute kalau mau tanya</p>
     </header>
 
-    <div id="meet-container"></div>
+    <iframe 
+        id="whereby-container"
+        src="https://whereby.com/kelas-matematika-ipa3-2026?displayName=Siswa/Guru"
+        allow="camera; microphone; fullscreen; speaker; display-capture"
+        style="width:100%; height:100%; border:none;"
+    ></iframe>
 
-    <div class="info">
-        <p>Guru: Share screen untuk nulis rumus & gambar. Siswa: Bisa unmute untuk tanya via suara atau chat.</p>
+    <div class="tips">
+        <p>Guru: Klik ikon share screen untuk nulis rumus live. Siswa: Lihat screen guru besar, bisa chat atau unmute.</p>
     </div>
-
-    <script src="https://meet.jit.si/external_api.js"></script>
-    <script>
-        const domain = 'meet.jit.si';  // Bisa ganti ke self-hosted kalau nanti punya server
-        const roomName = 'KelasMatematikaIPA3-2026';  // Nama room tetap biar siswa selalu join ke yang sama
-
-        const options = {
-            roomName: roomName,
-            width: '100%',
-            height: '100%',
-            parentNode: document.querySelector('#meet-container'),
-            lang: 'id',  // Bahasa Indonesia
-            userInfo: {
-                // displayName: 'Siswa/Guru'  // Bisa di-override siswa sendiri
-            },
-            configOverwrite: {
-                startWithAudioMuted: true,   // Siswa masuk mute biar gak berisik
-                startWithVideoMuted: true,   // Kamera off dulu
-                disableModeratorIndicator: true,
-                requireDisplayName: true     // Wajib masukin nama
-            },
-            interfaceConfigOverwrite: {
-                TOOLBAR_BUTTONS: ['microphone', 'camera', 'desktop', 'chat', 'raisehand', 'participants'],
-                SHOW_JITSI_WATERMARK: false,
-                SHOW_WATERMARK_FOR_GUESTS: false
-            }
-        };
-
-        const api = new JitsiMeetExternalAPI(domain, options);
-
-        // Opsional: Auto join setelah 5 detik kalau mau (tapi biar siswa klik sendiri lebih baik)
-    </script>
 </body>
 </html>
