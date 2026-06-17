@@ -1,32 +1,1112 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelas Matematika IPA 3 - Live Guru</title>
-    <style>
-        body { margin: 0; font-family: Arial, sans-serif; background: #0f172a; color: white; }
-        header { background: #1e40af; padding: 15px; text-align: center; }
-        h1 { margin: 0; }
-        #whereby-container { width: 100vw; height: 92vh; border: none; }
-        .tips { text-align: center; padding: 10px; background: rgba(255,255,255,0.1); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gumi Eohakwon | Belajar Bahasa Korea Modern</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+          colors: {
+            brand: { 50: '#f0fdf4', 100: '#dcfce7', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 900: '#14532d' },
+            dark: { 800: '#1e293b', 900: '#0f172a', 950: '#020617' },
+            gold: { 400: '#FACC15', 500: '#EAB308', 600: '#CA8A04' }
+          },
+          animation: { 'fade-in': 'fadeIn 0.5s ease-out forwards', 'slide-up': 'slideUp 0.5s ease-out forwards' },
+          keyframes: {
+            fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+            slideUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Global Styles */
+    body { background-color: #020617; color: #f8fafc; overflow-x: hidden; }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    .dark-mode-scroll::-webkit-scrollbar-thumb { background: #334155; }
+    .dark-mode-scroll::-webkit-scrollbar-track { background: #0f172a; }
+
+    /* UI Utilities */
+    .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .glass-dark { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); }
+    .rounded-modern { border-radius: 1.25rem !important; }
+    
+    /* Hide views by default */
+    .view-section { display: none; opacity: 0; transition: opacity 0.3s ease; }
+    .view-section.active { display: block; opacity: 1; animation: fadeIn 0.4s ease-out; }
+
+    /* Hero Background Dark */
+    .hero-bg {
+      background: linear-gradient(135deg, rgba(2, 6, 23, 0.95), rgba(15, 23, 42, 0.85)), 
+                  url('https://images.unsplash.com/photo-1517147196916-a5181716c514?q=80&w=2000') center/cover no-repeat;
+    }
+
+    /* Cards & Buttons Hover */
+    .hover-lift { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease; }
+    .hover-lift:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3); }
+    
+    /* Badge */
+    .badge-popular {
+      position: absolute; top: -12px; right: 24px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white; font-size: 0.7rem; font-weight: 800;
+      padding: 4px 16px; border-radius: 9999px; letter-spacing: 0.05em;
+      box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.39);
+    }
+
+    /* Member Area Styles */
+    .member-row { transition: all 0.2s ease; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .member-row:hover { background-color: rgba(255,255,255,0.03); padding-left: 0.5rem; }
+    .watched-item { opacity: 0.5; }
+    .watched-item .title-text { text-decoration: line-through; color: #64748b; }
+    
+    .avatar-wrapper { position: relative; width: 50px; height: 50px; cursor: pointer; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #10b981, #3b82f6); }
+    .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #0f172a; }
+    .avatar-overlay { position: absolute; inset: 2px; background: rgba(0,0,0,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; color: white; font-size: 10px; }
+    .avatar-wrapper:hover .avatar-overlay { opacity: 1; }
+
+    /* Video Player */
+    .video-wrapper { background: #000; border-radius: 1rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Kelas Matematika IPA 3 - Live Screen & Gambar Guru</h1>
-        <p>Masuk jam pelajaran | Pakai nama asli & unmute kalau mau tanya</p>
-    </header>
 
-    <iframe 
-        id="whereby-container"
-        src="https://whereby.com/kelas-matematika-ipa3-2026?displayName=Siswa/Guru"
-        allow="camera; microphone; fullscreen; speaker; display-capture"
-        style="width:100%; height:100%; border:none;"
-    ></iframe>
+  <!-- Floating Toast Notification Container -->
+  <div id="toast-container" class="fixed top-5 right-5 z-[9999] flex flex-col gap-3 max-w-sm w-full px-4 pointer-events-none"></div>
 
-    <div class="tips">
-        <p>Guru: Klik ikon share screen untuk nulis rumus live. Siswa: Lihat screen guru besar, bisa chat atau unmute.</p>
+  <!-- ========================================== -->
+  <!-- VIEW 1: LANDING PAGE & REGISTRATION -->
+  <!-- ========================================== -->
+  <div id="view-landing" class="view-section active">
+    
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 glass transition-all">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2 md:gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+          <!-- Logo tidak diubah -->
+          <img src="https://github.com/airnetcso/gos/blob/main/LOGO_HITAM_PUTIH-removebg-preview.png?raw=true" alt="Gumi Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain drop-shadow-sm">
+          <span class="font-extrabold text-lg md:text-xl tracking-tight text-white">Gumi Eohakwon</span>
+        </div>
+        <button onclick="navigateTo('view-login')" class="group flex items-center gap-2 bg-dark-900 text-white border border-slate-700 px-4 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-brand-600 hover:border-brand-500 transition-all shadow-md hover:shadow-brand-500/30 text-xs md:text-sm font-bold">
+          <span class="hidden sm:inline">MEMBER AREA</span>
+          <span class="sm:hidden">LOGIN</span>
+          <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white pt-28 pb-20 md:pt-40 md:pb-32 text-center relative overflow-hidden">
+      <!-- Ornamen Dekoratif -->
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+      
+      <div class="max-w-4xl mx-auto px-4 md:px-6 relative z-10 animate-slide-up">
+        <h1 class="text-3xl md:text-6xl font-extrabold leading-tight tracking-tighter mb-4 md:mb-6 text-white">
+          Kuasai Bahasa Korea<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-teal-300">Lebih Cepat & Praktis</span>
+        </h1>
+        <p class="text-base md:text-xl text-slate-300 mb-8 md:mb-10 font-medium max-w-2xl mx-auto">
+          Persiapan ujian EPS TOPIK atau pemula dari nol. Belajar kapan saja, di mana saja. Mulai dari <span class="text-brand-400 font-bold border-b border-brand-400">Rp 149.000</span>
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full px-4 sm:px-0">
+          <button onclick="document.getElementById('pendaftaran').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold text-base md:text-lg px-8 py-4 rounded-full transition-all shadow-lg shadow-brand-500/30 hover:-translate-y-1">
+            MULAI BELAJAR SEKARANG
+          </button>
+          <button onclick="navigateTo('view-login')" class="w-full sm:w-auto glass-dark text-white hover:bg-white hover:text-dark-900 font-bold text-base md:text-lg px-8 py-4 rounded-full transition-all border border-slate-600 shadow-sm hover:-translate-y-1">
+            MASUK MEMBER
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-16 md:py-20 px-4 md:px-6 bg-dark-950 relative z-20 -mt-6 md:-mt-10 rounded-t-3xl md:rounded-t-[3rem] shadow-[0_-10px_30px_rgba(0,0,0,0.3)]">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div class="p-6 md:p-8 rounded-modern bg-slate-900 border border-slate-800 hover-lift text-center group">
+            <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-brand-500/10 text-brand-500 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+              <i class="fas fa-mobile-screen-button"></i>
+            </div>
+            <h3 class="font-bold text-lg md:text-xl mb-2 md:mb-3 text-white">Akses Fleksibel</h3>
+            <p class="text-slate-400 text-sm md:text-base leading-relaxed">Belajar kapanpun dan dimanapun melalui HP, Tablet, atau Laptop Anda dengan mudah.</p>
+          </div>
+          <div class="p-6 md:p-8 rounded-modern bg-slate-900 border border-slate-800 hover-lift text-center group">
+            <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform">
+              <i class="fas fa-layer-group"></i>
+            </div>
+            <h3 class="font-bold text-lg md:text-xl mb-2 md:mb-3 text-white">Materi Terstruktur</h3>
+            <p class="text-slate-400 text-sm md:text-base leading-relaxed">Kurikulum didesain mulai dari nol dengan penjelasan yang sangat mudah dipahami.</p>
+          </div>
+          <div class="p-6 md:p-8 rounded-modern bg-slate-900 border border-slate-800 hover-lift text-center group">
+            <div class="w-16 h-16 md:w-20 md:h-20 mx-auto bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center text-2xl md:text-3xl mb-4 md:mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+              <i class="fas fa-tags"></i>
+            </div>
+            <h3 class="font-bold text-lg md:text-xl mb-2 md:mb-3 text-white">Biaya Terjangkau</h3>
+            <p class="text-slate-400 text-sm md:text-base leading-relaxed">Kualitas pembelajaran premium dengan biaya investasi yang sangat bersahabat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 md:py-20 px-4 md:px-6 bg-dark-900 border-t border-slate-800 relative overflow-hidden">
+      <!-- Decorative Background Elements -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-slate-800/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+      
+      <div class="max-w-7xl mx-auto relative z-10">
+        <div class="text-center mb-10 md:mb-14">
+          <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-3 md:mb-4 tracking-tight">Apa Kata Mereka?</h2>
+          <p class="text-slate-400 text-sm md:text-lg max-w-2xl mx-auto">Kisah sukses siswa Gumi Eohakwon yang telah membuktikan kemudahan metode belajar kami.</p>
+        </div>
+        
+        <div class="relative max-w-5xl mx-auto px-4 md:px-12">
+          
+          <!-- Slider Container -->
+          <div class="overflow-hidden py-4" id="testimonialSlider">
+            <div class="flex transition-transform duration-500 ease-in-out" id="testimonialSlides">
+              
+              <!-- Slide 1 -->
+              <div class="min-w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-1">
+                <div class="bg-slate-900 p-6 md:p-8 rounded-modern shadow-2xl border border-slate-800 relative h-full flex flex-col">
+                  <i class="fas fa-quote-right absolute top-6 right-6 text-3xl md:text-4xl text-slate-800"></i>
+                  <div class="flex items-center gap-1 text-gold-400 mb-4 text-xs md:text-sm">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm md:text-base italic mb-6 relative z-10 leading-relaxed flex-1">"Dalam waktu 2 minggu sudah bisa baca Hangul dan percakapan sederhana. Metodenya benar-benar mudah dipahami."</p>
+                  <div class="flex items-center gap-4 mt-auto">
+                    <img src="https://randomuser.me/api/portraits/men/69.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-slate-700" alt="Asep">
+                    <div>
+                      <h4 class="font-bold text-white text-sm md:text-base">Asep Kartiwa</h4>
+                      <span class="text-brand-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">Kelas Karyawan</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-slate-900 p-6 md:p-8 rounded-modern shadow-2xl border border-slate-800 relative h-full flex flex-col">
+                  <i class="fas fa-quote-right absolute top-6 right-6 text-3xl md:text-4xl text-slate-800"></i>
+                  <div class="flex items-center gap-1 text-gold-400 mb-4 text-xs md:text-sm">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm md:text-base italic mb-6 relative z-10 leading-relaxed flex-1">"Biayanya murah tapi materinya bagus banget. Sangat cocok buat yang sibuk kerja tapi pengen lancar Korea."</p>
+                  <div class="flex items-center gap-4 mt-auto">
+                    <img src="https://randomuser.me/api/portraits/women/50.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-slate-700" alt="Siti">
+                    <div>
+                      <h4 class="font-bold text-white text-sm md:text-base">Siti Masrifah</h4>
+                      <span class="text-brand-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">Member Baru</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="min-w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-1">
+                <div class="bg-slate-900 p-6 md:p-8 rounded-modern shadow-2xl border border-slate-800 relative h-full flex flex-col">
+                  <i class="fas fa-quote-right absolute top-6 right-6 text-3xl md:text-4xl text-slate-800"></i>
+                  <div class="flex items-center gap-1 text-gold-400 mb-4 text-xs md:text-sm">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm md:text-base italic mb-6 relative z-10 leading-relaxed flex-1">"Kelas Live Zoom-nya interaktif dan gurunya sangat sabar menjelaskan sampai muridnya benar-benar paham."</p>
+                  <div class="flex items-center gap-4 mt-auto">
+                    <img src="https://randomuser.me/api/portraits/men/65.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-slate-700" alt="Rizky">
+                    <div>
+                      <h4 class="font-bold text-white text-sm md:text-base">Rizky Pratama</h4>
+                      <span class="text-brand-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">Kelas Lanjutan</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-slate-900 p-6 md:p-8 rounded-modern shadow-2xl border border-slate-800 relative h-full flex flex-col">
+                  <i class="fas fa-quote-right absolute top-6 right-6 text-3xl md:text-4xl text-slate-800"></i>
+                  <div class="flex items-center gap-1 text-gold-400 mb-4 text-xs md:text-sm">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm md:text-base italic mb-6 relative z-10 leading-relaxed flex-1">"Terima kasih Gumi, berkat bekal bahasa dari sini sekarang saya sudah berangkat dan bekerja di Korea Selatan."</p>
+                  <div class="flex items-center gap-4 mt-auto">
+                    <img src="https://randomuser.me/api/portraits/women/8.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-slate-700" alt="Sari">
+                    <div>
+                      <h4 class="font-bold text-white text-sm md:text-base">Sari Wulandari</h4>
+                      <span class="text-brand-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">Karyawan 예림당</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="min-w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-1">
+                <div class="bg-slate-900 p-6 md:p-8 rounded-modern shadow-2xl border border-slate-800 relative h-full flex flex-col">
+                  <i class="fas fa-quote-right absolute top-6 right-6 text-3xl md:text-4xl text-slate-800"></i>
+                  <div class="flex items-center gap-1 text-gold-400 mb-4 text-xs md:text-sm">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm md:text-base italic mb-6 relative z-10 leading-relaxed flex-1">"Modulnya lengkap banget dan mudah diikuti. Pas buat orang yang pengen belajar secara otodidak di rumah."</p>
+                  <div class="flex items-center gap-4 mt-auto">
+                    <img src="https://randomuser.me/api/portraits/men/4.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-slate-700" alt="Dimas">
+                    <div>
+                      <h4 class="font-bold text-white text-sm md:text-base">Dimas Saputra</h4>
+                      <span class="text-brand-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">Freelancer</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-slate-900 p-6 md:p-8 rounded-modern shadow-2xl border border-slate-800 relative h-full flex flex-col">
+                  <i class="fas fa-quote-right absolute top-6 right-6 text-3xl md:text-4xl text-slate-800"></i>
+                  <div class="flex items-center gap-1 text-gold-400 mb-4 text-xs md:text-sm">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm md:text-base italic mb-6 relative z-10 leading-relaxed flex-1">"Best choice buat yang mau belajar Korea! Video penjelasannya dapet banget dan gak ngebosenin sama sekali."</p>
+                  <div class="flex items-center gap-4 mt-auto">
+                    <img src="https://randomuser.me/api/portraits/women/42.jpg" class="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-slate-700" alt="Putri">
+                    <div>
+                      <h4 class="font-bold text-white text-sm md:text-base">Putri Ayu</h4>
+                      <span class="text-brand-400 text-[10px] md:text-xs font-bold uppercase tracking-wider">Kelas Lanjutan</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Navigation Controls -->
+          <button onclick="prevTesti()" class="absolute left-0 top-1/2 -translate-y-1/2 md:translate-x-0 w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-full shadow-md border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:scale-110 transition-all z-20">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button onclick="nextTesti()" class="absolute right-0 top-1/2 -translate-y-1/2 md:-translate-x-0 w-10 h-10 md:w-12 md:h-12 bg-slate-800 rounded-full shadow-md border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:scale-110 transition-all z-20">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <!-- Dots -->
+          <div class="flex justify-center gap-2 mt-6 md:mt-8" id="testiDots">
+            <button onclick="goToTesti(0)" class="w-6 h-2 md:h-3 rounded-full bg-brand-500 transition-all duration-300"></button>
+            <button onclick="goToTesti(1)" class="w-2 md:w-3 h-2 md:h-3 rounded-full bg-slate-700 transition-all duration-300 hover:bg-slate-500"></button>
+            <button onclick="goToTesti(2)" class="w-2 md:w-3 h-2 md:h-3 rounded-full bg-slate-700 transition-all duration-300 hover:bg-slate-500"></button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages & Form Section -->
+    <section id="pendaftaran" class="py-16 md:py-20 px-4 md:px-6 bg-dark-950 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-2xl md:text-4xl font-extrabold text-white mb-3 md:mb-4 tracking-tight">Pilih Paket Belajar</h2>
+          <p class="text-slate-400 text-sm md:text-lg max-w-2xl mx-auto">Investasi terbaik untuk masa depan Anda. Pilih paket yang sesuai dengan kebutuhan belajar Anda.</p>
+        </div>
+
+        <!-- Package List -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8" id="packageList">
+          <!-- Diisi via JavaScript renderPackages() -->
+        </div>
+
+        <div class="text-center mb-12 md:mb-16">
+          <p class="text-slate-400 text-sm md:text-base">Mencari Kelas Reguler Tatap Muka (Offline) di Sukabumi? <a href="#" onclick="contactWA('offline'); return false;" class="text-brand-500 font-bold hover:underline hover:text-brand-400">Hubungi Admin via WhatsApp</a></p>
+        </div>
+
+        <!-- Registration Form (Hidden by default) -->
+        <div id="registrationFormSection" class="hidden max-w-xl mx-auto bg-slate-900 rounded-modern shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-6 md:p-10 border border-slate-800 relative overflow-hidden animate-slide-up">
+          <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand-400 to-teal-500"></div>
+          <h2 class="text-xl md:text-2xl font-bold text-center mb-6 md:mb-8 text-white">Selesaikan Pendaftaran</h2>
+          
+          <div class="space-y-4 md:space-y-5">
+            <div>
+              <label class="block text-xs md:text-sm font-bold text-slate-300 mb-2">Nama Lengkap</label>
+              <div class="relative">
+                <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
+                <input type="text" id="studentName" placeholder="Masukkan nama Anda" class="w-full pl-10 md:pl-12 pr-4 py-3 md:py-4 bg-slate-800 border border-slate-700 rounded-xl focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition-all font-medium text-white text-sm md:text-base placeholder:text-slate-500">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs md:text-sm font-bold text-slate-300 mb-2">Paket Pilihan</label>
+              <div class="relative">
+                <i class="fas fa-box absolute left-4 top-1/2 -translate-y-1/2 text-brand-500"></i>
+                <input type="text" id="selectedPackage" readonly class="w-full pl-10 md:pl-12 pr-4 py-3 md:py-4 bg-slate-800 border border-slate-700 text-brand-400 rounded-xl font-bold outline-none text-sm md:text-base">
+              </div>
+            </div>
+            <button onclick="submitToWA()" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 md:py-4 rounded-xl text-sm md:text-lg transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2 mt-4">
+              <i class="fab fa-whatsapp text-lg md:text-xl"></i> KONFIRMASI WHATSAPP
+            </button>
+          </div>
+          <div class="text-center mt-6">
+            <button onclick="backToPackages()" class="text-slate-400 hover:text-white font-semibold text-xs md:text-sm transition-colors">← Batal & Pilih Paket Lain</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <footer class="bg-dark-900 text-white pt-16 pb-8 md:pt-20 md:pb-10 border-t-4 border-brand-500">
+      <div class="max-w-4xl mx-auto px-4 md:px-6 text-center mb-12 md:mb-16">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Siap merubah masa depan Anda?</h2>
+        <p class="text-slate-400 text-sm md:text-base mb-6 md:mb-8">Bergabunglah dengan ratusan siswa lainnya yang telah sukses belajar di Gumi Eohakwon.</p>
+        <button onclick="document.getElementById('pendaftaran').scrollIntoView({behavior: 'smooth'})" class="bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm md:text-lg px-8 md:px-10 py-3 md:py-4 rounded-full transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:-translate-y-1">
+          DAFTAR SEKARANG
+        </button>
+      </div>
+      <div class="text-center text-slate-500 text-xs md:text-sm border-t border-slate-800 pt-6 md:pt-8">
+        <p>© 2026 Gumi Eohakwon Sukabumi. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- VIEW 2: LOGIN MEMBER AREA -->
+  <!-- ========================================== -->
+  <div id="view-login" class="view-section min-h-screen bg-dark-950 flex flex-col items-center justify-center relative p-4 md:p-6">
+    <!-- Back button -->
+    <button onclick="navigateTo('view-landing')" class="absolute top-4 left-4 md:top-6 md:left-6 text-slate-400 hover:text-white font-semibold flex items-center gap-2 transition-colors text-sm md:text-base">
+      <i class="fas fa-arrow-left"></i> Kembali
+    </button>
+    
+    <!-- Background Elements -->
+    <div class="absolute top-1/4 left-1/4 w-32 h-32 md:w-64 md:h-64 bg-slate-800/40 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-40 h-40 md:w-80 md:h-80 bg-brand-500/10 rounded-full blur-3xl"></div>
+
+    <div class="glass-dark max-w-md w-full rounded-modern p-6 md:p-10 text-center relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-t-4 border-t-brand-500">
+      
+      <!-- Logo G di Login Member -->
+      <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 md:mb-6 flex items-center justify-center bg-slate-800 rounded-2xl border border-slate-700 shadow-inner">
+        <span class="text-brand-400 font-extrabold text-4xl">G</span>
+      </div>
+
+      <h1 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">Member Login</h1>
+      <p class="text-slate-400 text-xs md:text-sm mb-6 md:mb-10">Masukkan kode akses premium Anda</p>
+      
+      <div class="space-y-4 md:space-y-5">
+        <div class="relative">
+          <i class="fas fa-key absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-slate-500"></i>
+          <input type="password" id="accessCode" placeholder="KODE AKSES" class="w-full pl-10 md:pl-12 pr-4 md:pr-6 py-3 md:py-4 bg-slate-900/80 border border-slate-700 rounded-xl focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-white outline-none text-center text-base md:text-lg font-bold tracking-[0.2em] transition-all placeholder:text-slate-600 placeholder:tracking-normal">
+        </div>
+        <button onclick="checkAccess()" class="w-full py-3 md:py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-bold text-xs md:text-sm uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(34,197,94,0.2)] hover:-translate-y-0.5">
+          MASUK APLIKASI
+        </button>
+      </div>
     </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- VIEW 3: MEMBER DASHBOARD (LMS) -->
+  <!-- ========================================== -->
+  <div id="view-dashboard" class="view-section dark-mode-scroll min-h-screen bg-dark-950 text-slate-200">
+    <div class="flex h-screen overflow-hidden relative w-full">
+      
+      <!-- Input File Hidden for Avatar -->
+      <input type="file" id="avatarInput" accept="image/*" class="hidden" onchange="updateAvatar(event)">
+
+      <!-- Mobile Overlay for Sidebar -->
+      <div id="mobile-overlay" class="fixed inset-0 bg-dark-950/80 z-40 hidden md:hidden backdrop-blur-sm transition-opacity" onclick="toggleMobileSidebar()"></div>
+
+      <!-- Sidebar -->
+      <aside id="dashboard-sidebar" class="fixed md:relative inset-y-0 left-0 w-72 bg-dark-900 border-r border-slate-800 flex flex-col h-full z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out shrink-0">
+        
+        <!-- Mobile Close Button -->
+        <button class="md:hidden absolute top-4 right-4 text-slate-400 hover:text-white" onclick="toggleMobileSidebar()">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+
+        <div class="p-6 pb-4">
+          <!-- User Profile -->
+          <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 bg-slate-800/50 p-3 rounded-2xl border border-slate-700/50 mt-4 md:mt-0 relative">
+            <div class="avatar-wrapper shadow-sm shrink-0" onclick="document.getElementById('avatarInput').click()">
+              <img id="userAvatar" src="https://ui-avatars.com/api/?name=User&background=10b981&color=fff" class="avatar-img" alt="User">
+              <div class="avatar-overlay"><i class="fas fa-camera"></i></div>
+            </div>
+            <div class="leading-tight overflow-hidden">
+              <span id="displayUserName" class="font-bold text-white text-base md:text-lg truncate block">Member</span>
+              <span class="text-brand-400 text-[10px] font-extrabold uppercase tracking-widest bg-brand-500/10 px-2 py-0.5 rounded mt-1 inline-block">Premium</span>
+            </div>
+          </div>
+          <p class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mb-3 px-2">Menu Utama</p>
+        </div>
+
+        <!-- Navigation Scrollable -->
+        <nav class="flex-1 overflow-y-auto px-3 md:px-4 pb-6 space-y-1 custom-scrollbar">
+          
+          <button onclick="showDashboard()" class="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-xl text-white bg-slate-800 transition-colors text-sm font-semibold group active-menu">
+            <div class="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-dark-900 shadow-sm flex items-center justify-center text-brand-400 border border-slate-700"><i class="fas fa-home"></i></div>
+            Dashboard
+          </button>
+
+          <div class="py-2"><div class="h-px bg-slate-800"></div></div>
+          <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">Materi Video</p>
+
+          <button onclick="showClassSection('dasar')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+            <i class="fas fa-play-circle text-brand-500 w-5 text-center"></i> Kelas Dasar
+          </button>
+          <button onclick="showClassSection('menengah')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+            <i class="fas fa-play-circle text-orange-400 w-5 text-center"></i> Kelas Menengah
+          </button>
+          <button onclick="showClassSection('lanjutan')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+            <i class="fas fa-play-circle text-blue-400 w-5 text-center"></i> Kelas Lanjutan
+          </button>
+          
+          <div class="py-2"><div class="h-px bg-slate-800"></div></div>
+          <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">Pembahasan Soal</p>
+
+          <button onclick="showModuleSection('textbook')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+            <i class="fas fa-book-open text-purple-400 w-5 text-center"></i> Bahas Textbook HRDK
+          </button>
+          <button onclick="showModuleSection('tryout')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+            <i class="fas fa-tasks text-pink-400 w-5 text-center"></i> Bahas Soal TOPIK
+          </button>
+
+          <div class="py-2"><div class="h-px bg-slate-800"></div></div>
+          <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">File & Audio</p>
+
+          <button onclick="showModuleSection('materi')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+            <i class="fas fa-file-pdf text-rose-500 w-5 text-center"></i> Module Materi
+          </button>
+          <button onclick="showModuleSection('listening')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+            <i class="fas fa-headphones text-sky-400 w-5 text-center"></i> Module Listening
+          </button>
+          <button onclick="showModuleSection('soal')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+            <i class="fas fa-file-alt text-teal-400 w-5 text-center"></i> Module Soal
+          </button>
+
+          <div class="py-2"><div class="h-px bg-slate-800"></div></div>
+          <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">Pusat Bantuan</p>
+
+          <button onclick="contactWA('konsultasi')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+            <i class="fab fa-whatsapp text-brand-500 w-5 text-center"></i> Konsultasi Admin
+          </button>
+          <button onclick="contactWA('upgrade')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+            <i class="fas fa-crown text-gold-500 w-5 text-center"></i> Upgrade Kelas
+          </button>
+          <a href="https://kp2mi.go.id/gtog-korea/pengumuman" target="_blank" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+            <i class="fas fa-globe text-blue-500 w-5 text-center"></i> Info GToG Korea
+          </a>
+          <button onclick="logout()" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-rose-500 transition-colors text-xs md:text-sm font-medium group text-left">
+            <i class="fas fa-sign-out-alt text-rose-500 w-5 text-center group-hover:text-rose-500"></i> Keluar Akun
+          </button>
+
+        </nav>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 w-full min-w-0 overflow-y-auto relative dark-mode-scroll bg-dark-950 flex flex-col">
+        
+        <!-- Mobile Header -->
+        <header class="md:hidden bg-dark-900 border-b border-slate-800 p-4 flex items-center justify-between sticky top-0 z-30">
+          <div class="flex items-center gap-2">
+            <!-- Logo Mobile Header tidak diubah -->
+            <img src="https://github.com/airnetcso/gos/blob/main/LOGO_HITAM_PUTIH-removebg-preview.png?raw=true" alt="Gumi Logo" class="w-8 h-8 object-contain">
+            <span class="font-bold text-white text-sm">Gumi <span class="text-brand-500">Space</span></span>
+          </div>
+          <button onclick="toggleMobileSidebar()" class="text-slate-400 hover:text-white p-2 focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </header>
+
+        <!-- Background Decoration -->
+        <div class="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-slate-800/20 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"></div>
+
+        <div class="flex-1 p-4 md:p-8 lg:p-12 w-full max-w-5xl mx-auto relative z-10" id="content-area">
+          
+          <!-- State 1: Dashboard Home -->
+          <div id="dashboard-info" class="animate-fade-in">
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8 hidden md:block">Selamat Datang di Gumi <span class="text-brand-500">Space</span></h2>
+            
+            <div class="relative overflow-hidden rounded-2xl md:rounded-3xl p-[2px] md:p-1 bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 shadow-2xl">
+              <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-400 via-blue-400 to-purple-400"></div>
+              <div class="bg-dark-900 rounded-[1rem] md:rounded-[1.3rem] p-6 md:p-10 relative">
+                <i class="fas fa-quote-left absolute top-4 left-4 md:top-8 md:left-8 text-3xl md:text-5xl text-slate-800/50"></i>
+                <div class="relative z-10 text-center mt-4 md:mt-0">
+                  <p id="koreanQuote" class="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300 mb-4 md:mb-6 text-xl sm:text-2xl md:text-4xl leading-snug tracking-tight font-serif"></p>
+                  <p id="indoQuote" class="text-brand-400 italic text-sm md:text-xl font-medium tracking-wide"></p>
+                </div>
+                <button onclick="getRandomQuote()" class="absolute bottom-3 right-3 md:bottom-4 md:right-4 text-slate-500 hover:text-brand-400 transition-colors p-2"><i class="fas fa-sync-alt"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- State 2: List View (Videos / Docs) -->
+          <div id="list-container" class="hidden animate-fade-in">
+            <div class="flex items-center gap-3 md:gap-4 mb-6 md:mb-8 border-b border-slate-800 pb-4 md:pb-6">
+              <div id="list-icon-wrap" class="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center text-lg md:text-xl bg-slate-800/50 border border-slate-700"></div>
+              <h2 id="list-title" class="text-lg md:text-2xl font-bold text-white tracking-tight"></h2>
+            </div>
+            
+            <div class="bg-slate-900/50 border border-slate-800 rounded-xl md:rounded-2xl overflow-hidden shadow-lg" id="list-items">
+              <!-- Diisi via JavaScript -->
+            </div>
+          </div>
+
+          <!-- State 3: Video Player with Direct Play Support -->
+          <div id="content-video" class="hidden animate-slide-up">
+            <div class="flex flex-row justify-between items-center gap-2 mb-4 md:mb-6">
+              <button onclick="closeVideo()" class="text-slate-400 hover:text-white bg-slate-800/50 hover:bg-slate-700 px-3 py-1.5 md:px-4 md:py-2 rounded-lg flex items-center gap-2 font-medium text-xs md:text-sm transition-all border border-slate-700">
+                <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">Kembali</span>
+              </button>
+              
+              <div class="flex items-center gap-2">
+                <!-- Fallback Button for Blocked Embeds -->
+                <a id="btnTontonLangsung" href="#" target="_blank" class="text-xs md:text-sm font-bold bg-rose-600 hover:bg-rose-500 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg flex items-center gap-2 transition-all shadow-md shadow-rose-600/20">
+                  <i class="fab fa-youtube text-white text-sm"></i>
+                  <span>Tonton Langsung</span>
+                </a>
+                <div class="hidden sm:flex items-center gap-2 md:gap-3 bg-brand-900/30 border border-brand-500/20 px-3 py-1.5 md:px-4 md:py-2 rounded-full">
+                  <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                  <span id="playerStatus" class="text-[10px] md:text-xs font-bold text-brand-400 uppercase tracking-widest truncate">Sedang Belajar</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="video-wrapper aspect-video w-full relative">
+              <iframe id="videoPlayer" class="absolute inset-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+            <div class="mt-4 md:mt-6 bg-slate-900 border border-slate-800 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h3 class="text-white font-bold text-base md:text-lg mb-2"><i class="fas fa-lightbulb text-gold-400 mr-2"></i> Mengalami kendala pemutaran?</h3>
+                <p class="text-slate-400 text-xs md:text-sm leading-relaxed">Gunakan tombol <strong>"Tonton Langsung"</strong> di atas apabila pemutar video memunculkan pesan error keamanan browser atau lambat memuat.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT LOGIC -->
+  <!-- ========================================== -->
+  <script>
+    // --- STATE MANAGEMENT ---
+    let currentUser = null;
+    let currentCategory = null;
+    let watchedItems = JSON.parse(localStorage.getItem('gumi_history_v2')) || [];
+    
+    // --- CUSTOM TOAST NOTIFICATION ---
+    function showNotification(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      
+      const toast = document.createElement('div');
+      toast.className = `p-4 rounded-xl shadow-xl border text-sm font-semibold transition-all duration-300 transform translate-x-12 opacity-0 pointer-events-auto flex items-center gap-3 ${
+        type === 'error' 
+        ? 'bg-rose-950/95 border-rose-500/30 text-rose-200 shadow-rose-900/20' 
+        : type === 'success' 
+        ? 'bg-brand-950/95 border-brand-500/30 text-brand-200 shadow-brand-900/20' 
+        : 'bg-slate-900/95 border-slate-700 text-slate-200 shadow-black/40'
+      }`;
+      
+      const icon = type === 'error' ? 'fa-circle-exclamation text-rose-400' : type === 'success' ? 'fa-circle-check text-brand-400' : 'fa-circle-info text-blue-400';
+      
+      toast.innerHTML = `
+        <i class="fas ${icon} text-lg shrink-0"></i>
+        <div class="flex-1">${message}</div>
+        <button class="text-slate-400 hover:text-white shrink-0" onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+      `;
+      
+      container.appendChild(toast);
+      
+      // Trigger animation
+      setTimeout(() => {
+        toast.classList.remove('translate-x-12', 'opacity-0');
+      }, 10);
+      
+      // Auto dismiss after 4 seconds
+      setTimeout(() => {
+        toast.classList.add('translate-x-12', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    // Simple Router
+    function navigateTo(viewId) {
+      document.querySelectorAll('.view-section').forEach(el => {
+        el.classList.remove('active');
+        setTimeout(() => el.style.display = 'none', 300);
+      });
+      
+      setTimeout(() => {
+        const view = document.getElementById(viewId);
+        view.style.display = 'flex'; 
+        if(viewId === 'view-landing' || viewId === 'view-dashboard') view.style.display = 'block';
+        
+        void view.offsetWidth; 
+        view.classList.add('active');
+        window.scrollTo(0, 0);
+      }, 300);
+    }
+
+    // --- LANDING PAGE DATA & LOGIC ---
+    const packages = [
+      { name: "Kelas Dasar", price: "Rp 149.000", popular: false, features: ["50+ Video Materi", "Modul PDF Lengkap", "Akses Selamanya", "Grup Diskusi WA"] },
+      { name: "Tutorial Lengkap", price: "Rp 450.000", popular: false, features: ["Dasar + Menengah + Lanjutan", "Video Full HD", "Akses Selamanya", "Sertifikat Digital"] },
+      { name: "Online Live Zoom", price: "Rp 1.200.000", popular: true, features: ["Kelas Live Zoom Mingguan", "Interaksi Langsung Guru", "Rekaman Kelas", "Sertifikat Kelulusan"] }
+    ];
+
+    function renderPackages() {
+      const container = document.getElementById('packageList');
+      container.innerHTML = '';
+      packages.forEach(pkg => {
+        const isPop = pkg.popular;
+        const cardHTML = `
+          <div class="bg-slate-900 rounded-2xl md:rounded-[2rem] p-6 md:p-8 border ${isPop ? 'border-brand-400 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform lg:scale-105 z-10' : 'border-slate-800 shadow-sm hover:border-slate-700'} relative transition-all duration-300 flex flex-col h-full">
+            ${isPop ? '<div class="badge-popular text-[10px] md:text-[11px]">PALING DIMINATI</div>' : ''}
+            <h3 class="text-lg md:text-xl font-bold text-slate-200 mb-2 mt-2 md:mt-0">${pkg.name}</h3>
+            <div class="text-2xl md:text-4xl font-extrabold text-${isPop ? 'brand-600' : 'white'} mb-4 md:mb-6 tracking-tight">${pkg.price}</div>
+            <ul class="space-y-3 md:space-y-4 mb-6 md:mb-8 flex-1">
+              ${pkg.features.map(f => `
+                <li class="flex items-start gap-2 md:gap-3 text-slate-400 text-xs md:text-sm font-medium">
+                  <div class="mt-0.5 w-4 h-4 md:w-5 md:h-5 rounded-full bg-slate-800 text-${isPop ? 'brand-500' : 'slate-500'} border border-slate-700 flex items-center justify-center shrink-0">
+                    <i class="fas fa-check text-[8px] md:text-[10px]"></i>
+                  </div> ${f}
+                </li>`).join('')}
+            </ul>
+            <button onclick="selectPackage('${pkg.name} - ${pkg.price}')" 
+                    class="w-full ${isPop ? 'bg-gradient-to-r from-brand-500 to-teal-500 hover:from-brand-600 hover:to-teal-600 text-white shadow-lg shadow-brand-500/30' : 'bg-slate-800 hover:bg-slate-700 text-white'} font-bold py-3 md:py-4 rounded-xl transition-all hover:-translate-y-1 text-sm md:text-base">
+              PILIH PAKET
+            </button>
+          </div>
+        `;
+        container.innerHTML += cardHTML;
+      });
+    }
+
+    function selectPackage(paket) {
+      document.getElementById('selectedPackage').value = paket;
+      document.getElementById('packageList').classList.add('hidden');
+      document.getElementById('registrationFormSection').classList.remove('hidden');
+      document.getElementById('registrationFormSection').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function backToPackages() {
+      document.getElementById('packageList').classList.remove('hidden');
+      document.getElementById('registrationFormSection').classList.add('hidden');
+    }
+
+    function submitToWA() {
+      const nama = document.getElementById('studentName').value.trim();
+      const paket = document.getElementById('selectedPackage').value;
+      if (!nama) return showNotification("Mohon ketik nama lengkap Anda terlebih dahulu", "error");
+      if (!paket) return showNotification("Paket belum terpilih", "error");
+      const msg = `Halo Admin Gumi,%0ASaya *${nama}* ingin mendaftar kelas:%0A*${paket}*%0A%0AMohon panduan untuk pembayarannya. Terima kasih.`;
+      window.open(`https://wa.me/628385551800?text=${msg}`, '_blank');
+      showNotification("Menghubungkan ke pendaftaran WhatsApp...", "success");
+    }
+
+    // --- MOBILE SIDEBAR LOGIC ---
+    function toggleMobileSidebar() {
+      const sidebar = document.getElementById('dashboard-sidebar');
+      const overlay = document.getElementById('mobile-overlay');
+      
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    function closeSidebarOnMobile() {
+      if (window.innerWidth < 768) { 
+        document.getElementById('dashboard-sidebar').classList.add('-translate-x-full');
+        document.getElementById('mobile-overlay').classList.add('hidden');
+      }
+    }
+
+    // --- MEMBER AREA DATA ---
+    const accessDatabase = {
+      "AWEWE21": { name: "Asep", owned: ["Dasar"] },
+      "AMIRA22": { name: "Amira", owned: ["Dasar", "Menengah", "Lanjutan"] },
+      "ADMIN": { name: "Administrator", owned: ["Dasar", "Menengah", "Lanjutan"] }
+    };
+
+    const quotes = [
+      { ko: "오늘 걷지 않으면 내일 뛰어야 한다.", id: '"Jika kamu tidak berjalan hari ini, kamu harus berlari besok."' },
+      { ko: "실패는 성공의 어머니이다.", id: '"Kegagalan adalah ibu dari kesuksesan."' },
+      { ko: "멈추지 말고 계속 해나가기만 한다면 늦어도 상관없다.", id: '"Tidak masalah seberapa lambat kamu berjalan selama kamu tidak berhenti."' },
+      { ko: "행복은 이미 완성된 것이 아니라, 당신의 행동으로부터 오는 것이다.", id: '"Kebahagiaan berasal dari tindakanmu sendiri."' },
+      { ko: "별은 어둠이 없이는 빛나지 못해.", id: '"Bintang tidak bisa bersinar tanpa kegelapan."' }
+    ];
+
+    const sampleVid = "https://drive.google.com/file/d/1KspUnWD-wzu4L9LiCMYf7--ksIvMPwl9/preview";
+    
+    const classData = {
+      dasar: { title: "Kelas Dasar", icon: "fas fa-play-circle text-brand-500", items: [
+          { name: "1. Sejarah Singkat Huruf Korea", url: "https://www.youtube.com/watch?v=2nbCm5eB7Q4" },
+          { name: "2. Vokal Dasar", url: "https://youtu.be/yMmeQ2mOL_c" },
+          { name: "3. Konsonan Dasar dan Rangkap", url: "https://drive.google.com/file/d/19jaThfudeQJAc-abX0GGWeOlpf_cZFqG/view?usp=drive_link" },
+          { name: "4. Vokal Rangkap", url: "https://drive.google.com/file/d/1u0CMT8LMYr3z40O6eBjxjJ1eRCEkX911/view?usp=drive_link" },
+          { name: "7. Aturan Pelafalan", url: "https://drive.google.com/file/d/10Wu4cyvEmHE0vaKHKVf682E8OMSwyIvd/view?usp=drive_link" },
+          { name: "8. Chagi Soge", url: "https://youtu.be/yMmeQ2mOL_c" },
+          { name: "9. Kalimat Kopula", url: sampleVid },
+          { name: "10. Kalimat Preposisi", url: sampleVid },
+          { name: "11. Bilangan Sino", url: sampleVid },
+          { name: "12. Bilangan Asli", url: sampleVid },
+          { name: "13. Pembentukan Kalimat", url: sampleVid }
+      ]},
+      menengah: { title: "Kelas Menengah", icon: "fas fa-play-circle text-orange-400", items: [
+          { name: "1. Kalimat Pernyataan Formal", url: sampleVid },
+          { name: "2. Kalimat Pertanyaan Formal", url: sampleVid },
+          { name: "3. Kalimat Ajakan", url: sampleVid },
+          { name: "4. Kalimat Perintah", url: sampleVid },
+          { name: "5. Kalimat Informal", url: sampleVid },
+          { name: "6. Kalimat Negatif", url: sampleVid },
+          { name: "7. Kalimat Larangan", url: sampleVid },
+          { name: "8. Kalimat Tenses Sedang", url: sampleVid },
+          { name: "9. Kalimat Tenses Ingin", url: sampleVid },
+          { name: "10. Kalimat Tenses Akan", url: sampleVid },
+          { name: "11. Kalimat Tenses Lampau", url: sampleVid }
+      ]},
+      lanjutan: { title: "Kelas Lanjutan", icon: "fas fa-play-circle text-blue-400", items: [
+          { name: "1. Akhiran Bisa / Tidak Bisa", url: sampleVid },
+          { name: "2. Akhiran Pernah / Tidak Pernah", url: sampleVid },
+          { name: "3. Akhiran Boleh / Tidak Boleh", url: sampleVid },
+          { name: "4. Akhiran Harus", url: sampleVid },
+          { name: "5. Akhiran Penawaran", url: sampleVid },
+          { name: "6. Akhiran Akan 2", url: sampleVid },
+          { name: "7. Kata Sambung Dan, Dengan", url: sampleVid },
+          { name: "8. Kata Sambung Dan, Kemudian", url: sampleVid },
+          { name: "9. Kata Sambung Kalau, Jika", url: sampleVid }
+      ]}
+    };
+
+    const moduleData = {
+      materi: { title: "Module Materi", icon: "fas fa-file-pdf text-rose-500", files: [
+          { name: "Module Dasar Gumi Eohakwon", url: "https://drive.google.com/file/d/159WS5daDSc1vpaFSYLwjIN9cU0Tp0Gap/view?usp=drive_link" },
+          { name: "Textbook HRDK 2024 Jilid 1", url: "https://drive.google.com/file/d/1uZaTSwlKLM1rAB3pJP8WQSEEbmSdG4Vp/view?usp=drive_link" },
+          { name: "Textbook HRDK 2024 JIlid 2", url: "https://drive.google.com/file/d/1ew4ZJNIZDyK1-I_jncHbnoFJTGddTbbv/view?usp=drive_link" },
+          { name: "Textbook HRDK 2015 Jilid 1", url: "https://drive.google.com/file/d/1FWKWtZrWk4zOW4b9V9mpXI1synWPXvAL/view?usp=drive_link" },
+          { name: "Textbook HRDK 2015 Jilid 2", url: "https://drive.google.com/file/d/1lhPfsYLZMhM501iaDRJ64QN6RMHMxee4/view?usp=drive_link" },
+          { name: "Bahasa Korea Terpadu Jilid 1", url: "" },
+          { name: "Bahasa Korea Terpadu Jilid 2", url: "" },
+          { name: "Bahasa Korea Terpadu Jilid 3", url: "" },
+          { name: "Bahasa Korea Terpadu Jilid 4", url: "" },
+          { name: "Bahasa Korea Terpadu Jilid 5", url: "" },
+          { name: "Bahasa Korea Terpadu Jilid 6", url: "" },
+          { name: "Bahasa Korea Terpadu Latihan 1", url: "" },
+          { name: "Bahasa Korea Terpadu Latihan 2", url: "" },
+          { name: "Bahasa Korea Terpadu Latihan 3", url: "" },
+          { name: "Bahasa Korea Terpadu Latihan 4", url: "" },
+          { name: "Bahasa Korea Terpadu Latihan 5", url: "" },
+          { name: "Bahasa Korea Terpadu Latihan 6", url: "" }
+      ]},
+      listening: { title: "Module Listening", icon: "fas fa-headphones text-sky-400", files: [
+          { name: "Audio Listening Textbook HRDK 2024 Jilid 1", url: "https://drive.google.com/file/d/1GIBLzMNWPLLX9mdJJNQvyskAouSrj11z/view?usp=drive_link" },
+          { name: "Audio Listening Textbook HRDK 2024 Jilid 2", url: "https://drive.google.com/file/d/1vl_YNyVbhzLn3UVVZHuudErzljKj9o9h/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 1", url: "https://drive.google.com/file/d/1XjqrJ4KfLQFQgfnrZ7YtKo4CjkieFTA5/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 2", url: "https://drive.google.com/file/d/1E2Bj1RuDMfkZ__ra6AqZsc3gzOc0FaGI/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 3", url: "https://drive.google.com/file/d/1dwNoZLpp-m9-keN3d7KDlMsT9EBieWML/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 4", url: "https://drive.google.com/file/d/1pmeKAArvLTr3iUeZ59vzIQW7oj-nCj_F/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 5", url: "https://drive.google.com/file/d/1u_QuKQ84FYbANJLF7E1KTF7F8RxVtgqK/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 6", url: "https://drive.google.com/file/d/1rTN59K1COr5HAwiCPLxBIsUdve2R0HdP/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 7", url: "https://drive.google.com/file/d/1XkaQhexObBMazjWRjF8MU11-n-T3tSei/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 8", url: "https://drive.google.com/file/d/1j05qkAgOSBOkuwy4qLlkCDWTLDd88o5V/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 9", url: "https://drive.google.com/file/d/1jc06lG3GDJLH-JGrg0SLjVnHQkZpDiuC/view?usp=drive_link" },
+          { name: "Visual Listening Dasar 10", url: "https://drive.google.com/file/d/1ivZMoWDkmuqDvWR52GlhjryJpDmVHOt6/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 1", url: "https://drive.google.com/file/d/1040cxzd0lbIOgFn_38xDrRVLnyIV99gt/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 2", url: "https://drive.google.com/file/d/11y6oW2aTIRCp2THRH4UI_vc8o9cVeLn-/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 3", url: "https://drive.google.com/file/d/1OtnfNgHuLRcWj8xha3qpwa8LoMiI0ewf/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 4", url: "https://drive.google.com/file/d/1c76Sjao4UNDVhDTYq_MCiMwtukC2CS2d/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 5", url: "https://drive.google.com/file/d/1yywG5Qd0c_fPwzklyTiAzgSQmBe2Tz6T/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 6", url: "https://drive.google.com/file/d/1IrZ-XxBdo4Oz-j1XTVdhRYcNY6dTq3dF/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 7", url: "https://drive.google.com/file/d/10v6rsuo2U5RN2Ah90jZu7NNPjwOMiRPz/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 8", url: "https://drive.google.com/file/d/1q7pKxwkdrLojCkIRPN6or7sjo54m6e09/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 9", url: "https://drive.google.com/file/d/1rW_oqGxkU6by7zFTyV17-9LIBXK-Z0dG/view?usp=drive_link" },
+          { name: "Visual Listening Menengah 10", url: "https://drive.google.com/file/d/1C63Lz_jlffaeugVfqyMzocbypNSyg5IJ/view?usp=drive_link" }
+      ]},
+      textbook: { title: "Pembahasan Textbook HRDK", icon: "fas fa-book-open text-purple-400", files: [
+          { name: "BAB 1", url: "https://drive.google.com/file/d/1D524PIciborG4JeEH7ybSyW0xAD9ie8h/preview" },
+          { name: "BAB 2", url: "https://drive.google.com/file/d/1J_d-DV8ZWpu63unFA246ghXxSmXcdVb6/preview" },
+          { name: "BAB 3", url: "https://drive.google.com/file/d/18i-Nke-vBJI_Iy6FD5-a8MZZgGeaLHjs/preview" }
+      ]},
+      tryout: { title: "Pembahasan Soal TOPIK", icon: "fas fa-tasks text-pink-400", files: [
+          { name: "TRYOUT 01", url: "https://drive.google.com/file/d/1D524PIciborG4JeEH7ybSyW0xAD9ie8h/preview" },
+          { name: "TRYOUT 02", url: "https://drive.google.com/file/d/1D524PIciborG4JeEH7ybSyW0xAD9ie8h/preview" }
+      ]},
+      soal: { title: "Module Soal", icon: "fas fa-file-alt text-teal-400", files: [
+          { name: "Simulasi TOPIK UBT 1", url: "https://drive.google.com/file/d/1yMPXsFCrRS0kKXUTRXpazx5NoP6yBaO6/view?usp=sharing" },
+          { name: "Test Bahasa Korea 1", url: "https://drive.google.com/file/d/1yMPXsFCrRS0kKXUTRXpazx5NoP6yBaO6/view?usp=sharing" }
+      ]}
+    };
+
+    // --- LOGIC ---
+    function getRandomQuote() {
+      const selected = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('koreanQuote').innerText = selected.ko;
+      document.getElementById('indoQuote').innerText = selected.id;
+    }
+
+    function updateAvatar(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const b64 = ev.target.result;
+          document.getElementById('userAvatar').src = b64;
+          localStorage.setItem('gumi_avatar_v2', b64);
+          showNotification("Avatar berhasil diperbarui!", "success");
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function checkAccess() {
+      const code = document.getElementById('accessCode').value.trim().toUpperCase();
+      const user = accessDatabase[code];
+      if (user) {
+        currentUser = user;
+        document.getElementById('displayUserName').innerText = user.name;
+        const savedAvatar = localStorage.getItem('gumi_avatar_v2');
+        if (savedAvatar) document.getElementById('userAvatar').src = savedAvatar;
+        
+        document.getElementById('accessCode').value = '';
+        navigateTo('view-dashboard');
+        showDashboard();
+        showNotification(`Selamat datang kembali, ${user.name}!`, "success");
+      } else {
+        const input = document.getElementById('accessCode');
+        input.classList.add('border-rose-500', 'ring-rose-500');
+        showNotification("Kode akses tidak valid. Hubungi Admin.", "error");
+        setTimeout(() => input.classList.remove('border-rose-500', 'ring-rose-500'), 1000);
+      }
+    }
+
+    function contactWA(type) {
+      const msg = type === 'upgrade' ? "Halo Admin, saya ingin upgrade paket premium." : type === 'offline' ? "Halo Admin, saya ingin menanyakan informasi tentang Kelas Reguler Offline." : "Halo Admin, saya ingin berkonsultasi.";
+      window.open(`https://wa.me/628385551800?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function showClassSection(type) {
+      closeSidebarOnMobile();
+      resetView();
+      currentCategory = type;
+      const data = classData[type];
+      const hasAccess = type === 'dasar' || (currentUser && currentUser.owned.includes(type.charAt(0).toUpperCase() + type.slice(1)));
+      
+      document.getElementById('list-icon-wrap').innerHTML = `<i class="${data.icon}"></i>`;
+      document.getElementById('list-title').innerText = data.title;
+      
+      let html = '';
+      data.items.forEach((item, index) => {
+        const key = `vid_${type}_${index}`;
+        const isWatched = watchedItems.includes(key);
+        html += `
+          <div class="member-row p-3 md:p-4 flex items-center justify-between cursor-pointer ${isWatched ? 'watched-item' : ''}" onclick="${hasAccess ? `smartViewer('${item.url}', '${key}', 'video')` : 'showNotification(\'Akses dikunci. Silakan hubungi admin untuk peningkatan kelas\', \'error\')'}">
+            <div class="flex items-center gap-3 md:gap-4 truncate mr-2">
+              <div class="w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-full ${hasAccess ? 'bg-slate-800 text-brand-400 border border-slate-700' : 'bg-slate-800/50 text-slate-500 border border-slate-700'} flex items-center justify-center">
+                <i class="fas ${hasAccess ? (isWatched ? 'fa-check-circle' : 'fa-play') : 'fa-lock'} text-xs md:text-sm"></i>
+              </div>
+              <span class="font-semibold title-text text-xs md:text-sm text-slate-200 truncate">${item.name}</span>
+            </div>
+            ${hasAccess 
+              ? `<span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-full ${isWatched ? 'bg-slate-800 text-slate-400' : 'bg-brand-500/10 text-brand-400 border border-brand-500/20'} uppercase tracking-wider">${isWatched ? 'Selesai' : 'Buka'}</span>`
+              : `<span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-500 uppercase tracking-wider">Terkunci</span>`
+            }
+          </div>`;
+      });
+      document.getElementById('list-items').innerHTML = html;
+      toggleSections('list');
+    }
+
+    function showModuleSection(type) {
+      closeSidebarOnMobile();
+      resetView();
+      currentCategory = type;
+      const data = moduleData[type];
+      
+      document.getElementById('list-icon-wrap').innerHTML = `<i class="${data.icon}"></i>`;
+      document.getElementById('list-title').innerText = data.title;
+      
+      let html = '';
+      data.files.forEach((file, index) => {
+        const key = `doc_${type}_${index}`;
+        const isWatched = watchedItems.includes(key);
+        const typeViewer = type === 'listening' ? 'audio' : 'doc';
+        
+        html += `
+          <div class="member-row p-3 md:p-4 flex items-center justify-between cursor-pointer ${isWatched ? 'watched-item' : ''}" onclick="smartViewer('${file.url}', '${key}', '${typeViewer}')">
+            <div class="flex items-center gap-3 md:gap-4 truncate mr-2">
+               <div class="w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-full bg-slate-800 border border-slate-700 text-slate-400 flex items-center justify-center">
+                <i class="fas ${typeViewer === 'audio' ? 'fa-headphones text-sky-400' : 'fa-file-pdf text-rose-500'} text-xs md:text-sm"></i>
+              </div>
+              <span class="font-semibold title-text text-xs md:text-sm text-slate-200 truncate">${file.name}</span>
+            </div>
+            <span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-colors uppercase tracking-wider shadow-sm">
+              <i class="fas ${typeViewer === 'audio' ? 'fa-play' : 'fa-download'} mr-1"></i> <span class="hidden sm:inline">${typeViewer === 'audio' ? 'Putar' : 'Unduh'}</span>
+            </span>
+          </div>`;
+      });
+      document.getElementById('list-items').innerHTML = html;
+      toggleSections('list');
+    }
+
+    function smartViewer(url, key, type) {
+      if (!watchedItems.includes(key)) {
+        watchedItems.push(key);
+        localStorage.setItem('gumi_history_v2', JSON.stringify(watchedItems));
+      }
+      
+      if(type === 'doc') {
+          const fileIdMatch = url.match(/[-\w]{25,}/);
+          if (fileIdMatch) {
+              const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileIdMatch[0]}`;
+              window.open(downloadUrl, '_blank'); 
+          } else if (url && url !== "") { 
+              window.open(url, '_blank'); 
+          } else {
+              showNotification("Tautan dokumen belum tersedia.", "error");
+              return;
+          }
+          showNotification("Mengunduh dokumen di tab baru...", "success");
+          showModuleSection(currentCategory);
+          return;
+      }
+
+      // Automatically convert standard links to bypass "Refused to Connect" inside sandboxes
+      let embedUrl = url;
+      
+      if (embedUrl.includes('youtube.com/watch')) {
+          try {
+              const urlParams = new URLSearchParams(embedUrl.split('?')[1]);
+              const videoId = urlParams.get('v');
+              if (videoId) {
+                  embedUrl = 'https://www.youtube-nocookie.com/embed/' + videoId + '?enablejsapi=1&rel=0';
+              }
+          } catch(e) { console.error(e); }
+      } 
+      else if (embedUrl.includes('youtu.be/')) {
+          const parts = embedUrl.split('youtu.be/');
+          if (parts[1]) {
+              const videoId = parts[1].split('?')[0].split('/')[0];
+              embedUrl = 'https://www.youtube-nocookie.com/embed/' + videoId + '?enablejsapi=1&rel=0';
+          }
+      }
+      else if (embedUrl.includes('youtube.com/shorts/')) {
+          const parts = embedUrl.split('youtube.com/shorts/');
+          if (parts[1]) {
+              const videoId = parts[1].split('?')[0].split('/')[0];
+              embedUrl = 'https://www.youtube-nocookie.com/embed/' + videoId + '?enablejsapi=1&rel=0';
+          }
+      }
+      else if (embedUrl.includes('drive.google.com') && embedUrl.includes('/view')) {
+          embedUrl = embedUrl.split('/view')[0] + '/preview';
+      }
+
+      // Configure Fallback Button for Safe Watch Directly
+      const directButton = document.getElementById('btnTontonLangsung');
+      if (directButton) {
+          directButton.href = url;
+          directButton.classList.remove('hidden');
+      }
+
+      toggleSections('video');
+      document.getElementById('playerStatus').innerText = type === 'audio' ? 'LISTENING AUDIO' : 'VIDEO MATERI';
+      document.getElementById('videoPlayer').src = embedUrl;
+      document.getElementById('content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function closeVideo() {
+      document.getElementById('videoPlayer').src = "";
+      if (currentCategory) {
+        if (classData[currentCategory]) showClassSection(currentCategory);
+        else showModuleSection(currentCategory);
+      } else {
+        showDashboard();
+      }
+    }
+
+    function showDashboard() {
+      closeSidebarOnMobile();
+      resetView();
+      getRandomQuote();
+      toggleSections('dashboard');
+    }
+
+    function resetView() { document.getElementById('videoPlayer').src = ""; }
+
+    function toggleSections(show) {
+      document.getElementById('dashboard-info').classList.add('hidden');
+      document.getElementById('list-container').classList.add('hidden');
+      document.getElementById('content-video').classList.add('hidden');
+      
+      if(show === 'dashboard') document.getElementById('dashboard-info').classList.remove('hidden');
+      if(show === 'list') document.getElementById('list-container').classList.remove('hidden');
+      if(show === 'video') document.getElementById('content-video').classList.remove('hidden');
+    }
+
+    function logout() { 
+      currentUser = null;
+      navigateTo('view-landing'); 
+      showNotification("Berhasil keluar dari akun.", "info");
+    }
+
+    // --- TESTIMONIAL SLIDER LOGIC ---
+    let currentTestiSlide = 0;
+    const totalTestiSlides = 3;
+    let testiInterval;
+
+    function updateTestiSlider() {
+      const slider = document.getElementById('testimonialSlides');
+      if(slider) slider.style.transform = `translateX(-${currentTestiSlide * 100}%)`;
+      
+      const dotsContainer = document.getElementById('testiDots');
+      if(dotsContainer) {
+        const dots = dotsContainer.children;
+        for (let i = 0; i < dots.length; i++) {
+          if (i === currentTestiSlide) {
+            dots[i].className = 'w-6 h-2 md:h-3 rounded-full bg-brand-500 transition-all duration-300';
+          } else {
+            dots[i].className = 'w-2 md:w-3 h-2 md:h-3 rounded-full bg-slate-700 transition-all duration-300 hover:bg-slate-500';
+          }
+        }
+      }
+    }
+
+    function nextTesti() {
+      currentTestiSlide = (currentTestiSlide + 1) % totalTestiSlides;
+      updateTestiSlider();
+      resetTestiInterval();
+    }
+
+    function prevTesti() {
+      currentTestiSlide = (currentTestiSlide - 1 + totalTestiSlides) % totalTestiSlides;
+      updateTestiSlider();
+      resetTestiInterval();
+    }
+
+    function goToTesti(index) {
+      currentTestiSlide = index;
+      updateTestiSlider();
+      resetTestiInterval();
+    }
+
+    function resetTestiInterval() {
+      clearInterval(testiInterval);
+      testiInterval = setInterval(nextTesti, 5000);
+    }
+
+    // Init Page
+    window.onload = () => {
+      renderPackages();
+      getRandomQuote();
+      testiInterval = setInterval(nextTesti, 5000);
+    };
+
+  </script>
 </body>
 </html>
