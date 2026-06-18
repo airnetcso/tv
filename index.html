@@ -99,13 +99,14 @@
   <div id="view-landing" class="view-section active">
     
     <!-- Navbar -->
-    <nav class="fixed w-full top-0 z-50 glass transition-all">
+    <nav class="fixed w-full top-0 z-50 bg-white shadow-md transition-all">
       <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-2 md:gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+          <!-- Logo warna asli tanpa efek invert putih -->
           <img src="https://github.com/airnetcso/gos/blob/main/LOGO_HITAM_PUTIH-removebg-preview.png?raw=true" alt="Gumi Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain drop-shadow-sm">
-          <span class="font-extrabold text-lg md:text-xl tracking-tight text-white">Gumi Eohakwon</span>
+          <span class="font-extrabold text-lg md:text-xl tracking-tight text-slate-900">Gumi Eohakwon</span>
         </div>
-        <button onclick="navigateTo('view-login')" class="group flex items-center gap-2 bg-dark-900 text-white border border-slate-700 px-4 md:px-6 py-2 md:py-2.5 rounded-full hover:bg-brand-600 hover:border-brand-500 transition-all shadow-md hover:shadow-brand-500/30 text-xs md:text-sm font-bold">
+        <button onclick="navigateTo('view-login')" class="group flex items-center gap-2 bg-dark-900 text-white border border-slate-700 px-4 md:px-6 py-2 md:py-2.5 rounded-md hover:bg-brand-600 hover:border-brand-500 transition-all shadow-md hover:shadow-brand-500/30 text-xs md:text-sm font-bold">
           <span class="hidden sm:inline">MEMBER AREA</span>
           <span class="sm:hidden">LOGIN</span>
           <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
@@ -126,11 +127,11 @@
           Persiapan ujian EPS TOPIK atau pemula dari nol. Belajar kapan saja, di mana saja. Mulai dari <span class="text-brand-400 font-bold border-b border-brand-400">Rp 149.000</span>
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full px-4 sm:px-0">
-          <button onclick="document.getElementById('pendaftaran').scrollIntoView({behavior: 'smooth'})" class="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold text-base md:text-lg px-8 py-4 rounded-full transition-all shadow-lg shadow-brand-500/30 hover:-translate-y-1">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 justify-center items-center w-full max-w-xl mx-auto px-4 sm:px-0">
+          <button onclick="document.getElementById('pendaftaran').scrollIntoView({behavior: 'smooth'})" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold text-base md:text-lg px-4 py-4 rounded-md transition-all shadow-lg shadow-brand-500/30 hover:-translate-y-1">
             MULAI BELAJAR SEKARANG
           </button>
-          <button onclick="navigateTo('view-login')" class="w-full sm:w-auto glass-dark text-white hover:bg-white hover:text-dark-900 font-bold text-base md:text-lg px-8 py-4 rounded-full transition-all border border-slate-600 shadow-sm hover:-translate-y-1">
+          <button onclick="navigateTo('view-login')" class="w-full glass-dark text-white hover:bg-white hover:text-dark-900 font-bold text-base md:text-lg px-4 py-4 rounded-md transition-all border border-slate-600 shadow-sm hover:-translate-y-1">
             MASUK MEMBER
           </button>
         </div>
@@ -334,10 +335,10 @@
               <label class="block text-xs md:text-sm font-bold text-slate-300 mb-2">Paket Pilihan</label>
               <div class="relative">
                 <i class="fas fa-box absolute left-4 top-1/2 -translate-y-1/2 text-brand-500"></i>
-                <input type="text" id="selectedPackage" readonly class="w-full pl-10 md:pl-12 pr-4 py-3 md:py-4 bg-slate-800 border border-slate-700 text-brand-400 rounded-xl font-bold outline-none text-sm md:text-base">
+                <input type="text" id="selectedPackage" readonly class="w-full pl-10 md:pl-12 pr-4 py-3 md:py-4 bg-slate-800 border border-slate-700 text-brand-400 rounded-md font-bold outline-none text-sm md:text-base">
               </div>
             </div>
-            <button onclick="submitToWA()" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 md:py-4 rounded-xl text-sm md:text-lg transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2 mt-4">
+            <button onclick="submitToWA()" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-bold py-3 md:py-4 rounded-md text-sm md:text-lg transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2 mt-4">
               <i class="fab fa-whatsapp text-lg md:text-xl"></i> KONFIRMASI WHATSAPP
             </button>
           </div>
@@ -353,7 +354,7 @@
       <div class="max-w-4xl mx-auto px-4 md:px-6 text-center mb-12 md:mb-16">
         <h2 class="text-2xl md:text-4xl font-bold mb-4 md:mb-6">Siap merubah masa depan Anda?</h2>
         <p class="text-slate-400 text-sm md:text-base mb-6 md:mb-8">Bergabunglah dengan ratusan siswa lainnya yang telah sukses belajar di Gumi Eohakwon.</p>
-        <button onclick="document.getElementById('pendaftaran').scrollIntoView({behavior: 'smooth'})" class="bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm md:text-lg px-8 md:px-10 py-3 md:py-4 rounded-full transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:-translate-y-1">
+        <button onclick="document.getElementById('pendaftaran').scrollIntoView({behavior: 'smooth'})" class="bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm md:text-lg px-8 md:px-10 py-3 md:py-4 rounded-md transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:-translate-y-1">
           DAFTAR SEKARANG
         </button>
       </div>
@@ -379,9 +380,9 @@
 
     <div class="glass-dark max-w-md w-full rounded-modern p-6 md:p-10 text-center relative z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-t-4 border-t-brand-500">
       
-      <!-- Logo G di Login Member -->
-      <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 md:mb-6 flex items-center justify-center bg-slate-800 rounded-2xl border border-slate-700 shadow-inner">
-        <span class="text-brand-400 font-extrabold text-4xl">G</span>
+      <!-- Logo G di Login Member (Diperbarui) -->
+      <div class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 md:mb-6 flex items-center justify-center bg-white rounded-2xl shadow-[0_0_15px_rgba(255,255,255,0.1)] p-3">
+        <img src="https://github.com/airnetcso/gos/blob/main/LOGO_HITAM_PUTIH-removebg-preview.png?raw=true" alt="Gumi Logo" class="w-full h-full object-contain">
       </div>
 
       <h1 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">Member Login</h1>
@@ -390,9 +391,9 @@
       <div class="space-y-4 md:space-y-5">
         <div class="relative">
           <i class="fas fa-key absolute left-4 md:left-5 top-1/2 -translate-y-1/2 text-slate-500"></i>
-          <input type="password" id="accessCode" placeholder="KODE AKSES" class="w-full pl-10 md:pl-12 pr-4 md:pr-6 py-3 md:py-4 bg-slate-900/80 border border-slate-700 rounded-xl focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-white outline-none text-center text-base md:text-lg font-bold tracking-[0.2em] transition-all placeholder:text-slate-600 placeholder:tracking-normal">
+          <input type="password" id="accessCode" placeholder="KODE AKSES" class="w-full pl-10 md:pl-12 pr-4 md:pr-6 py-3 md:py-4 bg-slate-900/80 border border-slate-700 rounded-md focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-white outline-none text-center text-base md:text-lg font-bold tracking-[0.2em] transition-all placeholder:text-slate-600 placeholder:tracking-normal">
         </div>
-        <button onclick="checkAccess()" class="w-full py-3 md:py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-bold text-xs md:text-sm uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(34,197,94,0.2)] hover:-translate-y-0.5">
+        <button onclick="checkAccess()" class="w-full py-3 md:py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-md font-bold text-xs md:text-sm uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(34,197,94,0.2)] hover:-translate-y-0.5">
           MASUK APLIKASI
         </button>
       </div>
@@ -438,70 +439,70 @@
         <!-- Navigation Scrollable -->
         <nav class="flex-1 overflow-y-auto px-3 md:px-4 pb-6 space-y-1 custom-scrollbar">
           
-          <button onclick="showDashboard()" class="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-xl text-white bg-slate-800 transition-colors text-sm font-semibold group active-menu">
-            <div class="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-dark-900 shadow-sm flex items-center justify-center text-brand-400 border border-slate-700"><i class="fas fa-home"></i></div>
+          <button onclick="showDashboard()" class="w-full flex items-center gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-md text-white bg-slate-800 transition-colors text-sm font-semibold group active-menu">
+            <div class="w-7 h-7 md:w-8 md:h-8 rounded-md bg-dark-900 shadow-sm flex items-center justify-center text-brand-400 border border-slate-700"><i class="fas fa-home"></i></div>
             Dashboard
           </button>
 
           <div class="py-2"><div class="h-px bg-slate-800"></div></div>
           <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">Materi Video</p>
 
-          <button onclick="showClassSection('dasar')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+          <button onclick="showClassSection('dasar')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
             <i class="fas fa-play-circle text-brand-500 w-5 text-center"></i> Kelas Dasar
           </button>
-          <button onclick="showClassSection('menengah')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+          <button onclick="showClassSection('menengah')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
             <i class="fas fa-play-circle text-orange-400 w-5 text-center"></i> Kelas Menengah
           </button>
-          <button onclick="showClassSection('lanjutan')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+          <button onclick="showClassSection('lanjutan')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
             <i class="fas fa-play-circle text-blue-400 w-5 text-center"></i> Kelas Lanjutan
           </button>
           
           <div class="py-2"><div class="h-px bg-slate-800"></div></div>
           <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">Pembahasan Khusus</p>
 
-          <button onclick="showModuleSection('textbook')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+          <button onclick="showModuleSection('textbook')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
             <i class="fas fa-book-open text-purple-400 w-5 text-center"></i> Textbook EPS TOPIK 
           </button>
-          <button onclick="showModuleSection('tryout')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+          <button onclick="showModuleSection('tryout')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
             <i class="fas fa-video text-pink-400 w-5 text-center"></i> Tryout EPS TOPIK
           </button>
 
           <div class="py-2"><div class="h-px bg-slate-800"></div></div>
           <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">Aplikasi Pendukung</p>
 
-          <button onclick="showModuleSection('aplikasi')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+          <button onclick="showModuleSection('aplikasi')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
             <i class="fas fa-laptop-code text-pink-400 w-5 text-center"></i> Aplikasi Latihan & TO
           </button>
 
           <div class="py-2"><div class="h-px bg-slate-800"></div></div>
           <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">File & Audio</p>
 
-          <button onclick="showModuleSection('materi')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+          <button onclick="showModuleSection('materi')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
             <i class="fas fa-file-pdf text-rose-500 w-5 text-center"></i> Module Materi
           </button>
-          <button onclick="showModuleSection('pelengkap')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+          <button onclick="showModuleSection('pelengkap')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
             <i class="fas fa-file-medical text-emerald-400 w-5 text-center"></i> Modul Pelengkap
           </button>
-          <button onclick="showModuleSection('listening')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+          <button onclick="showModuleSection('listening')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
             <i class="fas fa-headphones text-sky-400 w-5 text-center"></i> Module Listening
           </button>
-          <button onclick="showModuleSection('soal')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
+          <button onclick="showModuleSection('soal')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group">
             <i class="fas fa-file-video text-teal-400 w-5 text-center"></i> Module Soal Tryout
           </button>
 
           <div class="py-2"><div class="h-px bg-slate-800"></div></div>
           <p class="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2 px-2 mt-2">Pusat Bantuan</p>
 
-          <button onclick="contactWA('konsultasi')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+          <button onclick="contactWA('konsultasi')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
             <i class="fab fa-whatsapp text-brand-500 w-5 text-center"></i> Konsultasi Admin
           </button>
-          <button onclick="contactWA('upgrade')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+          <button onclick="contactWA('upgrade')" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
             <i class="fas fa-crown text-gold-500 w-5 text-center"></i> Upgrade Kelas
           </button>
-          <a href="https://kp2mi.go.id/gtog-korea/pengumuman" target="_blank" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
+          <a href="https://kp2mi.go.id/gtog-korea/pengumuman" target="_blank" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-white transition-colors text-xs md:text-sm font-medium group text-left">
             <i class="fas fa-globe text-blue-500 w-5 text-center"></i> Info GToG Korea
           </a>
-          <button onclick="logout()" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-xl text-slate-400 hover:bg-slate-800 hover:text-rose-500 transition-colors text-xs md:text-sm font-medium group text-left">
+          <button onclick="logout()" class="w-full flex items-center gap-3 px-3 md:px-4 py-2 md:py-2.5 rounded-md text-slate-400 hover:bg-slate-800 hover:text-rose-500 transition-colors text-xs md:text-sm font-medium group text-left">
             <i class="fas fa-sign-out-alt text-rose-500 w-5 text-center group-hover:text-rose-500"></i> Keluar Akun
           </button>
 
@@ -514,7 +515,8 @@
         <!-- Mobile Header -->
         <header class="md:hidden bg-dark-900 border-b border-slate-800 p-4 flex items-center justify-between sticky top-0 z-30">
           <div class="flex items-center gap-2">
-            <img src="https://github.com/airnetcso/gos/blob/main/LOGO_HITAM_PUTIH-removebg-preview.png?raw=true" alt="Gumi Logo" class="w-8 h-8 object-contain">
+            <!-- Added brightness-0 invert to mobile header logo as well -->
+            <img src="https://github.com/airnetcso/gos/blob/main/LOGO_HITAM_PUTIH-removebg-preview.png?raw=true" alt="Gumi Logo" class="w-8 h-8 object-contain brightness-0 invert">
             <span class="font-bold text-white text-sm">Gumi <span class="text-brand-500">Space</span></span>
           </div>
           <button onclick="toggleMobileSidebar()" class="text-slate-400 hover:text-white p-2 focus:outline-none">
@@ -559,17 +561,17 @@
           <!-- State 3: Video Player with Direct Play Support -->
           <div id="content-video" class="hidden animate-slide-up">
             <div class="flex flex-row justify-between items-center gap-2 mb-4 md:mb-6">
-              <button onclick="closeVideo()" class="text-slate-400 hover:text-white bg-slate-800/50 hover:bg-slate-700 px-3 py-1.5 md:px-4 md:py-2 rounded-lg flex items-center gap-2 font-medium text-xs md:text-sm transition-all border border-slate-700">
+              <button onclick="closeVideo()" class="text-slate-400 hover:text-white bg-slate-800/50 hover:bg-slate-700 px-3 py-1.5 md:px-4 md:py-2 rounded-md flex items-center gap-2 font-medium text-xs md:text-sm transition-all border border-slate-700">
                 <i class="fas fa-arrow-left"></i> <span class="hidden sm:inline">Kembali</span>
               </button>
               
               <div class="flex items-center gap-2">
                 <!-- Fallback Button for Blocked Embeds -->
-                <a id="btnTontonLangsung" href="#" target="_blank" class="text-xs md:text-sm font-bold bg-rose-600 hover:bg-rose-500 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg flex items-center gap-2 transition-all shadow-md shadow-rose-600/20">
+                <a id="btnTontonLangsung" href="#" target="_blank" class="text-xs md:text-sm font-bold bg-rose-600 hover:bg-rose-500 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-md flex items-center gap-2 transition-all shadow-md shadow-rose-600/20">
                   <i class="fab fa-youtube text-white text-sm"></i>
                   <span>Tonton Langsung</span>
                 </a>
-                <div class="hidden sm:flex items-center gap-2 md:gap-3 bg-brand-900/30 border border-brand-500/20 px-3 py-1.5 md:px-4 md:py-2 rounded-full">
+                <div class="hidden sm:flex items-center gap-2 md:gap-3 bg-brand-900/30 border border-brand-500/20 px-3 py-1.5 md:px-4 md:py-2 rounded-md">
                   <span class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-500 animate-pulse"></span>
                   <span id="playerStatus" class="text-[10px] md:text-xs font-bold text-brand-400 uppercase tracking-widest truncate">Sedang Belajar</span>
                 </div>
@@ -682,7 +684,7 @@
                 </li>`).join('')}
             </ul>
             <button onclick="selectPackage('${pkg.name} - ${pkg.price}')" 
-                    class="w-full ${isPop ? 'bg-gradient-to-r from-brand-500 to-teal-500 hover:from-brand-600 hover:to-teal-600 text-white shadow-lg shadow-brand-500/30' : 'bg-slate-800 hover:bg-slate-700 text-white'} font-bold py-3 md:py-4 rounded-xl transition-all hover:-translate-y-1 text-sm md:text-base">
+                    class="w-full ${isPop ? 'bg-gradient-to-r from-brand-500 to-teal-500 hover:from-brand-600 hover:to-teal-600 text-white shadow-lg shadow-brand-500/30' : 'bg-slate-800 hover:bg-slate-700 text-white'} font-bold py-3 md:py-4 rounded-md transition-all hover:-translate-y-1 text-sm md:text-base">
               PILIH PAKET
             </button>
           </div>
@@ -957,8 +959,8 @@
               <span class="font-semibold title-text text-xs md:text-sm text-slate-200 truncate">${item.name}</span>
             </div>
             ${hasAccess 
-              ? `<span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-full ${isWatched ? 'bg-slate-800 text-slate-400' : 'bg-brand-500/10 text-brand-400 border border-brand-500/20'} uppercase tracking-wider">${isWatched ? 'Selesai' : 'Buka'}</span>`
-              : `<span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-500 uppercase tracking-wider">Terkunci</span>`
+              ? `<span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-md ${isWatched ? 'bg-slate-800 text-slate-400' : 'bg-brand-500/10 text-brand-400 border border-brand-500/20'} uppercase tracking-wider">${isWatched ? 'Selesai' : 'Buka'}</span>`
+              : `<span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-md bg-slate-800 border border-slate-700 text-slate-500 uppercase tracking-wider">Terkunci</span>`
             }
           </div>`;
       });
@@ -1014,7 +1016,7 @@
               </div>
               <span class="font-semibold title-text text-xs md:text-sm text-slate-200 truncate">${file.name}</span>
             </div>
-            <span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-colors uppercase tracking-wider shadow-sm">
+            <span class="shrink-0 text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 md:py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition-colors uppercase tracking-wider shadow-sm">
               ${btnHtml}
             </span>
           </div>`;
