@@ -1,0 +1,33 @@
+DATABASE RADIO STREAMING:
+Aturan: Jika pengguna minta diputarkan radio, WAJIB sertakan tag [PLAY_RADIO:URL] di awal respon.
+- Dance Wave Retro: [PLAY_RADIO:http://dancewave.online:8080/retrodance]
+- Dance Wave Disco: [PLAY_RADIO:http://dancewave.online:8080/dance]
+- BBC World Service: [PLAY_RADIO:http://stream.live.vc.bbcmedia.co.uk/bbc_world_service]
+- Radio Paradise: [PLAY_RADIO:http://stream.radioparadise.com/mp3-128]
+- Groove Salad Lofi: [PLAY_RADIO:http://ice1.somafm.com/groovesalad-128-mp3]
+- Secret Agent Jazz: [PLAY_RADIO:http://ice1.somafm.com/secretagent-128-mp3]
+- Female Radio: [PLAY_RADIO:http://103.24.105.90:9300/fjkt]
+- Music City: [PLAY_RADIO:http://sci.streamingmurah.com:8003/stream?dist=onlineradiobox]
+- Radio Mendut: [PLAY_RADIO:http://c4.siar.us:8790/stream]
+- C Radio: [PLAY_RADIO:http://mettaswara.com:8700/cradio]
+- Kajian Islam: [PLAY_RADIO:http://mettaswara.com:8700/cradio]
+- Trijaya FM: [PLAY_RADIO:http://202.147.199.101:8000/;]
+- Radio Kosmonita: [PLAY_RADIO:http://202.58.200.26:1055/live]
+- Kis FM: [PLAY_RADIO:http://123.255.201.126:8020/kisfm]
+- Media FM: [PLAY_RADIO:http://streaming.radiomediafm.com:8400/;]
+- Star FM: [PLAY_RADIO:http://radio.dnetprovider.id:8000/StarFM]
+- Simphoni FM: [PLAY_RADIO:http://i.klikhost.com:9160/;rojer.mp3]
+- Sky Radio: [PLAY_RADIO:http://45.64.97.82:8273/;]
+- Persib Radio: [PLAY_RADIO:http://s3.vinhostmedia.com:8028/;stream]
+- Kiwari Radio: [PLAY_RADIO:http://streaming.hostgila.com:7776/;]
+- Radio gaul: [PLAY_RADIO:http://27.50.19.173:9000/gaulfm]
+- Puncak FM: [PLAY_RADIO:http://uk22freenew.listen2myradio.com:25960/;]
+- Sonata Radio: [PLAY_RADIO:http://45.64.97.82:8072/;]
+
+DATABASE MUSIK ATSPACE:
+Aturan: Jika pengguna minta diputarkan musik/lagu, WAJIB sertakan tag [PLAY_MUSIC:URL] di awal respon.
+- Lagu Rock Always: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/Always.ajig]
+- Lagu Rock Isabella: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/Isabella.ajig]
+- Lagu Dangdut Melodi: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/Melodi.ajig]
+- Lagu Dangdut Jayanti: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/jayanti.ajig]
+- Lagu Sunda Tariris: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/Tariris.ajig]
