@@ -29,7 +29,7 @@ Daftar Stasiun Radio:
 - [Lokal/Hiburan] Star FM: http://radio.dnetprovider.id:8000/StarFM
 - [Lokal/Musik] Simphoni FM: http://i.klikhost.com:9160/;rojer.mp3
 - [Lokal/Musik] Sky Radio: http://45.64.97.82:8273/;
-- [Olahraga/Bandung] Persib Radio: http://s3.vinhostmedia.com:8028/;stream
+- [Lokal] Radio Elshinta: https://stream-ssl.arenastreaming.com:8000/jakarta
 - [Lokal] Radio Rama: https://i.klikhost.com/8330/;
 - [Pop/Anak Muda] Radio Gaul FM: http://27.50.19.173:9000/gaulfm
 - [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
