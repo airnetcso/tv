@@ -13,7 +13,7 @@ Daftar Stasiun Radio:
 - [Bandung] MGT Radio Bandung: https://stream-n1.gntr.net/listen/mgtradio/mgtradio
 - [Lokal] Radio Bali: https://a1.siar.us/listen/sunfm/radio.mp3
 - [Lokal] Radio Rodja: https://radioislamindonesia.com/rodja-bandung.mp3
-- [Lokal] MQ Radio: http://radio.useetv.com/mqfm-aac
+- [Lokal] TBN: http://radio2.tbn.or.kr:1935/gyeongin/myStream/playlist.m3u8
 - [Lokal] Radio Kpop: https://stream-281.surfernetwork.com/tm3uqnyxgrhvv?zt=eyJhbGciOiJIUzI1NiJ9.eyJzdHJlYW0iOiJ0bTN1cW55eGdyaHZ2IiwiaG9zdCI6InN0cmVhbS0yODEuc3VyZmVybmV0d29yay5jb20iLCJydHRsIjo1LCJqdGkiOiI0QVptODkyRFNiNmh0UlZuYjZGeE93IiwiaWF0IjoxNzgzMDAyNDAzLCJleHAiOjE3ODMwMDI0NjN9.iPczUfiPM_kBxhX_I1yn1VV2Xj2zD1-3-jo7uKz9EEc
 - [Bandung] Paramuda FM bandung: https://i.klikhost.com/8332/;
 - [Bandung] B Radio Bandung: https://n04-us.rcs.revma.com/9yp8b9pd6k3vv?rj-ttl=5&rj-tok=AAABnyJ7kHkAgzPZFe006xbkaw
