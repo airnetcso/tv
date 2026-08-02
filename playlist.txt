@@ -30,7 +30,7 @@ Daftar Stasiun Radio:
 - [Lokal/Musik] Simphoni FM: http://i.klikhost.com:9160/;rojer.mp3
 - [Lokal/Musik] Sky Radio: http://45.64.97.82:8273/;
 - [Olahraga/Bandung] Persib Radio: http://s3.vinhostmedia.com:8028/;stream
-- [Lokal/Sunda] Kiwari Radio: http://streaming.hostgila.com:7776/;
+- [Lokal] Radio Rama: https://i.klikhost.com/8330/;
 - [Pop/Anak Muda] Radio Gaul FM: http://27.50.19.173:9000/gaulfm
 - [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
 - [Lokal/Hiburan] Sonata Radio: http://45.64.97.82:8072/;
