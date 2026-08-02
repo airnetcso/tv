@@ -5,8 +5,8 @@ Aturan:
 - Jika pengguna minta kategori/genre radio (misal: "radio berita", "radio musik", "radio dakwah"), gunakan kata kuncinya agar sistem memutar stasiun yang sesuai.
 
 Daftar Stasiun Radio:
-- [Lokal] Radio bali: https://a1.siar.us/listen/sunfm/radio.mp3
-- [Dance/Disco] Dance Wave Disco: http://dancewave.online:8080/dance
+- [Lokal] Radio Bali: https://a1.siar.us/listen/sunfm/radio.mp3
+- [Lokal] Global FM: https://svara-stream.radioddns.net/surabaya_globalfm_
 - [Berita/English] BBC World Service: http://stream.live.vc.bbcmedia.co.uk/bbc_world_service
 - [Musik/Rock] Radio Paradise: http://stream.radioparadise.com/mp3-128
 - [Musik/Lofi] Groove Salad Lofi: http://ice1.somafm.com/groovesalad-128-mp3
