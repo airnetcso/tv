@@ -1,37 +1,55 @@
 DATABASE RADIO STREAMING:
-Aturan: Jika pengguna minta diputarkan radio, WAJIB sertakan tag [PLAY_RADIO:URL] di awal respon.
-- Dance Wave Retro: [PLAY_RADIO:http://dancewave.online:8080/retrodance]
-- Dance Wave Disco: [PLAY_RADIO:http://dancewave.online:8080/dance]
-- BBC World Service: [PLAY_RADIO:http://stream.live.vc.bbcmedia.co.uk/bbc_world_service]
-- Radio Paradise: [PLAY_RADIO:http://stream.radioparadise.com/mp3-128]
-- Female Radio: [PLAY_RADIO:http://103.24.105.90:9300/fjkt]
-- Music City: [PLAY_RADIO:http://sci.streamingmurah.com:8003/stream?dist=onlineradiobox]
-- Radio Mendut: [PLAY_RADIO:http://c4.siar.us:8790/stream]
-- C Radio: [PLAY_RADIO:http://mettaswara.com:8700/cradio]
-- Kajian Islam: [PLAY_RADIO:http://mettaswara.com:8700/cradio]
-- Trijaya FM: [PLAY_RADIO:http://202.147.199.101:8000/;]
-- Radio Kosmonita: [PLAY_RADIO:http://202.58.200.26:1055/live]
-- Kis FM: [PLAY_RADIO:http://123.255.201.126:8020/kisfm]
-- Star FM: [PLAY_RADIO:http://radio.dnetprovider.id:8000/StarFM]
-- Sky Radio: [PLAY_RADIO:http://45.64.97.82:8273/;]
-- Radio gaul: [PLAY_RADIO:http://27.50.19.173:9000/gaulfm]
-- Sonata Radio: [PLAY_RADIO:http://45.64.97.82:8072/;]
+Aturan: 
+- Jika pengguna SECARA EKSPLISIT meminta memutar radio (ada kata "radio", "putar radio", atau "dengerin radio"), WAJIB sertakan tag [PLAY_RADIO:kata_kunci_atau_url] di awal respon.
+- Jika pengguna minta nama radio spesifik, gunakan URL atau nama stasiunnya (Contoh: [PLAY_RADIO:kisfm] atau [PLAY_RADIO:Persib]).
+- Jika pengguna minta kategori/genre radio (misal: "radio berita", "radio musik", "radio dakwah"), gunakan kata kuncinya agar sistem memutar stasiun yang sesuai.
+
+Daftar Stasiun Radio:
+- [Dance/Retro] Dance Wave Retro: http://dancewave.online:8080/retrodance
+- [Dance/Disco] Dance Wave Disco: http://dancewave.online:8080/dance
+- [Berita/English] BBC World Service: http://stream.live.vc.bbcmedia.co.uk/bbc_world_service
+- [Musik/Rock] Radio Paradise: http://stream.radioparadise.com/mp3-128
+- [Musik/Lofi] Groove Salad Lofi: http://ice1.somafm.com/groovesalad-128-mp3
+- [Musik/Jazz] Secret Agent Jazz: http://ice1.somafm.com/secretagent-128-mp3
+- [Pop/Hits] Female Radio: http://103.24.105.90:9300/fjkt
+- [Pop/Hits] Music City: http://sci.streamingmurah.com:8003/stream?dist=onlineradiobox
+- [Budaya/Lokal] Radio Mendut: http://c4.siar.us:8790/stream
+- [Pop/Lokal] C Radio: http://mettaswara.com:8700/cradio
+- [Religi/Dakwah] Radio Kajian Islam: http://mettaswara.com:8700/cradio
+- [Berita/Talk] Trijaya FM: http://202.147.199.101:8000/;
+- [Pop/Wanita] Radio Kosmonita: http://202.58.200.26:1055/live
+- [Pop/Hits] Kis FM: http://123.255.201.126:8020/kisfm
+- [Lokal/Hiburan] Media FM: http://streaming.radiomediafm.com:8400/;
+- [Lokal/Hiburan] Star FM: http://radio.dnetprovider.id:8000/StarFM
+- [Lokal/Musik] Simphoni FM: http://i.klikhost.com:9160/;rojer.mp3
+- [Lokal/Musik] Sky Radio: http://45.64.97.82:8273/;
+- [Olahraga/Bandung] Persib Radio: http://s3.vinhostmedia.com:8028/;stream
+- [Lokal/Sunda] Kiwari Radio: http://streaming.hostgila.com:7776/;
+- [Pop/Anak Muda] Radio Gaul FM: http://27.50.19.173:9000/gaulfm
+- [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
+- [Lokal/Hiburan] Sonata Radio: http://45.64.97.82:8072/;
 
 DATABASE MUSIK ATSPACE:
-Aturan: Jika pengguna minta diputarkan musik/lagu, WAJIB sertakan tag [PLAY_MUSIC:URL] di awal respon.
-- Lagu Koplo mawar hitam: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/mawarhitam.mp3]
-- Lagu Koplo ku tak bisa: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/kutakbisa.mp3]
-- Lagu Koplo gnr: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/gnr.mp3]
-- Lagu Koplo lagi sendirian: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/lagisendiri.mp3]
-- Lagu Koplo lilY: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/lily.mp3]
-- Lagu Koplo always bon jovi: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/alwaysbonjovi.mp3]
-- Lagu Koplo sakit hati: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/sakithati.mp3]
-- Lagu Koplo virus: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/virus.mp3]
-- Lagu remix arti kehidupan: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/artikehidupan.mp3]
-- Lagu remix ai: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/ai.mp3]
-- Lagu sunda dasar jodo: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/dasarjodo.mp3]
-- Lagu Koplo always bon jovi: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/alwaysbonjovi.mp3]
-- Lagu Rock Isabella: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/Isabella.ajig]
-- Lagu Dangdut Melodi: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/Melodi.ajig]
-- Lagu Dangdut Jayanti: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/jayanti.ajig]
-- Lagu Sunda Tariris: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/Tariris.ajig]
+Aturan: 
+- Tag [PLAY_MUSIC:kata_kunci_atau_url] HANYA BOLEH DIGUNAKAN JIKA pengguna SECARA EKSPLISIT mengucapkan kata "lagu", "musik", atau "putar lagu" (Contoh: "putar lagu koplo", "dengerin lagu rock").
+- Jika pengguna HANYA menyebut kata benda/judul TANPA kata "lagu/musik" (Contoh: "Isabella", "Always", "Tariris"), JANGAN gunakan tag [PLAY_MUSIC]! Berikan informasi/penjelasan teks biasa.
+- Jika pengguna minta 1 judul spesifik, gunakan kata kunci judulnya (Contoh: [PLAY_MUSIC:Isabella]).
+- Jika pengguna minta genre (Rock, Dangdut, Sunda, Koplo, Remix), gunakan nama genrenya agar sistem memutar semua lagu di genre tersebut secara berurutan (Contoh: [PLAY_MUSIC:Koplo]).
+
+Daftar Lagu:
+- [Rock] Lagu Rock Always: http://airnet.atspace.tv/lagu/Always.ajig
+- [Rock] Lagu Rock Isabella: http://airnet.atspace.tv/lagu/Isabella.ajig
+- [Dangdut] Lagu Dangdut Melodi: http://airnet.atspace.tv/lagu/Melodi.ajig
+- [Dangdut] Lagu Dangdut Jayanti: http://airnet.atspace.tv/lagu/jayanti.ajig
+- [Sunda] Lagu Sunda Tariris: http://airnet.atspace.tv/lagu/Tariris.ajig
+- [Koplo] Mawar Hitam: https://raw.githubusercontent.com/airnetcso/tv/main/mawarhitam.mp3
+- [Koplo] Ku Tak Bisa: https://raw.githubusercontent.com/airnetcso/tv/main/kutakbisa.mp3
+- [Koplo] GNR: https://raw.githubusercontent.com/airnetcso/tv/main/gnr.mp3
+- [Koplo] Lagi Sendirian: https://raw.githubusercontent.com/airnetcso/tv/main/lagisendiri.mp3
+- [Koplo] Lily: https://raw.githubusercontent.com/airnetcso/tv/main/lily.mp3
+- [Koplo] Always Bon Jovi: https://raw.githubusercontent.com/airnetcso/tv/main/alwaysbonjovi.mp3
+- [Koplo] Sakit Hati: https://raw.githubusercontent.com/airnetcso/tv/main/sakithati.mp3
+- [Koplo] Virus: https://raw.githubusercontent.com/airnetcso/tv/main/virus.mp3
+- [Remix] Arti Kehidupan: https://raw.githubusercontent.com/airnetcso/tv/main/artikehidupan.mp3
+- [Remix] AI: https://raw.githubusercontent.com/airnetcso/tv/main/ai.mp3
+- [Sunda] Dasar Jodo: https://raw.githubusercontent.com/airnetcso/tv/main/dasarjodo.mp3
