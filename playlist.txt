@@ -7,8 +7,8 @@ Aturan:
 Daftar Stasiun Radio:
 - [Lokal] Radio Bali: https://a1.siar.us/listen/sunfm/radio.mp3
 - [Lokal] Global FM: https://svara-stream.radioddns.net/surabaya_globalfm_
-- [Berita/English] BBC World Service: http://stream.live.vc.bbcmedia.co.uk/bbc_world_service
-- [Musik/Rock] Radio Paradise: http://stream.radioparadise.com/mp3-128
+- [Lokal] Ardan radio: https://n10-us.rcs.revma.com/ugpyzu9n5k3vv?rj-ttl=5&rj-tok=AAABnyNaqQYAFaxLqmt-MrP1Og
+- [Lokal] Radio OZ: https://streaming.ozradio.id:8443/ozbandung
 - [Musik/Lofi] Groove Salad Lofi: http://ice1.somafm.com/groovesalad-128-mp3
 - [Musik/Jazz] Secret Agent Jazz: http://ice1.somafm.com/secretagent-128-mp3
 - [Pop/Hits] Female Radio: http://103.24.105.90:9300/fjkt
