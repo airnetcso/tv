@@ -19,10 +19,10 @@ Aturan: Jika pengguna minta diputarkan radio, WAJIB sertakan tag [PLAY_RADIO:URL
 
 DATABASE MUSIK ATSPACE:
 Aturan: Jika pengguna minta diputarkan musik/lagu, WAJIB sertakan tag [PLAY_MUSIC:URL] di awal respon.
-- Lagu Koplo mawar hitam: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/mawar_hitam.mp3]
-- Lagu Koplo ku tak bisa: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/ku_tak_bisa.mp3]
+- Lagu Koplo mawar hitam: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/mawarhitam.mp3]
+- Lagu Koplo ku tak bisa: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/kutakbisa.mp3]
 - Lagu Koplo gnr: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/gnr.mp3]
-- Lagu Koplo lagi sendirian: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/lagi_sendiri.mp3]
+- Lagu Koplo lagi sendirian: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/lagisendiri.mp3]
 - Lagu Koplo lilY: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/lily.mp3]
 - Lagu Koplo ku tak bisa: [PLAY_MUSIC:https://raw.githubusercontent.com/airnetcso/tv/main/ku%20tak&20bisa.mp3]
 - Lagu Rock Isabella: [PLAY_MUSIC:http://airnet.atspace.tv/lagu/Isabella.ajig]
