@@ -37,11 +37,11 @@ Aturan:
 - Jika pengguna minta genre (Rock, Dangdut, Sunda, Koplo, Remix), gunakan nama genrenya agar sistem memutar semua lagu di genre tersebut secara berurutan (Contoh: [PLAY_MUSIC:Koplo]).
 
 Daftar Lagu:
-- [Pop] Akhirnya Kumenemukanmu: http://airnet.atspace.tv/lagu/akhirnyakumenemukanmu.mp3
-- [Pop] Kekasih Bayangan: http://airnet.atspace.tv/lagu/kekasihbayangan.mp3
-- [Pop] Hanya Rindu English: http://airnet.atspace.tv/lagu/hanyarinduenglish.mp3
-- [Pop] Because Of You: http://airnet.atspace.tv/lagu/becauseofyou.mp3
-- [Korea] Arirang: http://airnet.atspace.tv/lagu/arirangspesial.mp3
+- [Pop] Akhirnya Kumenemukanmu: https://raw.githubusercontent.com/airnetcso/tv/main/akhirnyakumenemukanmu.mp3
+- [Pop] Kekasih Bayangan: https://raw.githubusercontent.com/airnetcso/tv/main/kekasihbayangan.mp3
+- [Pop] Hanya Rindu English: https://raw.githubusercontent.com/airnetcso/tv/main/hanyarinduenglish.mp3
+- [Pop] Because Of You: https://raw.githubusercontent.com/airnetcso/tv/main/becauseofyou.mp3
+- [Korea] Arirang: https://raw.githubusercontent.com/airnetcso/tv/main/arirangspesial.mp3
 - [Rock] Lagu Rock Isabella: http://airnet.atspace.tv/lagu/Isabella.ajig
 - [Dangdut] Lagu Dangdut Melodi: http://airnet.atspace.tv/lagu/Melodi.ajig
 - [Rock] Lagu Rock Always: http://airnet.atspace.tv/lagu/Always.ajig
