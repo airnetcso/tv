@@ -1,0 +1,69 @@
+DATABASE RADIO STREAMING:
+Aturan: 
+- Jika pengguna SECARA EKSPLISIT meminta memutar radio (ada kata "radio", "putar radio", atau "dengerin radio"), WAJIB sertakan tag [PLAY_RADIO:kata_kunci_atau_url] di awal respon.
+- Jika pengguna minta nama radio spesifik, gunakan URL atau nama stasiunnya (Contoh: [PLAY_RADIO:kisfm] atau [PLAY_RADIO:Persib]).
+- Jika pengguna minta kategori/genre radio (misal: "radio berita", "radio musik", "radio dakwah"), gunakan kata kuncinya agar sistem memutar stasiun yang sesuai.
+
+Daftar Stasiun Radio:
+- [Lokal] Radio Arirang: https://amdlive-ch03-ctnd-com.akamaized.net/arirang_3ch/smil:arirang_3ch.smil/playlist.m3u8
+- [Lokal] YTN FM: https://radiolive.ytn.co.kr/radio/_definst_/20211118_fmlive/playlist.m3u8
+- [Bandung] Ardan radio: https://n10-us.rcs.revma.com/ugpyzu9n5k3vv?rj-ttl=5&rj-tok=AAABnyNaqQYAFaxLqmt-MrP1Og
+- [Lokal] Radio OZ: https://streaming.ozradio.id:8443/ozbandung
+- [Bandung] K-Lit FM: https://svara-stream.radioddns.net/bandung_klitefm_acc
+- [Bandung] MGT Radio Bandung: https://stream-n1.gntr.net/listen/mgtradio/mgtradio
+- [Lokal] Radio CBS: https://m-aac.cbs.co.kr/mweb_cbs939/_definst_/cbs939.stream/medialist_9988553859297925072_hls.m3u8
+- [Lokal] Radio Rodja: https://radioislamindonesia.com/rodja-bandung.mp3
+- [Lokal] TBN: http://radio2.tbn.or.kr:1935/gyeongin/myStream/playlist.m3u8
+- [Lokal] Radio TBS: https://cdnefm.tbs.seoul.kr/tbs/_definst_/tbs_efm_web_720.smil/playlist.m3u8
+- [Bandung] Paramuda FM bandung: https://i.klikhost.com/8332/;
+- [Bandung] B Radio Bandung: https://n04-us.rcs.revma.com/9yp8b9pd6k3vv?rj-ttl=5&rj-tok=AAABnyJ7kHkAgzPZFe006xbkaw
+- [Lokal] Female Radio: http://103.24.105.90:9300/fjkt
+- [Lokal] Music City: http://sci.streamingmurah.com:8003/stream?dist=onlineradiobox
+- [Lokal] Delta FM Bandung: https://stream-pd-bdg.dimasalfaridzi.my.id/delta
+- [Bandung] Dahlia FM Bandung: https://svara-stream.radioddns.net/bandung_dahliafm
+- [Religi/Dakwah] Radio Kajian Islam: http://mettaswara.com:8700/cradio
+- [Berita/Talk] Trijaya FM: http://202.147.199.101:8000/;
+- [Pop/Wanita] Radio Kosmonita: http://202.58.200.26:1055/live
+- [Pop/Hits] Kis FM: http://123.255.201.126:8020/kisfm
+- [Lokal/Hiburan] Media FM: http://streaming.radiomediafm.com:8400/;
+- [Lokal/Hiburan] Star FM: http://radio.dnetprovider.id:8000/StarFM
+- [Lokal/Musik] Simphoni FM: http://i.klikhost.com:9160/;rojer.mp3
+- [Lokal/Musik] Sky Radio: http://45.64.97.82:8273/;
+- [Lokal] Radio Elshinta: https://stream-ssl.arenastreaming.com:8000/jakarta
+- [Lokal] Radio Rama: https://i.klikhost.com/8330/;
+- [Pop/Anak Muda] Radio Gaul FM: http://27.50.19.173:9000/gaulfm
+- [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
+- [Lokal/Hiburan] Sonata Radio: http://45.64.97.82:8072/;
+
+DATABASE MUSIK ATSPACE:
+Aturan: 
+- Tag [PLAY_MUSIC:kata_kunci_atau_url] HANYA BOLEH DIGUNAKAN JIKA pengguna SECARA EKSPLISIT mengucapkan kata "lagu", "musik", atau "putar lagu" (Contoh: "putar lagu koplo", "dengerin lagu rock").
+- Jika pengguna HANYA menyebut kata benda/judul TANPA kata "lagu/musik" (Contoh: "Isabella", "Always", "Tariris"), JANGAN gunakan tag [PLAY_MUSIC]! Berikan informasi/penjelasan teks biasa.
+- Jika pengguna minta 1 judul spesifik, gunakan kata kunci judulnya (Contoh: [PLAY_MUSIC:Isabella]).
+- Jika pengguna minta genre (Rock, Dangdut, Sunda, Koplo, Remix), gunakan nama genrenya agar sistem memutar semua lagu di genre tersebut secara berurutan (Contoh: [PLAY_MUSIC:Koplo]).
+
+Daftar Lagu:
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/19.umarbakri.mp3 - Iwan Fals Guru Oemar Bakri
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/20.yatidak.mp3 - Iwan Fals Iya Atau Tidak
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/21.artikehidupan.mp3 - Doel Sumbang Arti Kehidupan
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/22.runtah.mp3 - Doel Sumbang Runtah
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/23.kalaubulan.mp3 - Doel Sumbang Kalau Bulan Bisa Ngomong
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/24.akucintakamu.mp3 - Doel Sumbang Aku Cinta Kamu
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/25.teteh.mp3 - Doel Sumbang Teteh
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/26.ai.mp3 - Doel Sumbang Ai
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/27.linu.mp3 - Doel Sumbang Linu
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/28.mangdarman.mp3 - Doel Sumbang Mang Darman
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/29.mumun.mp3 - Doel Sumbang Mumun
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/30.berenyit.mp3 - Doel Sumbang Berenyit
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/31.pangandaran.mp3 - Doel Sumbang Pangandaran
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/32.ulartangga.mp3 - Doel Sumbang Ular Tangga
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/33.tembangcinta.mp3 - Doel Sumbang Tembang Cinta
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/34.ditalipak.mp3 - Doel Sumbang Ditalipak
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/35.batuhiu.mp3 - Doel Sumbang Batu Hiu
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/41.berita.mp3 - Ebiet G Ade Berita Kepada Kawan
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/42.titiprindu.mp3 - Ebiet G Ade Titip Rindu Buat Ayah
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/43.CameliaI.mp3 - Ebiet G Ade Camelia I
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/44.Camelia2.mp3 - Ebiet G Ade Camelia II
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/45.matahari.mp3 - Ebiet G Ade Menjaring Matahari
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/46.renungkan.mp3 - Ebiet G Ade Untuk Kita Renungkan
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/47.sebuahnama.mp3 - Ebiet G Ade Untuk Sebuah Nama
