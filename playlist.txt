@@ -34,7 +34,7 @@ Daftar Stasiun Radio:
 - [Pop/Anak Muda] Radio Gaul FM: http://27.50.19.173:9000/gaulfm
 - [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
 - [Lokal/Hiburan] Sonata Radio: http://45.64.97.82:8072/;
-- [Religi] MQ Radio FM: https://api.instant.audio/data/playlist/57/mqfm-bandung
+- [Religi] MQ Radio FM: https://mqfmstreaming.kamil.web.id/
 - [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
 - [Lokal/Hiburan] Sonata Radio: http://45.64.97.82:8072/;
 
