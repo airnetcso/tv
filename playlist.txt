@@ -35,8 +35,8 @@ Daftar Stasiun Radio:
 - [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
 - [Lokal/Hiburan] Sonata Radio: http://45.64.97.82:8072/;
 - [Religi] MQ Radio FM: https://mqfmstreaming.kamil.web.id/
-- [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
-- [Lokal/Hiburan] Sonata Radio: http://45.64.97.82:8072/;
+- [Religi] Fajri FM: https://radio.mitradio.com/listen/fajrifm/radio.mp3
+- [Religi] Darussalam FM: https://fdsfdsfdsf.radio12345.com/intro.mp3
 
 
 DATABASE MUSIK ATSPACE:
