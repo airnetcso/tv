@@ -9,9 +9,9 @@ Daftar Stasiun Radio:
 -  Radio YTN Korea https://radiolive.ytn.co.kr/radio/_definst_/20211118_fmlive/playlist.m3u8
 -  Radio TBN Korea http://radio2.tbn.or.kr:1935/gyeongin/myStream/playlist.m3u8
 -  Radio TBS Korea https://cdnefm.tbs.seoul.kr/tbs/_definst_/tbs_efm_web_720.smil/playlist.m3u8
--  Radio Seoul Kpop https://seoul.fm/kpop-radio/?utm_source=chatgpt.com
+-  Radio Seoul Kpop https://seoul.fm/kpop-radio/
 -  Radio CBS Korea https://m-aac.cbs.co.kr/mweb_cbs939/_definst_/cbs939.stream/medialist_9988553859297925072_hls.m3u8
--  Radio Kpop Ballads Koreahttps://radioonline.kr/lag-balladeu/?utm_source=chatgpt.com
+-  Radio Kpop Ballads Koreahttps://radioonline.kr/lag-balladeu/
 -  Radio Ardan Bandung https://n10-us.rcs.revma.com/ugpyzu9n5k3vv?rj-ttl=5&rj-tok=AAABnyNaqQYAFaxLqmt-MrP1Og
 -  Radio Oz Bandung https://streaming.ozradio.id:8443/ozbandung
 -  Radio K-Lit FM Bandung https://svara-stream.radioddns.net/bandung_klitefm_acc
@@ -34,10 +34,10 @@ Daftar Stasiun Radio:
 -  Radio Media FM http://streaming.radiomediafm.com:8400/;
 -  Radio Simphoni FM http://i.klikhost.com:9160/;rojer.mp3
 -  Radio Country https://www.radio.net/s/retrocountry890?utm_source=chatgpt.com
--  Radio Pop Hits https://my.audioreal.online/listen/80s90s/radio.mp3?utm_source=chatgpt.com
--  Radio Metal 80an https://www.bigbarnradio.com/?utm_source=chatgpt.com
--  Radio Rock 80an https://streams.radiobob.de/bob-80srock/mp3-128/streams.radiobob.de/?utm_source=chatgpt.com
--  Radio Slow Rock https://www.bigbarnradio.com/?utm_source=chatgpt.com
+-  Radio Pop Hits https://my.audioreal.online/listen/80s90s/radio.mp3
+-  Radio Metal 80an https://www.bigbarnradio.com/
+-  Radio Rock 80an https://streams.radiobob.de/bob-80srock/mp3-128/streams.radiobob.de/
+-  Radio Slow Rock https://www.bigbarnradio.com/
 
 DATABASE MUSIK ATSPACE:
 Aturan: 
