@@ -47,8 +47,8 @@ Aturan:
 
 Daftar Lagu:
 # INDO 01
-https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/01.22.mp3 - Iwan Fals 22 januari
-https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/02.antaraaku.mp3 - Iwan Fals Antara Kau Kau dan Sepatu
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/01.22.mp3 - Iwan Fals - 22 januari
+https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/02.antaraaku.mp3 - Iwan Fals - Antara Aku Kau dan Sepatu
 https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/03.bukanpilihan.mp3 - Iwan Fals Aku Bukan Pilihan
 https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/04.bukuiniakupinjam.mp3 - Iwan Fals Buku Ini Aku Pinjam
 https://raw.githubusercontent.com/gumi1800/mp3/main/indo01/05.entah.mp3 - Iwan Fals Entah
