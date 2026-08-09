@@ -9,7 +9,9 @@ Daftar Stasiun Radio:
 -  Radio YTN Korea https://radiolive.ytn.co.kr/radio/_definst_/20211118_fmlive/playlist.m3u8
 -  Radio TBN Korea http://radio2.tbn.or.kr:1935/gyeongin/myStream/playlist.m3u8
 -  Radio TBS Korea https://cdnefm.tbs.seoul.kr/tbs/_definst_/tbs_efm_web_720.smil/playlist.m3u8
+-  Radio Seoul Kpop https://seoul.fm/kpop-radio/?utm_source=chatgpt.com
 -  Radio CBS Korea https://m-aac.cbs.co.kr/mweb_cbs939/_definst_/cbs939.stream/medialist_9988553859297925072_hls.m3u8
+-  Radio Kpop Ballads Koreahttps://radioonline.kr/lag-balladeu/?utm_source=chatgpt.com
 -  Radio Ardan Bandung https://n10-us.rcs.revma.com/ugpyzu9n5k3vv?rj-ttl=5&rj-tok=AAABnyNaqQYAFaxLqmt-MrP1Og
 -  Radio Oz Bandung https://streaming.ozradio.id:8443/ozbandung
 -  Radio K-Lit FM Bandung https://svara-stream.radioddns.net/bandung_klitefm_acc
@@ -25,16 +27,17 @@ Daftar Stasiun Radio:
 -  Radio Darussalam FM https://fdsfdsfdsf.radio12345.com/intro.mp3
 -  Radio Female FM http://103.24.105.90:9300/fjkt
 -  Radio Music City http://sci.streamingmurah.com:8003/stream?dist=onlineradiobox
--  Radio Kajian Islam http://mettaswara.com:8700/cradio
+-  Radio Elshinta https://stream-ssl.arenastreaming.com:8000/jakarta
 -  Radio Trijaya FM http://202.147.199.101:8000/;
 -  Radio Kosmonita http://202.58.200.26:1055/live
 -  Radio Kis FM http://123.255.201.126:8020/kisfm
 -  Radio Media FM http://streaming.radiomediafm.com:8400/;
--  Radio Star FM http://radio.dnetprovider.id:8000/StarFM
 -  Radio Simphoni FM http://i.klikhost.com:9160/;rojer.mp3
--  Radio Sky FM http://45.64.97.82:8273/;
--  Radio Elshinta https://stream-ssl.arenastreaming.com:8000/jakarta
--  Radio Gaul FM http://27.50.19.173:9000/gaulfm
+-  Radio Country https://www.radio.net/s/retrocountry890?utm_source=chatgpt.com
+-  Radio Pop Hits https://my.audioreal.online/listen/80s90s/radio.mp3?utm_source=chatgpt.com
+-  Radio Metal 80an https://www.bigbarnradio.com/?utm_source=chatgpt.com
+-  Radio Rock 80an https://streams.radiobob.de/bob-80srock/mp3-128/streams.radiobob.de/?utm_source=chatgpt.com
+-  Radio Slow Rock https://www.bigbarnradio.com/?utm_source=chatgpt.com
 
 DATABASE MUSIK ATSPACE:
 Aturan: 
