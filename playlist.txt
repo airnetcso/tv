@@ -33,8 +33,8 @@ Daftar Stasiun Radio:
 -  Radio Kis FM http://123.255.201.126:8020/kisfm
 -  Radio Media FM http://streaming.radiomediafm.com:8400/;
 -  Radio Simphoni FM http://i.klikhost.com:9160/;rojer.mp3
--  Radio Country https://tuneintoradio1.com/radio/8050/radio.mp3
--  Radio Pop Hits https://streams.90s90s.de/pop/mp3-128/streams.90s90s.de/
+-  Radio Country https://ais-sa2.cdnstream1.com/1976_128.mp3
+-  Radio Classic https://classichitsradio.streamingmedia.it/play
 -  Radio Rock 80an https://streams.radiobob.de/bob-80srock/mp3-128/streams.radiobob.de/
 -  Radio Oldies 80an https://stream.rockantenne.nrw/oldie-antenne/stream/mp3
 -  Radio Dangdut Mania https://stream.zeno.fm/7fxttycvnqduv
