@@ -5,38 +5,36 @@ Aturan:
 - Jika pengguna minta kategori/genre radio (misal: "radio berita", "radio musik", "radio dakwah"), gunakan kata kuncinya agar sistem memutar stasiun yang sesuai.
 
 Daftar Stasiun Radio:
-- [Lokal] Radio Arirang: https://amdlive-ch03-ctnd-com.akamaized.net/arirang_3ch/smil:arirang_3ch.smil/playlist.m3u8
-- [Lokal] Radio YTN FM: https://radiolive.ytn.co.kr/radio/_definst_/20211118_fmlive/playlist.m3u8
-- [Bandung] Ardan radio https://n10-us.rcs.revma.com/ugpyzu9n5k3vv?rj-ttl=5&rj-tok=AAABnyNaqQYAFaxLqmt-MrP1Og
-- [Lokal] Radio OZ - https://streaming.ozradio.id:8443/ozbandung
-- [Bandung] K-Lit FM: https://svara-stream.radioddns.net/bandung_klitefm_acc
-- [Bandung] MGT Radio Bandung: https://stream-n1.gntr.net/listen/mgtradio/mgtradio
-- [Lokal] Radio CBS: https://m-aac.cbs.co.kr/mweb_cbs939/_definst_/cbs939.stream/medialist_9988553859297925072_hls.m3u8
-- [Religi] Radio Rodja: https://radioislamindonesia.com/rodja-bandung.mp3
-- [Religi] MQ Radio FM: https://mqfmstreaming.kamil.web.id/
-- [Religi] Fajri FM: https://radio.mitradio.com/listen/fajrifm/radio.mp3
-- [Religi] Darussalam FM: https://fdsfdsfdsf.radio12345.com/intro.mp3
-- [Lokal] Radio TBN: http://radio2.tbn.or.kr:1935/gyeongin/myStream/playlist.m3u8
-- [Lokal] Radio TBS: https://cdnefm.tbs.seoul.kr/tbs/_definst_/tbs_efm_web_720.smil/playlist.m3u8
-- [Bandung] Paramuda FM bandung: https://i.klikhost.com/8332/;
-- [Bandung] B Radio Bandung: https://n04-us.rcs.revma.com/9yp8b9pd6k3vv?rj-ttl=5&rj-tok=AAABnyJ7kHkAgzPZFe006xbkaw
-- [Lokal] Female Radio: http://103.24.105.90:9300/fjkt
-- [Lokal] Music City: http://sci.streamingmurah.com:8003/stream?dist=onlineradiobox
-- [Lokal] Delta FM Bandung: https://stream-pd-bdg.dimasalfaridzi.my.id/delta
-- [Bandung] Dahlia FM Bandung: https://svara-stream.radioddns.net/bandung_dahliafm
-- [Religi/Dakwah] Radio Kajian Islam: http://mettaswara.com:8700/cradio
-- [Berita/Talk] Trijaya FM: http://202.147.199.101:8000/;
-- [Pop/Wanita] Radio Kosmonita: http://202.58.200.26:1055/live
-- [Pop/Hits] Kis FM: http://123.255.201.126:8020/kisfm
-- [Lokal/Hiburan] Media FM: http://streaming.radiomediafm.com:8400/;
-- [Lokal/Hiburan] Star FM: http://radio.dnetprovider.id:8000/StarFM
-- [Lokal/Musik] Simphoni FM: http://i.klikhost.com:9160/;rojer.mp3
-- [Lokal/Musik] Sky Radio: http://45.64.97.82:8273/;
-- [Lokal] Radio Elshinta: https://stream-ssl.arenastreaming.com:8000/jakarta
-- [Lokal] Radio Rama: https://i.klikhost.com/8330/;
-- [Pop/Anak Muda] Radio Gaul FM: http://27.50.19.173:9000/gaulfm
-- [Lokal/Hiburan] Puncak FM: http://uk22freenew.listen2myradio.com:25960/;
-- [Lokal/Hiburan] Sonata Radio: http://45.64.97.82:8072/;
+-  Radio Arirang Korea https://amdlive-ch03-ctnd-com.akamaized.net/arirang_3ch/smil:arirang_3ch.smil/playlist.m3u8
+-  Radio YTN Korea https://radiolive.ytn.co.kr/radio/_definst_/20211118_fmlive/playlist.m3u8
+-  Radio TBN Korea http://radio2.tbn.or.kr:1935/gyeongin/myStream/playlist.m3u8
+-  Radio TBS Korea https://cdnefm.tbs.seoul.kr/tbs/_definst_/tbs_efm_web_720.smil/playlist.m3u8
+-  Radio CBS Korea https://m-aac.cbs.co.kr/mweb_cbs939/_definst_/cbs939.stream/medialist_9988553859297925072_hls.m3u8
+-  Radio Ardan Bandung https://n10-us.rcs.revma.com/ugpyzu9n5k3vv?rj-ttl=5&rj-tok=AAABnyNaqQYAFaxLqmt-MrP1Og
+-  Radio Oz Bandung https://streaming.ozradio.id:8443/ozbandung
+-  Radio K-Lit FM Bandung https://svara-stream.radioddns.net/bandung_klitefm_acc
+-  Radio MGT RBandung https://stream-n1.gntr.net/listen/mgtradio/mgtradio
+-  Radio Rodja FM Bandung https://radioislamindonesia.com/rodja-bandung.mp3
+-  Radio MQFM Bandung https://mqfmstreaming.kamil.web.id/
+-  Radio Delta FM Bandung https://stream-pd-bdg.dimasalfaridzi.my.id/delta
+-  Radio Paramuda FM Bandung https://i.klikhost.com/8332/;
+-  Radio Rama Bandung https://i.klikhost.com/8330/;
+-  Radio B Bandung https://n04-us.rcs.revma.com/9yp8b9pd6k3vv?rj-ttl=5&rj-tok=AAABnyJ7kHkAgzPZFe006xbkaw
+-  Radio Dahlia FM Bandung https://svara-stream.radioddns.net/bandung_dahliafm
+-  Radio Fajri FM https://radio.mitradio.com/listen/fajrifm/radio.mp3
+-  Radio Darussalam FM https://fdsfdsfdsf.radio12345.com/intro.mp3
+-  Radio Female FM http://103.24.105.90:9300/fjkt
+-  Radio Music City http://sci.streamingmurah.com:8003/stream?dist=onlineradiobox
+-  Radio Kajian Islam http://mettaswara.com:8700/cradio
+-  Radio Trijaya FM http://202.147.199.101:8000/;
+-  Radio Kosmonita http://202.58.200.26:1055/live
+-  Radio Kis FM http://123.255.201.126:8020/kisfm
+-  Radio Media FM http://streaming.radiomediafm.com:8400/;
+-  Radio Star FM http://radio.dnetprovider.id:8000/StarFM
+-  Radio Simphoni FM http://i.klikhost.com:9160/;rojer.mp3
+-  Radio Sky FM http://45.64.97.82:8273/;
+-  Radio Elshinta https://stream-ssl.arenastreaming.com:8000/jakarta
+-  Radio Gaul FM http://27.50.19.173:9000/gaulfm
 
 DATABASE MUSIK ATSPACE:
 Aturan: 
