@@ -33,11 +33,12 @@ Daftar Stasiun Radio:
 -  Radio Kis FM http://123.255.201.126:8020/kisfm
 -  Radio Media FM http://streaming.radiomediafm.com:8400/;
 -  Radio Simphoni FM http://i.klikhost.com:9160/;rojer.mp3
--  Radio Country https://www.radio.net/s/retrocountry890?utm_source=chatgpt.com
--  Radio Pop Hits https://my.audioreal.online/listen/80s90s/radio.mp3
+-  Radio Country https://tuneintoradio1.com/radio/8050/radio.mp3
+-  Radio Pop Hits https://streams.90s90s.de/pop/mp3-128/streams.90s90s.de/
 -  Radio Metal 80an https://www.bigbarnradio.com/
 -  Radio Rock 80an https://streams.radiobob.de/bob-80srock/mp3-128/streams.radiobob.de/
 -  Radio Slow Rock https://www.bigbarnradio.com/
+-  Radio Dangdut Mania https://stream.zeno.fm/7fxttycvnqduv
 
 DATABASE MUSIK ATSPACE:
 Aturan: 
